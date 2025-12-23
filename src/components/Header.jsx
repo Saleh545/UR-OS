@@ -2,6 +2,8 @@ import React from 'react'
 import '../main.scss'
 import '../styles/component/header.scss'
 import { Link } from 'react-router-dom'
+import heroLogo from "/src/assets/hero-uros.png";
+
 
 const Header = () => {
   return (
@@ -11,7 +13,7 @@ const Header = () => {
           <div className="header-flex">
             <div className="header-left">
               
-              <img src="src/assets/uros.jpg" alt="" />
+              <img src={heroLogo} alt="" />
             </div>
             <div className="header-right">
               <ul>

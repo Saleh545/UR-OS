@@ -4,6 +4,7 @@ import '../styles/pages/home.scss';
 import { FaCalendar, FaClock,  FaUserTie, FaFileAlt, FaRobot, FaTable, FaUtensils, FaWhatsapp, FaBell, FaUsers, FaChartLine, FaCogs } from 'react-icons/fa';
 import { TbMoodNervous } from 'react-icons/tb';
 import { MdTableRestaurant } from 'react-icons/md';
+import heroUros from "/src/assets/hero-uros.png";
 
 const Home = () => {
   return (
@@ -13,7 +14,7 @@ const Home = () => {
         <div className="container">
           <div className="hero-flex">
             <div className="hero-logo">
-              <img src="src/assets/hero-uros.png" alt="Uros Logo" />
+              <img src={heroUros} alt="Uros Logo" />
             </div>
             <div className="hero-content">
               <h1 className="hero-title">Biznes əməliyyat sistemi</h1>
