@@ -11,11 +11,11 @@ const Home = () => {
     <div>
       <Header />
       <section className="hero">
+            <div className="hero-img">
+              <img src={heroUros} alt="" />
+            </div>
         <div className="container">
           <div className="hero-flex">
-            <div className="hero-logo">
-              <img src={heroUros} alt="Uros Logo" />
-            </div>
             <div className="hero-content">
               <h1 className="hero-title">Biznes əməliyyat sistemi</h1>
               <p className="hero-subtitle">Restoran idarəçiliyini avtomatlaşdıran vahid ekosistem.</p>

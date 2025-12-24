@@ -2,7 +2,7 @@ import React from 'react'
 import '../main.scss'
 import '../styles/component/header.scss'
 import { Link } from 'react-router-dom'
-import heroLogo from "/src/assets/hero-uros.png";
+import heroLogo from "/src/assets/hero-logo.png";
 
 
 const Header = () => {

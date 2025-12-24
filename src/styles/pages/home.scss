@@ -1,53 +1,42 @@
 .hero {
-  .hero-flex {
-    display: flex;
-    align-items: center;
-    background-color: #1E1C1D;
-    color: white;
-    text-align: center;
-    padding: 20px 0px !important;
-    // margin-top: 90px;
-    height: 75vh;
-    left: 0;
+  position: relative;
+
+  .hero-img {
+    img {
+      width: 100%;
+      height: 85vh;
+      object-fit: cover;
+    }
+  }
+
+  .hero-content {
+    position: absolute;
     top: 0;
+    left: 0;
+    height: 85vh;          // 👈 şəkillə eyni hündürlük
     width: 100%;
 
-    @media screen and (max-width: 768px) {
-      flex-direction: column;
-      height: auto;
-        }
+    display: flex;         // 👈 FLEX
+    flex-direction: column;
+    justify-content: center; // 👈 ŞAQUİLİ ORTA
+    align-items: flex-start; // solda qalsın deyə
+    padding: 0 40px;
 
-    .hero-logo {
-      margin-bottom: 40px;
-
-      img {
-        max-width: 300px;
-             @media screen and (max-width: 768px) {
-            width: 80%; 
-            }
-      }
+    .hero-title {
+      font-size: 60px;
+      font-weight: bold;
+      margin: 0;
+      letter-spacing: 3px;
     }
 
-    .hero-content {
-      max-width: 1200px;
-      width: 100%;
-
-      .hero-title {
-        font-size: 60px;
-        font-weight: bold;
-        margin: 0;
-        letter-spacing: 3px;
-      }
-
-      .hero-subtitle {
-        font-size: 24px;
-        margin-top: 20px !important;
-        font-weight: 300;
-
-      }
+    .hero-subtitle {
+      font-size: 24px;
+      margin-top: 20px;
+      font-weight: 300;
     }
   }
 }
+
 
 .pain-points {
   background-color: #f7f7f7;
