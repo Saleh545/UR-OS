@@ -198,44 +198,38 @@ const Home = () => {
       </section>
 
       <section class="partners" id="partners">
-  <div class="partners__inner">
-    <h2 class="partners__title">Partners</h2>
+        <div class="partners__inner">
+          <h2 class="partners__title">Partners</h2>
 
-    <div class="partners__grid">
-      <a class="partner-card" href="#" aria-label="Gastronom">
-        <img src="https://monyo.az/uploads/a_72_logo.png?x=1761820060" alt="Gastronom" />
-      </a>
+          <div class="partners__grid">
+            <a class="partner-card" href="#" aria-label="Gastronom">
+              <img src="https://monyo.az/uploads/a_72_logo.png?x=1761820060" alt="Gastronom" />
+            </a>
+            <a class="partner-card" href="#" aria-label="Gastronom">
+              <img src="https://monyo.az/uploads/a_72_logo.png?x=1761820060" alt="Gastronom" />
+            </a>
+            <a class="partner-card" href="#" aria-label="Gastronom">
+              <img src="https://monyo.az/uploads/a_72_logo.png?x=1761820060" alt="Gastronom" />
+            </a>
+            <a class="partner-card" href="#" aria-label="Gastronom">
+              <img src="https://monyo.az/uploads/a_72_logo.png?x=1761820060" alt="Gastronom" />
+            </a>
+            <a class="partner-card" href="#" aria-label="Gastronom">
+              <img src="https://monyo.az/uploads/a_72_logo.png?x=1761820060" alt="Gastronom" />
+            </a>
+            <a class="partner-card" href="#" aria-label="Gastronom">
+              <img src="https://monyo.az/uploads/a_72_logo.png?x=1761820060" alt="Gastronom" />
+            </a>
+            <a class="partner-card" href="#" aria-label="Gastronom">
+              <img src="https://monyo.az/uploads/a_72_logo.png?x=1761820060" alt="Gastronom" />
+            </a>
+            <a class="partner-card" href="#" aria-label="Gastronom">
+              <img src="https://monyo.az/uploads/a_72_logo.png?x=1761820060" alt="Gastronom" />
+            </a>
 
-      <a class="partner-card" href="#" aria-label="Gustoso">
-        <img src="/assets/partners/gustoso.svg" alt="Gustoso" />
-      </a>
-
-      <a class="partner-card partner-card--active" href="#" aria-label="Skyfall Lounge">
-        <img src="/assets/partners/skyfall.svg" alt="Skyfall Lounge" />
-      </a>
-
-      <a class="partner-card" href="#" aria-label="Ottimo">
-        <img src="/assets/partners/ottimo.svg" alt="Ottimo" />
-      </a>
-
-      <a class="partner-card" href="#" aria-label="Carmela">
-        <img src="/assets/partners/carmela.svg" alt="Carmela" />
-      </a>
-
-      <a class="partner-card" href="#" aria-label="Mangal Steak House">
-        <img src="/assets/partners/mangal.svg" alt="Mangal Steak House" />
-      </a>
-
-      <a class="partner-card" href="#" aria-label="Hard Rock Cafe">
-        <img src="/assets/partners/hardrock-cafe.svg" alt="Hard Rock Cafe" />
-      </a>
-
-      <a class="partner-card" href="#" aria-label="Hard Rock">
-        <img src="/assets/partners/hardrock.svg" alt="Hard Rock" />
-      </a>
-    </div>
-  </div>
-</section>
+          </div>
+        </div>
+      </section>
 
 
     </>

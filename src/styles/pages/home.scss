@@ -524,59 +524,59 @@
       grid-template-columns: 1fr;
     }
   }
-}
-
-.partner-card {
-  height: 78px;
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  text-decoration: none;
-
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.10);
-
-  box-shadow:
-    0 16px 40px rgba(0, 0, 0, 0.55),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
-
-  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-
-  img {
-    max-width: 78%;
-    max-height: 46px;
-    object-fit: contain;
-
-    // mono look (şəkildəki kimi)
-    filter: grayscale(100%) brightness(0.9);
-    opacity: 0.9;
-    transition: filter .25s ease, opacity .25s ease;
-  }
-
-  &:hover {
-    transform: translateY(-2px) scale(1.02); // "легкое увеличение"
-    border-color: rgba(255, 255, 255, 0.18);
-
-    // 4% сияние (glow)
+  .partner-card {
+    height: 78px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    text-decoration: none;
+  
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+  
     box-shadow:
-      0 22px 55px rgba(0, 0, 0, 0.65),
-      0 0 0 1px rgba(255,255,255,.08),
-      0 0 18px rgba(120, 220, 255, 0.14),
-      inset 0 1px 0 rgba(255,255,255,.10);
-
+      0 16px 40px rgba(0, 0, 0, 0.55),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  
     img {
-      filter: grayscale(100%) brightness(1.05);
-      opacity: 1;
+      max-width: 78%;
+      max-height: 46px;
+      object-fit: contain;
+  
+      // mono look (şəkildəki kimi)
+      filter: grayscale(100%) brightness(0.9);
+      opacity: 0.9;
+      transition: filter .25s ease, opacity .25s ease;
+    }
+  
+    &:hover {
+      transform: translateY(-2px) scale(1.02); // "легкое увеличение"
+      border-color: rgba(255, 255, 255, 0.18);
+  
+      // 4% сияние (glow)
+      box-shadow:
+        0 22px 55px rgba(0, 0, 0, 0.65),
+        0 0 0 1px rgba(255,255,255,.08),
+        0 0 18px rgba(120, 220, 255, 0.14),
+        inset 0 1px 0 rgba(255,255,255,.10);
+  
+      img {
+        filter: grayscale(100%) brightness(1.05);
+        opacity: 1;
+      }
+    }
+  
+    // Şəkildə bir dənə kart daha parlaq görünür (istəsən)
+    &--active {
+      border-color: rgba(120, 220, 255, 0.18);
+      box-shadow:
+        0 22px 55px rgba(0, 0, 0, 0.65),
+        0 0 0 1px rgba(255,255,255,.08),
+        0 0 18px rgba(120, 220, 255, 0.16),
+        inset 0 1px 0 rgba(255,255,255,.10);
     }
   }
-
-  // Şəkildə bir dənə kart daha parlaq görünür (istəsən)
-  &--active {
-    border-color: rgba(120, 220, 255, 0.18);
-    box-shadow:
-      0 22px 55px rgba(0, 0, 0, 0.65),
-      0 0 0 1px rgba(255,255,255,.08),
-      0 0 18px rgba(120, 220, 255, 0.16),
-      inset 0 1px 0 rgba(255,255,255,.10);
-  }
 }
+
