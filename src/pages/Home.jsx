@@ -214,18 +214,6 @@ const Home = () => {
             <a class="partner-card" href="#" aria-label="Gastronom">
               <img src="https://monyo.az/uploads/a_72_logo.png?x=1761820060" alt="Gastronom" />
             </a>
-            <a class="partner-card" href="#" aria-label="Gastronom">
-              <img src="https://monyo.az/uploads/a_72_logo.png?x=1761820060" alt="Gastronom" />
-            </a>
-            <a class="partner-card" href="#" aria-label="Gastronom">
-              <img src="https://monyo.az/uploads/a_72_logo.png?x=1761820060" alt="Gastronom" />
-            </a>
-            <a class="partner-card" href="#" aria-label="Gastronom">
-              <img src="https://monyo.az/uploads/a_72_logo.png?x=1761820060" alt="Gastronom" />
-            </a>
-            <a class="partner-card" href="#" aria-label="Gastronom">
-              <img src="https://monyo.az/uploads/a_72_logo.png?x=1761820060" alt="Gastronom" />
-            </a>
 
           </div>
         </div>
