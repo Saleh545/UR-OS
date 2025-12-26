@@ -5,7 +5,7 @@ import { FaCalendar, FaClock, FaUserTie, FaFileAlt, FaRobot, FaTable, FaUtensils
 import { TbMoodNervous } from 'react-icons/tb';
 import { MdTableRestaurant } from 'react-icons/md';
 import heroUros from "/src/assets/hero-uros.png";
-
+import { IoLogoFacebook, IoLogoInstagram, IoLogoWhatsapp } from 'react-icons/io';
 import instagram from "../assets/Instagram.svg";
 import fb from "../assets/fb.png";
 import telegram from "../assets/telegram.png";
@@ -16,8 +16,8 @@ import robot from "../assets/robot.png";
 import data from "../assets/data.png";
 import fa from "../assets/2fa.png";
 import logo from "../assets/hero-logo.png";
+import tik from "../assets/tik.png";
 import { Link } from 'react-router-dom';
-import { IoLogoFacebook, IoLogoInstagram, IoLogoWhatsapp } from 'react-icons/io';
 
 const Home = () => {
   return (
@@ -286,7 +286,7 @@ const Home = () => {
 
             <div className="security-card">
               <div className="security-card__icon">
-                {/* <img src={iconShield} alt="Security compliance" /> */}
+                <img src={tik} alt="Security compliance" />
               </div>
               <h3>Security compliance</h3>
               <p>Beynəlxalq təhlükəsizlik standartlarına uyğunluq.</p>
