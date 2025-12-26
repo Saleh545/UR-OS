@@ -12,6 +12,12 @@ import telegram from "../assets/telegram.png";
 import whatsapp from "../assets/whatsapp.png";
 import speed from "../assets/speed.png";
 import carx from "../assets/carx.png";
+import robot from "../assets/robot.png";
+import data from "../assets/data.png";
+import fa from "../assets/2fa.png";
+import logo from "../assets/hero-logo.png";
+import { Link } from 'react-router-dom';
+import { IoLogoFacebook, IoLogoInstagram, IoLogoWhatsapp } from 'react-icons/io';
 
 const Home = () => {
   return (
@@ -218,6 +224,129 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <section class="roadmap">
+        <div class="roadmap__inner">
+
+          <h2 class="roadmap__title">Roadmap</h2>
+
+          <div class="roadmap__content">
+
+            <div class="roadmap__item roadmap__item--left">
+              <div class="roadmap__visual bot">
+                <img src={robot} alt="Reservasiya Bot" />
+              </div>
+
+              <div class="roadmap__text">
+                <h3>Reservasiya bot</h3>
+                <p>WhatsApp, Instagram və Telegram üzərindən avtomatik rezervasiya.</p>
+              </div>
+            </div>
+
+            <div class="roadmap__line"></div>
+
+            <div class="roadmap__item roadmap__item--right">
+              <div class="roadmap__visual panel">
+                <img src={heroUros} alt="Admin Panel" />
+              </div>
+
+              <div class="roadmap__text">
+                <h3>Admin Panel</h3>
+                <p>Rezervasiyalar, masalar, statistika və idarəetmə paneli.</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <section className="security">
+        <div className="security__inner">
+
+          <h2 className="security__title">Security</h2>
+
+          <div className="security__grid">
+
+            <div className="security-card">
+              <div className="security-card__icon">
+                <img src={data} alt="Data encrypted" />
+              </div>
+              <h3>Data encrypted</h3>
+              <p>Bütün məlumatlar şifrələnmiş şəkildə qorunur.</p>
+            </div>
+
+            <div className="security-card">
+              <div className="security-card__icon">
+                <img src={fa} alt="2FA" />
+              </div>
+              <h3>2FA</h3>
+              <p>İki mərhələli doğrulama ilə əlavə təhlükəsizlik.</p>
+            </div>
+
+            <div className="security-card">
+              <div className="security-card__icon">
+                {/* <img src={iconShield} alt="Security compliance" /> */}
+              </div>
+              <h3>Security compliance</h3>
+              <p>Beynəlxalq təhlükəsizlik standartlarına uyğunluq.</p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+      
+       <footer className="footer">
+      <div className="footer__inner">
+
+        <div className="footer__top">
+          <div className="footer__brand">
+            <img src={logo} alt="UR-OS" />
+            <p>Biznes proseslərini avtomatlaşdıran vahid ekosistem.</p>
+          </div>
+
+          <div className="footer__links">
+            <div className="footer__col">
+              <h4>About</h4>
+              <a href="#">Haqqımızda</a>
+              <a href="#">Niyə UR-OS</a>
+            </div>
+
+            <div className="footer__col">
+              <h4>Solutions</h4>
+              <a href="#">Rezervasiya botu</a>
+              <a href="#">Admin Panel</a>
+            </div>
+
+            <div className="footer__col">
+              <h4>Integrations</h4>
+              <a href="#">WhatsApp</a>
+              <a href="#">Instagram</a>
+              <a href="#">Telegram</a>
+            </div>
+
+            <div className="footer__col">
+              <h4>Contact</h4>
+              <a href="mailto:info@ur-os.az">info@ur-os.az</a>
+              <a href="#">Support</a>
+            </div>
+          </div>
+        </div>
+
+        <div className="footer__bottom">
+          <span>© {new Date().getFullYear()} UR-OS. Bütün hüquqlar qorunur.</span>
+
+          <div className="footer__socials">
+            <Link href="#"><IoLogoFacebook /></Link>
+            <Link href="#"><IoLogoWhatsapp /></Link>
+            <Link href="#"><IoLogoInstagram /></Link>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+  );
+
 
 
     </>
