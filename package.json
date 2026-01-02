@@ -12,8 +12,10 @@
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
     "@tailwindcss/vite": "^4.1.17",
+    "i18next": "^25.7.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-i18next": "^16.5.1",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.10.1",
     "routes": "^2.1.0",
