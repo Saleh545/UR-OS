@@ -18,8 +18,13 @@ import fa from "../assets/2fa.png";
 import logo from "../assets/hero-logo.png";
 import tik from "../assets/tik.png";
 import { Link } from 'react-router-dom';
+import { useTranslation } from "react-i18next";
+import { useEffect, useState } from "react";
+
+
 
 const Home = () => {
+  
   return (
     <>
       <Header />
@@ -137,87 +142,87 @@ const Home = () => {
         </div>
       </section>
 
-      <section class="integrations" id="integrations">
-        <div class="integrations__inner">
-          <h2 class="integrations__title">İnteqrasiya</h2>
+      <section className="integrations" id="integrations">
+        <div className="integrations__inner">
+          <h2 className="integrations__title">İnteqrasiya</h2>
 
-          <div class="integrations__grid">
-            <div class="integration-card">
-              <div class="integration-card__icon">
+          <div className="integrations__grid">
+            <div className="integration-card">
+              <div className="integration-card__icon">
                 <img src={instagram} alt="Instagram" />
               </div>
-              <div class="integration-card__label">Instagram</div>
+              <div className="integration-card__label">Instagram</div>
             </div>
 
-            <div class="integration-card">
-              <div class="integration-card__icon">
+            <div className="integration-card">
+              <div className="integration-card__icon">
                 <img src={whatsapp} alt="WhatsApp" />
               </div>
-              <div class="integration-card__label">WhatsApp</div>
+              <div className="integration-card__label">WhatsApp</div>
             </div>
 
-            <div class="integration-card">
-              <div class="integration-card__icon">
+            <div className="integration-card">
+              <div className="integration-card__icon">
                 <img src={telegram} alt="Telegram" />
               </div>
-              <div class="integration-card__label">Telegram</div>
+              <div className="integration-card__label">Telegram</div>
             </div>
 
-            <div class="integration-card">
-              <div class="integration-card__icon">
+            <div className="integration-card">
+              <div className="integration-card__icon">
                 <img src={fb} alt="Meta" />
               </div>
-              <div class="integration-card__label">Facebook</div>
+              <div className="integration-card__label">Facebook</div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="why" id="why">
-        <div class="why__inner">
-          <h2 class="why__title">
+      <section className="why" id="why">
+        <div className="why__inner">
+          <h2 className="why__title">
             Niyə <span>UR-OS</span>
           </h2>
 
-          <div class="why__grid">
-            <div class="why-card">
-              <div class="why-card__icon why-card__icon--green">
+          <div className="why__grid">
+            <div className="why-card">
+              <div className="why-card__icon why-card__icon--green">
                 <img src={speed} alt="Biznes üçün sürət" />
               </div>
 
-              <div class="why-card__text">
-                <div class="why-card__line">Biznes üçün sürət</div>
+              <div className="why-card__text">
+                <div className="why-card__line">Biznes üçün sürət</div>
               </div>
             </div>
 
-            <div class="why-card">
-              <div class="why-card__icon why-card__icon--mint">
+            <div className="why-card">
+              <div className="why-card__icon why-card__icon--mint">
                 <img src={carx} alt="Tam avtomatlaşdırma" />
               </div>
 
-              <div class="why-card__text">
-                <div class="why-card__line">Tam avtomatlaşdırma</div>
+              <div className="why-card__text">
+                <div className="why-card__line">Tam avtomatlaşdırma</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="partners" id="partners">
-        <div class="partners__inner">
-          <h2 class="partners__title">Partners</h2>
+      <section className="partners" id="partners">
+        <div className="partners__inner">
+          <h2 className="partners__title">Partners</h2>
 
-          <div class="partners__grid">
-            <a class="partner-card" href="#" aria-label="Gastronom">
+          <div className="partners__grid">
+            <a className="partner-card" href="#" aria-label="Gastronom">
               <img src="https://monyo.az/uploads/a_72_logo.png?x=1761820060" alt="Gastronom" />
             </a>
-            <a class="partner-card" href="#" aria-label="Gastronom">
+            <a className="partner-card" href="#" aria-label="Gastronom">
               <img src="https://monyo.az/uploads/a_72_logo.png?x=1761820060" alt="Gastronom" />
             </a>
-            <a class="partner-card" href="#" aria-label="Gastronom">
+            <a className="partner-card" href="#" aria-label="Gastronom">
               <img src="https://monyo.az/uploads/a_72_logo.png?x=1761820060" alt="Gastronom" />
             </a>
-            <a class="partner-card" href="#" aria-label="Gastronom">
+            <a className="partner-card" href="#" aria-label="Gastronom">
               <img src="https://monyo.az/uploads/a_72_logo.png?x=1761820060" alt="Gastronom" />
             </a>
 
@@ -225,32 +230,32 @@ const Home = () => {
         </div>
       </section>
 
-      <section class="roadmap">
-        <div class="roadmap__inner">
+      <section className="roadmap">
+        <div className="roadmap__inner">
 
-          <h2 class="roadmap__title">Roadmap</h2>
+          <h2 className="roadmap__title">Roadmap</h2>
 
-          <div class="roadmap__content">
+          <div className="roadmap__content">
 
-            <div class="roadmap__item roadmap__item--left">
-              <div class="roadmap__visual bot">
+            <div className="roadmap__item roadmap__item--left">
+              <div className="roadmap__visual bot">
                 <img src={robot} alt="Reservasiya Bot" />
               </div>
 
-              <div class="roadmap__text">
+              <div className="roadmap__text">
                 <h3>Reservasiya bot</h3>
                 <p>WhatsApp, Instagram və Telegram üzərindən avtomatik rezervasiya.</p>
               </div>
             </div>
 
-            <div class="roadmap__line"></div>
+            <div className="roadmap__line"></div>
 
-            <div class="roadmap__item roadmap__item--right">
-              <div class="roadmap__visual panel">
+            <div className="roadmap__item roadmap__item--right">
+              <div className="roadmap__visual panel">
                 <img src={heroUros} alt="Admin Panel" />
               </div>
 
-              <div class="roadmap__text">
+              <div className="roadmap__text">
                 <h3>Admin Panel</h3>
                 <p>Rezervasiyalar, masalar, statistika və idarəetmə paneli.</p>
               </div>

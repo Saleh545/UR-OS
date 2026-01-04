@@ -1,57 +1,26 @@
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
+// src/i18n.js
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
 
-const resources = {
-  az: {
-    translation: {
-      about: "Haqqımızda",
-      features: "Funksiyalar",
-      integrations: "İnteqrasiyalar",
-      partners: "Partnyorlar",
-      why: "Niyə UR-OS",
-      security: "Təhlükəsizlik",
-      signup: "Qeydiyyat",
-      heroTitle: "Biznes əməliyyat sistemi",
-      heroSubtitle: "Restoran idarəçiliyini avtomatlaşdıran vahid ekosistem."
-    }
-  },
-  en: {
-    translation: {
-      about: "About",
-      features: "Features",
-      integrations: "Integrations",
-      partners: "Partners",
-      why: "Why UR-OS",
-      security: "Security",
-      signup: "Sign up",
-      heroTitle: "Business Operating System",
-      heroSubtitle: "A unified ecosystem for restaurant automation."
-    }
-  },
-  ru: {
-    translation: {
-      about: "О нас",
-      features: "Функции",
-      integrations: "Интеграции",
-      partners: "Партнёры",
-      why: "Почему UR-OS",
-      security: "Безопасность",
-      signup: "Регистрация",
-      heroTitle: "Бизнес операционная система",
-      heroSubtitle: "Единая экосистема автоматизации ресторанов."
-    }
-  }
-};
+// Dil fayllarını daxil etmək
+import az from './i18n/locales/az/translation.json';
+import en from './i18n/locales/en/translation.json';
+import ru from './i18n/locales/ru/translation.json';
 
+// i18n konfiqurasiyası
 i18n
-  .use(initReactI18next)
+  .use(initReactI18next) // React bağlayıcısı
   .init({
-    resources,
+    resources: {
+      az: { translation: az },
+      en: { translation: en },
+      ru: { translation: ru },
+    },
     lng: "az", // default dil
-    fallbackLng: "az",
+    fallbackLng: "en", // fallback dil
     interpolation: {
-      escapeValue: false
-    }
+      escapeValue: false, // React'ı istifadə etdiyimiz üçün HTML etiketlərindən qorunma lazım deyil
+    },
   });
 
 export default i18n;
