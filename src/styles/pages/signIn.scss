@@ -7,38 +7,37 @@ $success: #2ecc71;
 $danger: #ff6b6b;
 
 .signin {
+  height: 100vh;
   min-height: 100vh;
-  height: 100vh; // 🔥 VACİB
   background: linear-gradient(135deg, $bg, darken($bg, 5%));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-      overflow: hidden; // 🔥 daxili scroll da bağlanır
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; // desktop scroll YOX
   color: $text;
 
+  /* ================= CONTAINER ================= */
   &__container {
     width: 100%;
     max-width: 1320px;
-    height: 100%;        // 🔥
-    min-height: 100%;    // 🔥
+    height: 100%;
     padding: 40px;
     display: grid;
-    grid-template-columns: 7fr 3fr; // ✅ 70 / 30
+    grid-template-columns: 7fr 3fr; // ✅ 70% şəkil / 30% form
     gap: 48px;
     align-items: center;
   }
 
   /* ================= SOL – ŞƏKİL ================= */
   &__preview {
-    height: 100%; // 🔥
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
 
     .signin__image {
-      max-height: 100%; // 🔥
+      max-height: 100%;
       max-width: 100%;
       width: auto;
       height: auto;
@@ -50,16 +49,18 @@ $danger: #ff6b6b;
 
   /* ================= SAĞ – FORM ================= */
   &__form {
-    height: 100%; // 🔥
+    height: 100%;
+    width: 100%;
     background: $card;
     border-radius: 20px;
     padding: 40px;
-    width: 100%;
-    max-width: none;
 
-    display: flex;              // 🔥
-    flex-direction: column;     // 🔥
-    justify-content: center;    // 🔥
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    justify-self: end;   // 🔥 sağa yapışır
+    margin-left: auto;
 
     h1 {
       font-size: 28px;
@@ -133,7 +134,7 @@ $danger: #ff6b6b;
 
     .register {
       text-align: center;
-      margin-top: 20px !important;
+      margin-top: 20px;
       font-size: 13px;
 
       a {
@@ -147,6 +148,7 @@ $danger: #ff6b6b;
   @media (max-width: 991px) {
     height: auto;
     min-height: auto;
+    overflow: auto;
 
     &__container {
       grid-template-columns: 1fr;
@@ -157,6 +159,7 @@ $danger: #ff6b6b;
       height: auto;
       max-width: 480px;
       margin: 0 auto;
+      justify-self: center;
     }
 
     &__preview .signin__image {
@@ -169,6 +172,7 @@ $danger: #ff6b6b;
     height: auto;
     min-height: 100vh;
     padding: 24px 16px;
+    overflow: auto; // 🔥 mobil scroll OLMALIDIR
 
     &__container {
       grid-template-columns: 1fr;
