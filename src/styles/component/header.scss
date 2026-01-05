@@ -1,81 +1,116 @@
 .header {
+  position: absolute; /* Делаем хедер прозрачным поверх фона */
   top: 0;
   left: 0;
   width: 100%;
-  background: #0f1012;
-  position: relative;
-  overflow: hidden;
+  z-index: 100;
+  padding: 20px 0;
+  background: transparent; 
 
-  &::before {
-    content: "";
-    position: absolute;
-    inset: -40%;
-    background: radial-gradient(
-      closest-side,
-      rgba(255, 255, 255, 0.08),
-      transparent 60%
-    );
-    filter: blur(30px);
-    pointer-events: none;
-  }
 }
 
 .header-flex {
-  position: relative;
-  z-index: 2;
-  height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  height: 50px;
 
-  img {
-    width: 100px;
-    display: block;
-  }
-
-  .header-right {
+  .header-left {
     display: flex;
     align-items: center;
+    
+    img {
+        height: 65px;
+    width: 65px;
+    }
+  }
 
-    @media (max-width: 768px) {
+  /* Центральное меню (Desktop) */
+  .header-center {
+    @media (max-width: 992px) {
       display: none;
     }
 
     ul {
       display: flex;
-      gap: 20px;
+      gap: 30px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
 
       a {
-        font-size: 18px;
-        color: #fff;
+        font-family: 'Inter', sans-serif; // Или твой шрифт
+        font-size: 15px;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.7); // Слегка серый текст как на макете
+        text-decoration: none;
+        transition: color 0.3s ease;
 
         &:hover {
-          opacity: 0.7;
+          color: #fff;
         }
       }
     }
+  }
 
-    .lang {
-      margin-left: 20px;
-      background: transparent;
-      border: 1px solid #fff;
-      color: #fff;
-      padding: 8px 12px;
-      border-radius: 999px;
-      cursor: pointer;
+  /* Правая часть (Язык + Кнопка) */
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    @media (max-width: 992px) {
+      display: none;
     }
 
-    .login a {
-      margin-left: 16px;
-      border: 1px solid #fff;
+    /* Переключатель языка */
+    .lang-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 8px 16px;
       color: #fff;
-      padding: 8px 14px;
-      border-radius: 30px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
 
       &:hover {
-        background: #fff;
-        color: #1E1C1D;
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      svg {
+        width: 16px;
+        height: 16px;
+        fill: #fff;
+      }
+    }
+
+    /* Кнопка "Şəxsi kabinet" - Синяя с GLOW эффектом */
+    .login-btn {
+      background: linear-gradient(90deg, #2563EB 0%, #1D4ED8 100%);
+      color: #fff;
+      padding: 10px 24px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 0 20px rgba(37, 99, 235, 0.5); /* Синее свечение */
+      transition: all 0.3s ease;
+      border: none;
+
+      &:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 0 30px rgba(37, 99, 235, 0.7);
+      }
+
+      span {
+        font-size: 16px; /* Стрелка чуть больше */
       }
     }
   }
@@ -84,11 +119,11 @@
 /* 🍔 BURGER */
 .burger {
   display: none;
-  font-size: 28px;
+  font-size: 24px;
   color: #fff;
   cursor: pointer;
 
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     display: block;
   }
 }
@@ -98,12 +133,16 @@
   position: fixed;
   top: 0;
   right: -100%;
-  width: 80%;
+  width: 100%;
+  max-width: 300px;
   height: 100vh;
   background: #0f1012;
+  border-left: 1px solid rgba(255,255,255,0.1);
   z-index: 9999;
   padding: 20px;
   transition: right 0.3s ease;
+  display: flex;
+  flex-direction: column;
 
   &.active {
     right: 0;
@@ -112,6 +151,7 @@
   .mobile-top {
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 40px;
   }
 
   .close {
@@ -123,44 +163,62 @@
   }
 
   ul {
-    margin-top: 40px;
-
+    list-style: none;
+    padding: 0;
+    
     li {
-      margin-bottom: 20px;
+      margin-bottom: 25px;
 
       a {
         color: #fff;
-        font-size: 20px;
+        font-size: 18px;
+        text-decoration: none;
+        font-weight: 500;
       }
     }
   }
 
-  .lang {
-    margin-top: 20px;
-    width: 100%;
+  .mobile-actions {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .lang-btn {
+      width: 100%;
+      justify-content: center;
+      padding: 12px;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: white;
+      border-radius: 8px;
+    }
+
+    .login-btn {
+        text-align: center;
+        background: #2563EB;
+        color: white;
+        padding: 12px;
+        border-radius: 8px;
+        text-decoration: none;
+    }
   }
+}
+/* PAGE TRANSITION OVERLAY */
+.page-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #0f1012; /* Sənin əsas fon rəngin */
+  z-index: 99999; /* Hər şeyin üzərində olsun */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
 
-  .login a {
-    display: block;
-    margin-top: 20px;
-    text-align: center;
+  &.active {
+    opacity: 1;
+    pointer-events: all;
   }
-}
-/* Add this to your header.scss file */
-.fade-enter {
-  opacity: 0;
-}
-
-.fade-enter-active {
-  opacity: 1;
-  transition: opacity 300ms;
-}
-
-.fade-exit {
-  opacity: 1;
-}
-
-.fade-exit-active {
-  opacity: 0;
-  transition: opacity 300ms;
 }

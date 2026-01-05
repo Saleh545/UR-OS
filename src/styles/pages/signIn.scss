@@ -17,16 +17,16 @@ $danger: #ff6b6b;
   color: $text;
 
   /* ================= CONTAINER ================= */
-  &__container {
-    width: 100%;
-    max-width: 1320px;
-    height: 100%;
-    padding: 40px;
-    display: grid;
-    grid-template-columns: 7fr 3fr; // ✅ 70% şəkil / 30% form
-    gap: 48px;
-    align-items: center;
-  }
+&__container {
+  width: 100%;
+//   max-width: 1320px;
+  height: 100%;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 7fr 3fr;
+  gap: 48px;
+  align-items: center;
+}
 
   /* ================= SOL – ŞƏKİL ================= */
   &__preview {
