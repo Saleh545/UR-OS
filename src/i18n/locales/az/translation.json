@@ -1,13 +1,17 @@
 {
+  
   "header": {
-    "about": "Haqqımızda",
-    "features": "Funksiyalar",
-    "integrations": "İnteqrasiyalar",
     "partners": "Partnyorlar",
-    "why": "Niyə UR-OS",
-    "security": "Təhlükəsizlik",
+    "why": "Niyə biz?",
+    "features": "İmkanlar",
+    "system": "Sistem",
+    "faq": "Suallar",
+    "contact": "Əlaqə",
+    "cabinet": "Şəxsi kabinet",
     "signup": "Qeydiyyat"
   },
+
+  
 
   "hero": {
     "title": "Biznes əməliyyat sistemi",

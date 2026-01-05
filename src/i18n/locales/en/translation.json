@@ -1,12 +1,13 @@
 {
   "header": {
-    "about": "About",
-    "features": "Features",
-    "integrations": "Integrations",
     "partners": "Partners",
-    "why": "Why UR-OS",
-    "security": "Security",
-    "signup": "Sign up"
+    "why": "Why UR-OS?",
+    "features": "Features",
+    "system": "System",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "cabinet": "Personal Cabinet",
+    "signup": "Sign Up"
   },
   "hero": {
     "title": "Business Operating System",
