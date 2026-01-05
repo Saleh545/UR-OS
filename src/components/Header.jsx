@@ -59,7 +59,7 @@ const Header = () => {
             </button>
 
             <div className="login">
-              <Link to="/cabinet">{t("header.signup")}</Link>
+              <Link to="/sign">{t("header.signup")}</Link>
             </div>
           </div>
 
@@ -90,7 +90,7 @@ const Header = () => {
         </button>
 
         <div className="login">
-          <Link to="/cabinet">{t("header.signup")}</Link>
+          <Link to="/sign">{t("header.signup")}</Link>
         </div>
       </div>
     </div>
