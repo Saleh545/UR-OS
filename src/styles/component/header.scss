@@ -1,4 +1,11 @@
 /* =========================================
+   GLOBAL RESET (Vacibdir)
+   ========================================= */
+* {
+  box-sizing: border-box; /* Padding verdikdə ölçü şişməsin */
+}
+
+/* =========================================
    HEADER MAIN STYLES
    ========================================= */
 .header {
@@ -7,13 +14,28 @@
   left: 0;
   width: 100%;
   z-index: 100;
-  padding: 20px 0;
   background: transparent;
-  transition: padding 0.3s ease; /* Scroll zamanı rəvan keçid üçün */
+  
+  /* ✅ Padding problemi burada həll olunur */
+  padding: 15px 0; 
+  transition: padding 0.3s ease;
 
-  /* Mobil üçün padding-i azaldırıq */
   @media (max-width: 768px) {
     padding: 15px 0;
+  }
+}
+
+/* ✅ CONTAINER: Məzmunu mərkəzdə saxlayır və kənarlardan boşluq verir.
+   Əgər main.scss-də .container yoxdursa, bunu mütləq bura əlavə et.
+*/
+.container {
+  // width: 100%;
+  max-width: 1144px; /* Maksimum genişlik */
+  margin: 0 auto;    /* Mərkəzləmək */
+  padding: 0 20px;   /* Sol və Sağdan boşluq (Burger divara yapışmasın) */
+  
+  @media (max-width: 768px) {
+    padding: 0 16px; /* Mobildə biraz az */
   }
 }
 
@@ -21,13 +43,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 50px; /* Standart hündürlük */
+  height: 60px;
+  width: 100%; /* Flex konteynerin tam yer tutması üçün */
 
-  /* --- 1. LOGO HİSSƏSİ (Shiny Effect + Responsive) --- */
+  /* --- 1. LOGO HİSSƏSİ --- */
   .header-left {
     display: flex;
     align-items: center;
-    z-index: 102; /* Mobildə menyunun üstündə qalması üçün */
+    z-index: 102;
 
     a {
       display: block;
@@ -40,16 +63,15 @@
         width: 75px;
         display: block;
         object-fit: contain;
-        transition: all 0.3s ease; /* Logo ölçüsü rəvan dəyişsin */
+        transition: all 0.3s ease;
 
-        /* 📱 Mobil üçün logo ölçüsü */
         @media (max-width: 768px) {
           height: 45px;
           width: 45px;
         }
       }
 
-      /* Parıltı Effekti */
+      /* Logo Parıltı Effekti */
       &::after {
         content: "";
         position: absolute;
@@ -67,7 +89,6 @@
 
   /* --- 2. MƏRKƏZİ MENYU (Desktop) --- */
   .header-center {
-    /* 992px-dən kiçik ekranlarda gizlənir */
     @media (max-width: 992px) {
       display: none;
     }
@@ -79,26 +100,20 @@
       margin: 0;
       padding: 0;
 
-      /* Kiçik laptoplar üçün aranı biraz sıxırıq */
-      @media (max-width: 1200px) {
-        gap: 20px;
-      }
-
       a {
         font-family: 'Inter', sans-serif;
         font-size: 15px;
         font-weight: 500;
-        color: rgba(255, 255, 255, 0.7);
+        color: rgba(255, 255, 255, 0.8);
         text-decoration: none;
         transition: color 0.3s ease;
         position: relative;
-        white-space: nowrap; /* Mətnin qırılmasının qarşısını alır */
+        white-space: nowrap;
 
         &:hover {
           color: #fff;
         }
 
-        /* Alt xətt effekti */
         &::after {
           content: '';
           position: absolute;
@@ -123,7 +138,6 @@
     align-items: center;
     gap: 15px;
 
-    /* 992px-dən aşağı gizlənir (Mobildə menyuya keçir) */
     @media (max-width: 992px) {
       display: none;
     }
@@ -143,12 +157,9 @@
 
       &:hover {
         background: rgba(255, 255, 255, 0.15);
-        border-color: rgba(255, 255, 255, 0.3);
       }
-
-      svg {
-        font-size: 16px;
-      }
+      
+      svg { font-size: 16px; }
     }
 
     .login-btn {
@@ -164,7 +175,6 @@
       gap: 8px;
       box-shadow: 0 0 20px rgba(37, 99, 235, 0.5);
       transition: all 0.3s ease;
-      border: none;
       white-space: nowrap;
 
       &:hover {
@@ -173,42 +183,43 @@
       }
     }
   }
-}
 
-/* =========================================
-   🍔 BURGER ICON
-   ========================================= */
-.burger {
-  display: none;
-  font-size: 28px; /* Mobildə rahat basmaq üçün böyütdük */
-  color: #fff;
-  cursor: pointer;
-  z-index: 102; /* Menyunun üstündə qalması üçün */
-  padding: 5px; /* Touch area-nı artırırıq */
+  /* --- 🍔 BURGER FIX --- */
+  .burger {
+    display: none;
+    font-size: 28px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 102;
+    padding: 5px;
+    
+    /* Sağ tərəfə yapışması üçün */
+    margin-left: auto; 
 
-  @media (max-width: 992px) {
-    display: block;
+    @media (max-width: 992px) {
+      display: block;
+    }
   }
 }
 
 /* =========================================
-   📱 MOBILE MENU (Premium Style)
+   📱 MOBILE MENU
    ========================================= */
 .mobile-menu {
   position: fixed;
   top: 0;
   right: -100%;
-  width: 85%; /* Tam ekran yox, 85% tutsun */
+  width: 85%;
   max-width: 350px;
   height: 100vh;
-  background: rgba(15, 16, 18, 0.95); /* Yüngül şəffaflıq */
-  backdrop-filter: blur(10px); /* Glassmorphism effekti */
+  background: rgba(15, 16, 18, 0.95);
+  backdrop-filter: blur(10px);
   border-left: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
   z-index: 9999;
   padding: 24px;
-  padding-top: calc(20px + env(safe-area-inset-top)); /* iPhone Notch üçün */
-  transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* iOS stili rəvan animasiya */
+  padding-top: calc(20px + env(safe-area-inset-top));
+  transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
 
@@ -231,20 +242,16 @@
     transition: 0.3s;
     padding: 5px;
 
-    &:hover {
-      color: #fff;
-      transform: rotate(90deg);
-    }
+    &:hover { color: #fff; transform: rotate(90deg); }
   }
 
   ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    overflow-y: auto; /* Kiçik ekranlarda scroll olsun */
+    overflow-y: auto;
     
     li {
-      margin-bottom: 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 
       a {
@@ -255,11 +262,6 @@
         font-weight: 500;
         padding: 16px 0;
         transition: 0.3s;
-
-        &:active {
-          color: #2563EB;
-          transform: translateX(5px);
-        }
       }
     }
   }
@@ -269,7 +271,7 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    padding-bottom: calc(20px + env(safe-area-inset-bottom)); /* iPhone Home Bar üçün */
+    padding-bottom: calc(20px + env(safe-area-inset-bottom));
 
     .lang-btn {
       width: 100%;
@@ -283,12 +285,6 @@
       color: white;
       border-radius: 12px;
       font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s;
-
-      &:active {
-        background: rgba(255, 255, 255, 0.1);
-      }
     }
 
     .login-btn {
@@ -299,19 +295,18 @@
       border-radius: 12px;
       text-decoration: none;
       font-weight: 600;
-      font-size: 16px;
-      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
-      
-      &:active {
-        transform: scale(0.98);
-      }
     }
   }
 }
 
-/* =========================================
-   PAGE TRANSITION & ANIMATIONS
-   ========================================= */
+/* --- ANIMATIONS --- */
+@keyframes logoShine {
+  0% { left: -150%; }
+  20% { left: 150%; }
+  100% { left: 150%; }
+}
+
+/* Page Transition Overlay */
 .page-transition {
   position: fixed;
   top: 0;
@@ -329,9 +324,13 @@
     pointer-events: all;
   }
 }
+.hero-section,
+section:first-of-type {
+  padding-top: 120px;
+  /* Header-in hündürlüyü qədər yer ayırırıq */
 
-@keyframes logoShine {
-  0% { left: -150%; }
-  20% { left: 150%; }
-  100% { left: 150%; }
+  @media (max-width: 768px) {
+    padding-top: 100px;
+    /* Mobildə biraz az */
+  }
 }
