@@ -1,32 +1,73 @@
+/* =========================================
+   HEADER MAIN STYLES
+   ========================================= */
 .header {
-  position: absolute; /* Делаем хедер прозрачным поверх фона */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 100;
   padding: 20px 0;
-  background: transparent; 
+  background: transparent;
+  transition: padding 0.3s ease; /* Scroll zamanı rəvan keçid üçün */
 
+  /* Mobil üçün padding-i azaldırıq */
+  @media (max-width: 768px) {
+    padding: 15px 0;
+  }
 }
 
 .header-flex {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 50px;
+  height: 50px; /* Standart hündürlük */
 
+  /* --- 1. LOGO HİSSƏSİ (Shiny Effect + Responsive) --- */
   .header-left {
     display: flex;
     align-items: center;
-    
-    img {
-        height: 65px;
-    width: 65px;
+    z-index: 102; /* Mobildə menyunun üstündə qalması üçün */
+
+    a {
+      display: block;
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      
+      img {
+        height: 75px;
+        width: 75px;
+        display: block;
+        object-fit: contain;
+        transition: all 0.3s ease; /* Logo ölçüsü rəvan dəyişsin */
+
+        /* 📱 Mobil üçün logo ölçüsü */
+        @media (max-width: 768px) {
+          height: 45px;
+          width: 45px;
+        }
+      }
+
+      /* Parıltı Effekti */
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -150%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+        transform: skew(-25deg);
+        animation: logoShine 3s infinite; 
+        pointer-events: none;
+      }
     }
   }
 
-  /* Центральное меню (Desktop) */
+  /* --- 2. MƏRKƏZİ MENYU (Desktop) --- */
   .header-center {
+    /* 992px-dən kiçik ekranlarda gizlənir */
     @media (max-width: 992px) {
       display: none;
     }
@@ -38,32 +79,55 @@
       margin: 0;
       padding: 0;
 
+      /* Kiçik laptoplar üçün aranı biraz sıxırıq */
+      @media (max-width: 1200px) {
+        gap: 20px;
+      }
+
       a {
-        font-family: 'Inter', sans-serif; // Или твой шрифт
+        font-family: 'Inter', sans-serif;
         font-size: 15px;
         font-weight: 500;
-        color: rgba(255, 255, 255, 0.7); // Слегка серый текст как на макете
+        color: rgba(255, 255, 255, 0.7);
         text-decoration: none;
         transition: color 0.3s ease;
+        position: relative;
+        white-space: nowrap; /* Mətnin qırılmasının qarşısını alır */
 
         &:hover {
           color: #fff;
+        }
+
+        /* Alt xətt effekti */
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: -5px;
+          width: 0%;
+          height: 2px;
+          background-color: #2563EB;
+          transition: width 0.3s ease-in-out;
+        }
+
+        &:hover::after {
+          width: 100%;
         }
       }
     }
   }
 
-  /* Правая часть (Язык + Кнопка) */
+  /* --- 3. SAĞ TƏRƏF (Dil + Login) --- */
   .header-right {
     display: flex;
     align-items: center;
     gap: 15px;
 
+    /* 992px-dən aşağı gizlənir (Mobildə menyuya keçir) */
     @media (max-width: 992px) {
       display: none;
     }
 
-    /* Переключатель языка */
     .lang-btn {
       display: flex;
       align-items: center;
@@ -79,16 +143,14 @@
 
       &:hover {
         background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.3);
       }
 
       svg {
-        width: 16px;
-        height: 16px;
-        fill: #fff;
+        font-size: 16px;
       }
     }
 
-    /* Кнопка "Şəxsi kabinet" - Синяя с GLOW эффектом */
     .login-btn {
       background: linear-gradient(90deg, #2563EB 0%, #1D4ED8 100%);
       color: #fff;
@@ -100,47 +162,53 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 0 20px rgba(37, 99, 235, 0.5); /* Синее свечение */
+      box-shadow: 0 0 20px rgba(37, 99, 235, 0.5);
       transition: all 0.3s ease;
       border: none;
+      white-space: nowrap;
 
       &:hover {
         transform: translateY(-1px);
         box-shadow: 0 0 30px rgba(37, 99, 235, 0.7);
       }
-
-      span {
-        font-size: 16px; /* Стрелка чуть больше */
-      }
     }
   }
 }
 
-/* 🍔 BURGER */
+/* =========================================
+   🍔 BURGER ICON
+   ========================================= */
 .burger {
   display: none;
-  font-size: 24px;
+  font-size: 28px; /* Mobildə rahat basmaq üçün böyütdük */
   color: #fff;
   cursor: pointer;
+  z-index: 102; /* Menyunun üstündə qalması üçün */
+  padding: 5px; /* Touch area-nı artırırıq */
 
   @media (max-width: 992px) {
     display: block;
   }
 }
 
-/* 📱 MOBILE MENU */
+/* =========================================
+   📱 MOBILE MENU (Premium Style)
+   ========================================= */
 .mobile-menu {
   position: fixed;
   top: 0;
   right: -100%;
-  width: 100%;
-  max-width: 300px;
+  width: 85%; /* Tam ekran yox, 85% tutsun */
+  max-width: 350px;
   height: 100vh;
-  background: #0f1012;
-  border-left: 1px solid rgba(255,255,255,0.1);
+  background: rgba(15, 16, 18, 0.95); /* Yüngül şəffaflıq */
+  backdrop-filter: blur(10px); /* Glassmorphism effekti */
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
   z-index: 9999;
-  padding: 20px;
-  transition: right 0.3s ease;
+  padding: 24px;
+  padding-top: calc(20px + env(safe-area-inset-top)); /* iPhone Notch üçün */
+  transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* iOS stili rəvan animasiya */
   display: flex;
   flex-direction: column;
 
@@ -157,23 +225,41 @@
   .close {
     background: none;
     border: none;
-    color: #fff;
-    font-size: 26px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 30px;
     cursor: pointer;
+    transition: 0.3s;
+    padding: 5px;
+
+    &:hover {
+      color: #fff;
+      transform: rotate(90deg);
+    }
   }
 
   ul {
     list-style: none;
     padding: 0;
+    margin: 0;
+    overflow-y: auto; /* Kiçik ekranlarda scroll olsun */
     
     li {
-      margin-bottom: 25px;
+      margin-bottom: 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 
       a {
-        color: #fff;
+        display: block;
+        color: rgba(255, 255, 255, 0.9);
         font-size: 18px;
         text-decoration: none;
         font-weight: 500;
+        padding: 16px 0;
+        transition: 0.3s;
+
+        &:active {
+          color: #2563EB;
+          transform: translateX(5px);
+        }
       }
     }
   }
@@ -183,36 +269,57 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+    padding-bottom: calc(20px + env(safe-area-inset-bottom)); /* iPhone Home Bar üçün */
 
     .lang-btn {
       width: 100%;
+      display: flex;
       justify-content: center;
-      padding: 12px;
-      background: rgba(255,255,255,0.1);
-      border: none;
+      align-items: center;
+      gap: 10px;
+      padding: 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       color: white;
-      border-radius: 8px;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:active {
+        background: rgba(255, 255, 255, 0.1);
+      }
     }
 
     .login-btn {
-        text-align: center;
-        background: #2563EB;
-        color: white;
-        padding: 12px;
-        border-radius: 8px;
-        text-decoration: none;
+      text-align: center;
+      background: #2563EB;
+      color: white;
+      padding: 14px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+      
+      &:active {
+        transform: scale(0.98);
+      }
     }
   }
 }
-/* PAGE TRANSITION OVERLAY */
+
+/* =========================================
+   PAGE TRANSITION & ANIMATIONS
+   ========================================= */
 .page-transition {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: #0f1012; /* Sənin əsas fon rəngin */
-  z-index: 99999; /* Hər şeyin üzərində olsun */
+  background: #0f1012;
+  z-index: 99999;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease-in-out;
@@ -221,4 +328,10 @@
     opacity: 1;
     pointer-events: all;
   }
+}
+
+@keyframes logoShine {
+  0% { left: -150%; }
+  20% { left: 150%; }
+  100% { left: 150%; }
 }
