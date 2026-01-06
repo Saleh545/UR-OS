@@ -1,8 +1,9 @@
 $primary: #4285F4;
 $bg-dark: #0f1012;
 
+
 /* =========================================
-   HERO SECTION
+   HERO SECTION (YENİLƏNMİŞ)
    ========================================= */
 .hero {
   position: relative;
@@ -40,13 +41,14 @@ $bg-dark: #0f1012;
     position: relative;
     z-index: 1;
     display: flex;
-    align-items: center;
+    align-items: center; /* Hər iki tərəfi mərkəzləyirik */
     justify-content: space-between;
     gap: 40px;
     width: 100%;
 
     /* --- SOL TƏRƏF (MƏTN) --- */
     .hero-content {
+      flex: 1;
       max-width: 550px;
 
       .badge {
@@ -131,24 +133,46 @@ $bg-dark: #0f1012;
       }
     }
 
-    /* --- SAĞ TƏRƏF (3D ŞƏKİL) --- */
+    /* --- SAĞ TƏRƏF (KARTLAR) --- */
     .hero-img {
       flex: 1;
       display: flex;
       justify-content: flex-end;
-      perspective: 1200px;
+      perspective: 1500px; /* 3D dərinliyi artırdıq */
 
       .visual-wrapper {
         position: relative;
         width: 100%;
-        max-width: 650px;
-        height: 380px;
+        max-width: 600px;
+        
+        /* ✅ Hündürlüyü mətnlə eyniləşdirdik (340-350px ideal ölçüdür) */
+        height: 340px; 
+
+        /* ✅ Başlanğıc 3D duruşu */
+        transform: rotateY(-10deg) rotateX(5deg);
+        transform-style: preserve-3d;
+        
+        /* ✅ Çox yumşaq animasiya keçidi */
+        transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        
+        /* Yüngül "nəfəs alma" animasiyası (floating) */
+        animation: heroFloat 6s ease-in-out infinite;
+
+        /* ✅ HOVER EFFEKTİ: Üzərinə gəldikdə yuxarı qalxır */
+        &:hover {
+          transform: rotateY(-5deg) rotateX(2deg) translateY(-20px) scale(1.02);
+          cursor: pointer;
+          
+          /* Hover olanda kölgə dərinləşir */
+          .mac-window {
+             box-shadow: -30px 50px 80px rgba(0, 0, 0, 0.8);
+          }
+        }
 
         .slideshow-container {
           position: relative;
           width: 100%;
           height: 100%;
-          transform-style: preserve-3d;
         }
 
         .slide-item {
@@ -156,21 +180,14 @@ $bg-dark: #0f1012;
           top: 0;
           left: 0;
           width: 100%;
-          height: auto;
+          height: 100%; /* Konteyneri tam tutur */
           opacity: 0;
           z-index: 1;
-          display: flex;
-          transition: opacity 0.8s ease-in-out, transform 0.3s ease;
-          transform: rotateY(-12deg) rotateX(6deg);
+          transition: opacity 0.8s ease-in-out;
 
           &.active {
             opacity: 1;
             z-index: 2;
-          }
-
-          &:hover {
-            transform: rotateY(-12deg) rotateX(6deg) translateY(-20px) scale(1.02);
-            cursor: pointer;
           }
         }
       }
@@ -206,21 +223,25 @@ $bg-dark: #0f1012;
         .visual-wrapper {
           transform: none !important;
           animation: none !important;
-          max-width: 90%;
-          height: auto;
+          max-width: 95%;
+          height: 300px; /* Mobildə hündürlüyü azaldırıq */
 
-          .slide-item {
-            position: relative;
-            opacity: 1;
-            transform: none !important;
-
-            &:not(.active) {
-              display: none;
-            }
+          &:hover {
+            transform: none !important; /* Mobildə hover ləğv edilir */
           }
         }
       }
     }
+  }
+}
+
+/* --- ANIMATION KEYFRAMES (Floating) --- */
+@keyframes heroFloat {
+  0%, 100% {
+    transform: rotateY(-10deg) rotateX(5deg) translateY(0);
+  }
+  50% {
+    transform: rotateY(-10deg) rotateX(5deg) translateY(-10px); /* Azca qalxıb düşür */
   }
 }
 
