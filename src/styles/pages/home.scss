@@ -85,9 +85,6 @@ $text-gray: rgba(255, 255, 255, 0.5);
 // =========================================
 // 🚀 HERO SECTION
 // =========================================
-// =========================================
-// 🚀 HERO SECTION
-// =========================================
 .hero {
   position: relative;
   background: $bg-dark;
@@ -96,7 +93,6 @@ $text-gray: rgba(255, 255, 255, 0.5);
   display: flex;
   align-items: center;
 
-  // Arxa fon parıltıları
   .glow-circle {
     position: absolute;
     width: 500px;
@@ -119,14 +115,13 @@ $text-gray: rgba(255, 255, 255, 0.5);
     }
   }
 
-  // Status Badge
   .hero-status {
     display: flex;
     justify-content: center;
     width: 100%;
     margin-bottom: 40px;
-    position: relative;
     z-index: 2;
+    position: relative;
 
     .badge {
       display: inline-flex;
@@ -152,7 +147,6 @@ $text-gray: rgba(255, 255, 255, 0.5);
     }
   }
 
-  // Hero Content Flex
   .hero-flex {
     position: relative;
     z-index: 1;
@@ -162,7 +156,6 @@ $text-gray: rgba(255, 255, 255, 0.5);
     gap: 40px;
     width: 100%;
 
-    // Sol Tərəf (Mətn)
     .hero-content {
       flex: 1;
       max-width: 550px;
@@ -170,13 +163,12 @@ $text-gray: rgba(255, 255, 255, 0.5);
       .hero-title {
         font-size: 49px;
         font-weight: 800;
-        margin: 0 0 20px 0;
         color: #fff;
         line-height: 1.1;
         letter-spacing: -1px;
+        margin-bottom: 20px;
 
         .highlight {
-          color: $primary;
           background: linear-gradient(90deg, #4285F4, #fff);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
@@ -186,7 +178,6 @@ $text-gray: rgba(255, 255, 255, 0.5);
       .hero-subtitle {
         margin-top: 20px;
         font-size: 18px;
-        font-weight: 400;
         color: rgba(255, 255, 255, 0.7);
         line-height: 1.6;
       }
@@ -228,7 +219,6 @@ $text-gray: rgba(255, 255, 255, 0.5);
       }
     }
 
-    // Sağ Tərəf (Visual)
     .hero-img {
       flex: 1;
       display: flex;
@@ -279,7 +269,6 @@ $text-gray: rgba(255, 255, 255, 0.5);
     }
   }
 
-  // Responsive (Mobil)
   @media (max-width: 992px) {
     height: auto;
     padding: 100px 0 50px 0;
@@ -295,9 +284,6 @@ $text-gray: rgba(255, 255, 255, 0.5);
 
       .hero-content {
         max-width: 100%;
-        align-items: center;
-        display: flex;
-        flex-direction: column;
 
         .hero-title {
           font-size: 42px;
@@ -314,10 +300,6 @@ $text-gray: rgba(255, 255, 255, 0.5);
           animation: none !important;
           max-width: 95%;
           height: 300px;
-
-          &:hover {
-            transform: none !important;
-          }
         }
       }
     }
