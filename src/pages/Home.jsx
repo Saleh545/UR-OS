@@ -177,52 +177,57 @@ const Home = () => {
     <>
       <Header />
 
-      <section className="hero">
-        <div className="glow-circle left"></div>
-        <div className="glow-circle right"></div>
+   <section className="hero">
+  <div className="glow-circle left"></div>
+  <div className="glow-circle right"></div>
 
-        <div className="container">
-          <div className="hero-status">
-            <div className="badge">
-              <span className="dot"></span> System Status: Online
-            </div>
-          </div>
-          <div className="hero-flex">
-            {/* Mətn tərəfi */}
-            <div className="hero-content">
+  <div className="container">
+    <div className="hero-status">
+      <div className="badge">
+        <span className="dot"></span> {t('hero.status')}
+      </div>
+    </div>
+    
+    <div className="hero-flex">
+      <div className="hero-content">
+        <h1 className="hero-title">
+          {t('hero.title_part1')} <br /> 
+          <span className="highlight">{t('hero.title_highlight')}</span>
+        </h1>
+        
+        <p className="hero-subtitle">
+          {t('hero.subtitle')}
+        </p>
+        
+        <div className="hero-btns">
+          <Link to="/sign" className="btn-main">
+            {t('hero.btn_start')}
+          </Link>
+          <button className="btn-demo">
+            {t('hero.btn_demo')}
+          </button>
+        </div>
+      </div>
 
-              <h1 className="hero-title">
-                Biznes əməliyyat <br /> <span className="highlight">sistemi</span>
-              </h1>
-              <p className="hero-subtitle">
-                Restoran idarəçiliyini avtomatlaşdıran vahid ekosistem.
-                Xaosdan sistemə keçin.
-              </p>
-              <div className="hero-btns">
-                <Link to="/sign" className="btn-main">İndi Başla</Link>
-                <button className="btn-demo">Demo İzlə</button>
+      {/* Vizual Tərəf (Canlı Kod Slayder) */}
+      <div className="hero-img">
+        <div className="visual-wrapper">
+          <div className="slideshow-container">
+            {slides.map((slide, index) => (
+              <div
+                key={index}
+                className={`slide-item ${index === activeSlide ? 'active' : ''}`}
+              >
+                {slide}
               </div>
-            </div>
-
-            {/* Vizual Tərəf (Canlı Kod Slayder) */}
-            <div className="hero-img">
-              <div className="visual-wrapper">
-                <div className="slideshow-container">
-                  {slides.map((slide, index) => (
-                    <div
-                      key={index}
-                      className={`slide-item ${index === activeSlide ? 'active' : ''}`}
-                    >
-                      {slide}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
+            ))}
           </div>
         </div>
-      </section>
+      </div>
+
+    </div>
+  </div>
+</section>
 
       <section className="partners-strip">
         <div className="container">
@@ -255,7 +260,7 @@ const Home = () => {
       <div className="container">
         <div className="section-header">
           <span className="subtitle">WHY UR-OS?</span>
-          <h2>{t('features.title', 'Niyə məhz UR-OS?')}</h2>
+          <h2>{t('features.title_start')} <span>{t('features.title_end')}</span></h2>
           <div className="line"></div>
         </div>
 

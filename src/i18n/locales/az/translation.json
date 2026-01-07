@@ -1,5 +1,12 @@
 {
-  
+  "hero": {
+    "status": "Sistem Statusu: Online",
+    "title_part1": "Biznes əməliyyat",
+    "title_highlight": "sistemi",
+    "subtitle": "Restoran idarəçiliyini avtomatlaşdıran vahid ekosistem. Xaosdan sistemə keçin.",
+    "btn_start": "İndi Başla",
+    "btn_demo": "Demo İzlə"
+  },
   "header": {
     "partners": "Partnyorlar",
     "why": "Niyə biz?",
@@ -33,5 +40,9 @@
         "desc": "Rezervin təsdiqlənməsindən ləğv edilməsinə qədər — bütün proses avtomatikdir. Sizin müdaxilənizə ehtiyac yoxdur."
       }
     ]
+  },
+  "features": {
+    "title_start": "Niyə məhz",
+    "title_end": "UR-OS?"
   }
 }

@@ -1,26 +1,48 @@
 {
   "header": {
     "partners": "Partners",
-    "why": "Why UR-OS?",
+    "why": "Why Us?",
     "features": "Features",
     "system": "System",
     "faq": "FAQ",
     "contact": "Contact",
-    "cabinet": "Personal Cabinet",
+    "cabinet": "Dashboard",
     "signup": "Sign Up"
   },
   "hero": {
-    "title": "Business Operating System",
-    "subtitle": "A unified ecosystem that automates restaurant management."
+    "status": "System Status: Online",
+    "title_part1": "Business operation",
+    "title_highlight": "system",
+    "subtitle": "A unified ecosystem that automates restaurant management. Move from chaos to system.",
+    "btn_start": "Get Started",
+    "btn_demo": "Watch Demo"
   },
-
- 
   "features_section": {
     "items": [
-      { "id": 1, "title": "No More Losing Customers", "desc": "Does your staff respond late? Our bots react instantly to keep your guests." },
-      { "id": 2, "title": "Smart Menu Presentation", "desc": "The bot shares the menu, provides dish details, and guides the guest's choice." },
-      { "id": 3, "title": "Precise Reminders", "desc": "Guests won't forget. The system sends automatic alerts about upcoming reservations." },
-      { "id": 4, "title": "Automated Booking", "desc": "From confirmation to cancellation—the entire process is fully automatic." }
+      {
+        "id": 1,
+        "title": "Stop Losing Customers",
+        "desc": "Is your staff slow to respond on Direct? Customers don't wait; they go to competitors. Our bots react instantly to retain your guests."
+      },
+      {
+        "id": 2,
+        "title": "Smart Menu Presentation",
+        "desc": "The bot doesn't just say hello. It sends the menu, provides dish information, and guides the guest through their selection."
+      },
+      {
+        "id": 3,
+        "title": "Precise Reminders",
+        "desc": "Guests won't forget their reservation. The system automatically sends alerts: 'Your reservation is at 23:00'."
+      },
+      {
+        "id": 4,
+        "title": "Automated Reservation",
+        "desc": "From confirmation to cancellation—the entire process is automated. No manual intervention required from your side."
+      }
     ]
-}
+  },
+  "features": {
+    "title_start": "Why exactly",
+    "title_end": "UR-OS?"
+  }
 }
