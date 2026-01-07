@@ -157,6 +157,8 @@ const Home = () => {
     return () => clearInterval(interval);
   }, [slides.length]);
 
+  const partners = Array(10).fill({ name: "ChefPub" });
+
   return (
     <>
       <Header />
@@ -208,7 +210,33 @@ const Home = () => {
         </div>
       </section>
 
-      {/* PAIN POINTS */}
+      <section className="partners-strip">
+      <div className="container">
+        
+        {/* Başlıq */}
+        <h5 className="strip-title">BİZİ SEÇƏN MƏKANLAR</h5>
+
+        {/* Sürüşən Sahə */}
+        <div className="slider">
+          <div className="slide-track">
+            
+            {/* Sonsuz dövr üçün 2 dəfə render edirik */}
+            {[...partners, ...partners].map((item, index) => (
+              <div className="slide" key={index}>
+                {/* Logo Dizaynı (Şəkil varsa <img> istifadə et) */}
+                <div className="logo-box">
+                  <FaUtensils className="logo-icon" />
+                  <span className="logo-text">{item.name}</span>
+                </div>
+              </div>
+            ))}
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
       <section className="pain-points">
         <div className="container">
           <div className="pain-up">

@@ -247,6 +247,8 @@ $bg-dark: #0f1012;
   }
 }
 
+
+
 /* --- ANIMATIONS --- */
 @keyframes pulse {
   0% { opacity: 1; box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7); }
@@ -257,6 +259,156 @@ $bg-dark: #0f1012;
 @keyframes heroFloat {
   0%, 100% { transform: rotateY(-10deg) rotateX(5deg) translateY(0); }
   50% { transform: rotateY(-10deg) rotateX(5deg) translateY(-10px); }
+}
+
+
+$bg-dark: #0f1012;
+
+.partners-strip {
+  background: $bg-dark;
+  padding: 40px 0;
+  overflow: hidden;
+  position: relative;
+  border-top: 1px solid rgb(255, 255, 255); /* Yüngül ayırıcı xətt */
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* Başlıq Stili (Şəkildəki kimi kiçik və boz) */
+  .strip-title {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 30px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Slider Konteyneri */
+  .slider {
+    height: 60px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+
+    /* Kənarları yumşaltmaq üçün maska (Gradient Fade) */
+    &::before,
+    &::after {
+      content: "";
+      height: 100%;
+      position: absolute;
+      width: 100px; /* Fade uzunluğu */
+      z-index: 2;
+      top: 0;
+      pointer-events: none;
+    }
+
+    &::before {
+      left: 0;
+      background: linear-gradient(to right, $bg-dark 0%, transparent 100%);
+    }
+
+    &::after {
+      right: 0;
+      background: linear-gradient(to left, $bg-dark 0%, transparent 100%);
+    }
+
+    /* Hərəkət edən zolaq */
+    .slide-track {
+      display: flex;
+      width: calc(200px * 20); /* Slide eni (200px) * element sayı (20) */
+      animation: scroll 30s linear infinite;
+      
+      &:hover {
+        animation-play-state: paused; /* Üzərinə gələndə dayanır */
+      }
+
+      /* Tək Logo Kartı */
+      .slide {
+        height: 60px;
+        width: 200px; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .logo-box {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          opacity: 0.5; 
+          transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Daha yumşaq keçid */
+          cursor: pointer;
+          padding: 10px 15px; /* Hover zamanı kəsilməməsi üçün boşluq */
+          border-radius: 12px;
+
+          /* ✅ HOVER EFFEKTİ (Qabağa çıxma) */
+          &:hover {
+            opacity: 1; 
+            transform: scale(1.2) translateY(-2px); /* Böyüyür və azca yuxarı qalxır */
+            background: rgba(255, 255, 255, 0.05); /* Arxasına yüngül işıq düşür */
+            
+            .logo-text {
+              color: #fff; /* Yazı ağarır */
+              text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* Yazı parıldayır */
+            }
+
+            .logo-icon {
+              color: #4285F4; /* İkon rəngi dəyişir (sənin mavi rəngin) */
+              filter: drop-shadow(0 0 8px rgba(66, 133, 244, 0.5));
+            }
+          }
+
+          .logo-icon {
+            font-size: 20px;
+            color: #6b7280; 
+            transition: color 0.3s ease;
+          }
+
+          .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: #9ca3af; 
+            font-family: sans-serif;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Sonsuz Fırlanma Animasiyası */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* 10 element varsa və hər biri 200px-dirsə, yarısı qədər sürüşdürürük */
+    transform: translateX(calc(-200px * 10)); 
+  }
+}
+
+/* Mobil Uyğunlaşdırma */
+@media (max-width: 768px) {
+  .partners-strip {
+    .slide-track {
+      animation-duration: 20s; /* Mobildə biraz sürətli olsun */
+    }
+    
+    .slide {
+      width: 150px !important; /* Mobildə daha sıx olsun */
+      
+      .logo-text {
+        font-size: 18px !important;
+      }
+    }
+  }
 }
 
 
@@ -340,7 +492,6 @@ $bg-dark: #0f1012;
   }
 }
 
-/* Slide 1: CRM */
 .crm-body {
   .stat-box {
     text-align: center;
