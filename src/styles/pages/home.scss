@@ -2,9 +2,10 @@ $primary: #4285F4;
 $bg-dark: #0f1012;
 
 
-/* =========================================
-   HERO SECTION (YENİLƏNMİŞ)
-   ========================================= */
+
+$primary: #4285F4;
+$bg-dark: #0f1012;
+
 .hero {
   position: relative;
   background: $bg-dark;
@@ -12,7 +13,7 @@ $bg-dark: #0f1012;
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding-top: 60px;
+  // padding-top: 80px; /* Header-dən məsafə */
 
   /* Arxa fon parıltıları */
   .glow-circle {
@@ -37,11 +38,46 @@ $bg-dark: #0f1012;
     }
   }
 
+  /* ✅ YENİ: STATUS BADGE (MƏRKƏZDƏ) */
+  .hero-status {
+    display: flex;
+    justify-content: center; /* Tam ortaya çəkir */
+    width: 100%;
+    margin-bottom: 40px; /* Başlıqdan aralayır */
+    // position: absolute;
+    // top: 10%;
+    left: 0;
+    z-index: 2;
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 8px 20px; /* Bir az böyütdüm */
+      border-radius: 30px;
+      color: #4ade80;
+      font-size: 14px;
+      font-weight: 500;
+      backdrop-filter: blur(5px); /* Arxa fonu bulanıqlaşdırır */
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        background: #4ade80;
+        border-radius: 50%;
+        box-shadow: 0 0 8px #4ade80;
+        animation: pulse 2s infinite; /* Yanıb-sönmə effekti */
+      }
+    }
+  }
+
   .hero-flex {
     position: relative;
     z-index: 1;
     display: flex;
-    align-items: center; /* Hər iki tərəfi mərkəzləyirik */
+    align-items: center;
     justify-content: space-between;
     gap: 40px;
     width: 100%;
@@ -51,26 +87,7 @@ $bg-dark: #0f1012;
       flex: 1;
       max-width: 550px;
 
-      .badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        background: rgba(255, 255, 255, 0.05);
-        padding: 6px 14px;
-        border-radius: 20px;
-        color: #4ade80;
-        font-size: 13px;
-        margin-bottom: 20px;
-
-        .dot {
-          width: 8px;
-          height: 8px;
-          background: #4ade80;
-          border-radius: 50%;
-          box-shadow: 0 0 8px #4ade80;
-        }
-      }
+      /* .badge burdan silindi */
 
       .hero-title {
         font-size: 58px;
@@ -138,32 +155,23 @@ $bg-dark: #0f1012;
       flex: 1;
       display: flex;
       justify-content: flex-end;
-      perspective: 1500px; /* 3D dərinliyi artırdıq */
+      perspective: 1500px;
 
       .visual-wrapper {
         position: relative;
         width: 100%;
         max-width: 600px;
-        
-        /* ✅ Hündürlüyü mətnlə eyniləşdirdik (340-350px ideal ölçüdür) */
         height: 340px; 
 
-        /* ✅ Başlanğıc 3D duruşu */
         transform: rotateY(-10deg) rotateX(5deg);
         transform-style: preserve-3d;
-        
-        /* ✅ Çox yumşaq animasiya keçidi */
         transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        
-        /* Yüngül "nəfəs alma" animasiyası (floating) */
         animation: heroFloat 6s ease-in-out infinite;
 
-        /* ✅ HOVER EFFEKTİ: Üzərinə gəldikdə yuxarı qalxır */
         &:hover {
           transform: rotateY(-5deg) rotateX(2deg) translateY(-20px) scale(1.02);
           cursor: pointer;
           
-          /* Hover olanda kölgə dərinləşir */
           .mac-window {
              box-shadow: -30px 50px 80px rgba(0, 0, 0, 0.8);
           }
@@ -180,7 +188,7 @@ $bg-dark: #0f1012;
           top: 0;
           left: 0;
           width: 100%;
-          height: 100%; /* Konteyneri tam tutur */
+          height: 100%;
           opacity: 0;
           z-index: 1;
           transition: opacity 0.8s ease-in-out;
@@ -198,6 +206,10 @@ $bg-dark: #0f1012;
   @media (max-width: 992px) {
     height: auto;
     padding: 100px 0 50px 0;
+
+    .hero-status {
+        margin-bottom: 30px;
+    }
 
     .hero-flex {
       flex-direction: column;
@@ -224,16 +236,39 @@ $bg-dark: #0f1012;
           transform: none !important;
           animation: none !important;
           max-width: 95%;
-          height: 300px; /* Mobildə hündürlüyü azaldırıq */
+          height: 300px;
 
           &:hover {
-            transform: none !important; /* Mobildə hover ləğv edilir */
+            transform: none !important;
           }
         }
       }
     }
   }
 }
+
+/* --- ANIMATIONS --- */
+@keyframes pulse {
+  0% { opacity: 1; box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7); }
+  70% { opacity: 1; box-shadow: 0 0 0 6px rgba(74, 222, 128, 0); }
+  100% { opacity: 1; box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+}
+
+@keyframes heroFloat {
+  0%, 100% { transform: rotateY(-10deg) rotateX(5deg) translateY(0); }
+  50% { transform: rotateY(-10deg) rotateX(5deg) translateY(-10px); }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 /* --- ANIMATION KEYFRAMES (Floating) --- */
 @keyframes heroFloat {
@@ -502,9 +537,7 @@ $bg-dark: #0f1012;
   50% { transform: rotateY(-12deg) rotateX(6deg) translateY(-20px); }
 }
 
-/* =========================================
-   OTHER SECTIONS (Pain, Solutions, etc.)
-   ========================================= */
+
 
 .pain-points {
   background: #0f1012;

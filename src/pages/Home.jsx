@@ -161,18 +161,20 @@ const Home = () => {
     <>
       <Header />
       
-      {/* HERO SECTION */}
       <section className="hero">
         <div className="glow-circle left"></div>
         <div className="glow-circle right"></div>
 
         <div className="container">
+          <div className="hero-status">
+       <div className="badge">
+          <span className="dot"></span> System Status: Online
+       </div>
+    </div>
           <div className="hero-flex">
             {/* Mətn tərəfi */}
             <div className="hero-content">
-              <div className="badge">
-                <span className="dot"></span> System Status: Online
-              </div>
+           
               <h1 className="hero-title">
                 Biznes əməliyyat <br /> <span className="highlight">sistemi</span>
               </h1>
