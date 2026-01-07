@@ -44,5 +44,47 @@
   "features": {
     "title_start": "Why exactly",
     "title_end": "UR-OS?"
+  },
+  "capabilities": {
+    "subtitle": "CAPABILITIES",
+    "title": "UR-OS Capabilities",
+    "items": [
+      {
+        "id": 1,
+        "title": "Zones & Tables",
+        "desc": "Interactive floor plan builder. Manage seating, booking and statuses in real-time.",
+        "details": ["Floor builder", "LIVE statuses", "1-click booking"]
+      },
+      {
+        "id": 2,
+        "title": "Integrations",
+        "desc": "Direct connection with Instagram, WhatsApp and Telegram. Booking where it's convenient.",
+        "details": ["Instagram Direct", "WhatsApp Business", "Telegram Bot"]
+      },
+      {
+        "id": 3,
+        "title": "Data Protection",
+        "desc": "Your database is completely confidential and secure. We guarantee data safety.",
+        "details": ["Encryption", "Privacy", "Secure Storage"]
+      },
+      {
+        "id": 4,
+        "title": "AI-Assistants",
+        "desc": "Digital employees accepting orders 24/7, reducing staff workload.",
+        "details": ["24/7 orders", "Auto-replies", "Smart queue"]
+      },
+      {
+        "id": 5,
+        "title": "Bell System",
+        "desc": "Instant notifications in the header and PWA push messages. Never miss an event.",
+        "details": ["Real-time Push", "Sound signal", "Event history"]
+      },
+      {
+        "id": 6,
+        "title": "Mobile Control",
+        "desc": "Complete management from your smartphone. Your entire restaurant is in your pocket.",
+        "details": ["Mobility", "Instant reports", "24/7 access"]
+      }
+    ]
   }
 }

@@ -44,5 +44,49 @@
   "features": {
     "title_start": "Niyə məhz",
     "title_end": "UR-OS?"
+  },
+  "capabilities": {
+    "subtitle": "İMKANLAR",
+    "title": "UR-OS İmkanları",
+    "items": [
+      {
+        "id": 1,
+        "title": "Zonalar və Masalar",
+        "desc": "Zalların interaktiv konstruktoru. Real vaxtda masaların statuslarını idarə edin.",
+        "details": ["Zalların konstruktoru", "LIVE statuslar", "1 kliklə rezerv"]
+      },
+      {
+        "id": 2,
+        "title": "İnteqrasiyalar",
+        "desc": "Instagram, WhatsApp və Telegram ilə birbaşa əlaqə. Müştərilər rahat yerdə rezerv edirlər.",
+        "details": ["Instagram Direct", "WhatsApp Business", "Telegram Bot"]
+      },
+      {
+        "id": 3,
+        "title": "Məlumatların Qorunması",
+        "desc": "Məlumat bazanız tamamilə məxfidir və qorunur. Təhlükəsizliyə zəmanət veririk.",
+        "details": ["Şifrələmə", "Məxfilik", "Secure Storage"]
+      },
+      {
+        "id": 4,
+        "title": "AI-Assistentlər",
+        "desc": "Sifarişləri 24/7 qəbul edən rəqəmsal əməkdaşlar, personalın yükünü azaldır.",
+        "details": ["24/7 sifarişlər", "Avto-cavablar", "Ağıllı növbə"]
+      },
+      {
+        "id": 5,
+        "title": "Bell Sistemi",
+        "desc": "Sistemin başlığında ani bildirişlər və PWA push-mesajlar. Heç bir hadisəni qaçırmayacaqsınız.",
+        "details": ["Real-time Push", "Səsli siqnal", "Hadisə tarixçəsi"]
+      },
+      {
+        "id": 6,
+        "title": "Mobile Control",
+        "desc": "Smartfonunuzdan tam idarəetmə imkanı. Bütün restoran cibinizdədir.",
+        "details": ["Mobillik", "Ani hesabatlar", "24/7 giriş"]
+      }
+    ]
   }
+
+
 }

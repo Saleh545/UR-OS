@@ -991,3 +991,242 @@ $text-gray: rgba(255, 255, 255, 0.6);
   }
 }
 
+$primary: #4285F4;
+$bg-card: rgba(255, 255, 255, 0.02);
+$border: rgba(255, 255, 255, 0.08);
+
+// Dəyişənlər
+$primary: #4285F4;
+$bg-dark: #0f1012;
+$card-bg: rgba(255, 255, 255, 0.02);
+$border: rgba(255, 255, 255, 0.08);
+$text-gray: rgba(255, 255, 255, 0.5);
+
+
+// Dəyişənlər (Əgər faylın başında yoxdursa)
+$primary: #4285F4;
+$bg-dark: #0f1012;
+$card-bg: rgba(255, 255, 255, 0.02);
+$border: rgba(255, 255, 255, 0.08);
+$text-gray: rgba(255, 255, 255, 0.5);
+
+.capabilities-section {
+  padding: 100px 0;
+  background: $bg-dark;
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+
+    .subtitle {
+      color: $primary;
+      font-weight: 700;
+      letter-spacing: 2px;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    .title {
+      font-size: 42px;
+      font-weight: 800;
+      color: #fff;
+      margin: 15px 0;
+    }
+
+    .underline {
+      width: 60px;
+      height: 4px;
+      background: $primary;
+      margin: 0 auto;
+      border-radius: 2px;
+      box-shadow: 0 0 15px $primary;
+      animation: lineGlow 2s infinite ease-in-out;
+    }
+  }
+
+  .capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: flex-start; // ✅ Kartların müstəqil böyüməsi üçün vacibdir
+
+    @media (max-width: 992px) { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 600px) { grid-template-columns: 1fr; }
+
+    .cap-card {
+      background: $card-bg;
+      border: 1px solid $border;
+      border-radius: 24px;
+      padding: 30px;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      height: auto; // ✅ Məzmuna görə hündürlük
+
+      &:hover {
+        border-color: rgba($primary, 0.3);
+      }
+
+      &.active {
+        background: rgba($primary, 0.05);
+        border-color: $primary;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+
+        .cap-card-content {
+          .icon-box {
+            background: $primary;
+            color: #fff;
+            box-shadow: 0 0 20px $primary;
+          }
+
+          .arrow {
+            transform: rotate(180deg);
+            color: $primary;
+          }
+
+          .details-wrapper {
+            grid-template-rows: 1fr;
+            opacity: 1;
+            margin-top: 20px;
+          }
+        }
+      }
+
+      .cap-card-content {
+        .icon-box {
+          width: 50px;
+          height: 50px;
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 24px;
+          color: $primary;
+          transition: 0.3s;
+          margin-bottom: 20px;
+        }
+
+        .arrow {
+          position: absolute;
+          top: 35px;
+          right: 30px;
+          color: rgba(255, 255, 255, 0.2);
+          transition: 0.3s;
+        }
+
+        h3 {
+          font-size: 20px;
+          color: #fff;
+          margin-bottom: 12px;
+          font-weight: 700;
+        }
+
+        p {
+          font-size: 14px;
+          color: $text-gray;
+          line-height: 1.6;
+        }
+
+        .details-wrapper {
+          display: grid;
+          grid-template-rows: 0fr; // Accordion üçün vacibdir
+          transition: all 0.4s ease;
+          opacity: 0;
+
+          .details-content {
+            overflow: hidden;
+
+            .divider {
+              width: 100%;
+              height: 1px;
+              background: rgba(255, 255, 255, 0.1);
+              margin-bottom: 15px;
+            }
+
+            // Standart siyahı stili (Digər kartlar üçün)
+            ul {
+              list-style: none;
+              padding: 0;
+              margin: 0;
+
+              li {
+                font-size: 14px;
+                color: rgba(255, 255, 255, 0.7);
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 10px;
+
+                .check {
+                  color: $primary;
+                  font-weight: bold;
+                }
+              }
+            }
+
+            // ✅ YENİ: İnteqrasiya Loqoları Stili (Nested)
+            .supported-platforms {
+              margin-top: 10px;
+
+              .platform-label {
+                display: block;
+                font-size: 10px;
+                font-weight: 700;
+                color: rgba(255, 255, 255, 0.3);
+                letter-spacing: 1px;
+                margin-bottom: 12px;
+                text-transform: uppercase;
+              }
+
+              .platform-list {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+
+                .platform-item {
+                  display: flex;
+                  align-items: center;
+                  gap: 6px;
+                  padding: 6px 14px;
+                  border-radius: 8px;
+                  font-size: 13px;
+                  font-weight: 500;
+                  border: 1px solid rgba(255, 255, 255, 0.1);
+                  background: rgba(255, 255, 255, 0.03);
+                  transition: all 0.3s ease;
+                  cursor: default;
+                  color: rgba(255, 255, 255, 0.8);
+
+                  svg { font-size: 16px; }
+
+                  // Instagram Rəngləri
+                  &.instagram {
+                    border-color: rgba(225, 48, 108, 0.4);
+                    color: #e1306c;
+                    &:hover { background: rgba(225, 48, 108, 0.1); }
+                  }
+
+                  // WhatsApp Rəngləri
+                  &.whatsapp {
+                    border-color: rgba(37, 211, 102, 0.4);
+                    color: #25d366;
+                    &:hover { background: rgba(37, 211, 102, 0.1); }
+                  }
+
+                  // Telegram Rəngləri
+                  &.telegram {
+                    border-color: rgba(0, 136, 204, 0.4);
+                    color: #0088cc;
+                    &:hover { background: rgba(0, 136, 204, 0.1); }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
