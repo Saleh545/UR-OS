@@ -1,41 +1,35 @@
-/* =========================================
-   GLOBAL RESET (Vacibdir)
-   ========================================= */
 * {
-  box-sizing: border-box; /* Padding verdikdə ölçü şişməsin */
+  box-sizing: border-box;
 }
 
-/* =========================================
-   HEADER MAIN STYLES
-   ========================================= */
 .header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 100;
-  background: transparent;
-  
-  /* ✅ Padding problemi burada həll olunur */
-  padding: 15px 0; 
-  transition: padding 0.3s ease;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 10px 0;
+  transition: all 0.3s ease-in-out;
+
+  &.scrolled {
+    padding: 4px 0;
+    background: rgba(15, 16, 18, 0.7);
+  }
 
   @media (max-width: 768px) {
-    padding: 15px 0;
+    padding: 12px 0;
   }
 }
 
-/* ✅ CONTAINER: Məzmunu mərkəzdə saxlayır və kənarlardan boşluq verir.
-   Əgər main.scss-də .container yoxdursa, bunu mütləq bura əlavə et.
-*/
 .container {
-  // width: 100%;
-  max-width: 1144px; /* Maksimum genişlik */
-  margin: 0 auto;    /* Mərkəzləmək */
-  padding: 0 20px;   /* Sol və Sağdan boşluq (Burger divara yapışmasın) */
-  
+  max-width: 1144px;
+  margin: 0 auto;
+  padding: 0 20px;
+
   @media (max-width: 768px) {
-    padding: 0 16px; /* Mobildə biraz az */
+    padding: 0 16px;
   }
 }
 
@@ -44,9 +38,8 @@
   justify-content: space-between;
   align-items: center;
   height: 60px;
-  width: 100%; /* Flex konteynerin tam yer tutması üçün */
+  width: 100%;
 
-  /* --- 1. LOGO HİSSƏSİ --- */
   .header-left {
     display: flex;
     align-items: center;
@@ -57,7 +50,7 @@
       position: relative;
       overflow: hidden;
       border-radius: 8px;
-      
+
       img {
         height: 75px;
         width: 75px;
@@ -71,7 +64,6 @@
         }
       }
 
-      /* Logo Parıltı Effekti */
       &::after {
         content: "";
         position: absolute;
@@ -81,13 +73,12 @@
         height: 100%;
         background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
         transform: skew(-25deg);
-        animation: logoShine 3s infinite; 
+        animation: logoShine 3s infinite;
         pointer-events: none;
       }
     }
   }
 
-  /* --- 2. MƏRKƏZİ MENYU (Desktop) --- */
   .header-center {
     @media (max-width: 992px) {
       display: none;
@@ -121,7 +112,7 @@
           bottom: -5px;
           width: 0%;
           height: 2px;
-          background-color: #2563EB;
+          background-color: #4285F4;
           transition: width 0.3s ease-in-out;
         }
 
@@ -132,7 +123,6 @@
     }
   }
 
-  /* --- 3. SAĞ TƏRƏF (Dil + Login) --- */
   .header-right {
     display: flex;
     align-items: center;
@@ -158,12 +148,14 @@
       &:hover {
         background: rgba(255, 255, 255, 0.15);
       }
-      
-      svg { font-size: 16px; }
+
+      svg {
+        font-size: 16px;
+      }
     }
 
     .login-btn {
-      background: linear-gradient(90deg, #2563EB 0%, #1D4ED8 100%);
+      background: linear-gradient(90deg, #4285F4 0%, #2563EB 100%);
       color: #fff;
       padding: 10px 24px;
       border-radius: 30px;
@@ -173,18 +165,17 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 0 20px rgba(37, 99, 235, 0.5);
+      box-shadow: 0 0 20px rgba(66, 133, 244, 0.4);
       transition: all 0.3s ease;
       white-space: nowrap;
 
       &:hover {
         transform: translateY(-1px);
-        box-shadow: 0 0 30px rgba(37, 99, 235, 0.7);
+        box-shadow: 0 0 30px rgba(66, 133, 244, 0.6);
       }
     }
   }
 
-  /* --- 🍔 BURGER FIX --- */
   .burger {
     display: none;
     font-size: 28px;
@@ -192,9 +183,7 @@
     cursor: pointer;
     z-index: 102;
     padding: 5px;
-    
-    /* Sağ tərəfə yapışması üçün */
-    margin-left: auto; 
+    margin-left: auto;
 
     @media (max-width: 992px) {
       display: block;
@@ -202,9 +191,6 @@
   }
 }
 
-/* =========================================
-   📱 MOBILE MENU
-   ========================================= */
 .mobile-menu {
   position: fixed;
   top: 0;
@@ -242,7 +228,10 @@
     transition: 0.3s;
     padding: 5px;
 
-    &:hover { color: #fff; transform: rotate(90deg); }
+    &:hover {
+      color: #fff;
+      transform: rotate(90deg);
+    }
   }
 
   ul {
@@ -250,7 +239,7 @@
     padding: 0;
     margin: 0;
     overflow-y: auto;
-    
+
     li {
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 
@@ -289,7 +278,7 @@
 
     .login-btn {
       text-align: center;
-      background: #2563EB;
+      background: #4285F4;
       color: white;
       padding: 14px;
       border-radius: 12px;
@@ -299,14 +288,12 @@
   }
 }
 
-/* --- ANIMATIONS --- */
 @keyframes logoShine {
   0% { left: -150%; }
   20% { left: 150%; }
   100% { left: 150%; }
 }
 
-/* Page Transition Overlay */
 .page-transition {
   position: fixed;
   top: 0;
@@ -324,13 +311,9 @@
     pointer-events: all;
   }
 }
-.hero-section,
-section:first-of-type {
-  // padding-top: 120px;
-  /* Header-in hündürlüyü qədər yer ayırırıq */
 
+section:first-of-type {
   @media (max-width: 768px) {
     padding-top: 100px;
-    /* Mobildə biraz az */
   }
 }

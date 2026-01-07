@@ -4,11 +4,7 @@ import Header from '../components/Header';
 import '../styles/pages/home.scss';
 import { useTranslation } from 'react-i18next';
 
-// React Icons
-import {
-  FaUtensils, FaUserTimes, FaBookOpen, FaBell, FaSyncAlt
-} from 'react-icons/fa';
-import { IoLogoFacebook, IoLogoInstagram, IoLogoWhatsapp } from 'react-icons/io';
+import {FaUtensils, FaUserTimes, FaBookOpen, FaBell, FaSyncAlt} from 'react-icons/fa';
 
 const Home = () => {
   const { t } = useTranslation();
@@ -16,7 +12,6 @@ const Home = () => {
   const [activeId, setActiveId] = useState(null);
   const gridRef = useRef(null);
 
-  // Slaydların məzmunu (Hero bölməsi üçün 3 fərqli slayd)
   const slides = [
     <div className="mac-window" key="slide1">
       <div className="mac-header"><div className="dots"><span></span><span></span><span></span></div><div className="address-bar">ur-os.admin / CRM & Sources</div></div>
@@ -52,7 +47,6 @@ const Home = () => {
     </div>
   ];
 
-  // ✅ Effektlər: Slayder intervalı + Kənara kliklədikdə card bağlanması
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % slides.length);
@@ -85,7 +79,6 @@ const Home = () => {
     <>
       <Header />
 
-      {/* HERO SECTION */}
       <section className="hero">
         <div className="glow-circle left"></div>
         <div className="glow-circle right"></div>
@@ -120,7 +113,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* PARTNERS STRIP */}
       <section className="partners-strip">
         <div className="container">
           <h5 className="strip-title">BİZİ SEÇƏN MƏKANLAR</h5>
@@ -139,7 +131,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* FEATURES SECTION (WHY UR-OS?) */}
       <section className="features-section">
         <div className="container">
           <div className="section-header">
@@ -154,7 +145,7 @@ const Home = () => {
                 key={item.id}
                 className={`feature-card ${activeId === item.id ? 'active' : ''}`}
                 onClick={(e) => {
-                  e.stopPropagation(); // Klikin sənədə yayılmasını dayandırır
+                  e.stopPropagation(); 
                   setActiveId(activeId === item.id ? null : item.id);
                 }}
               >
@@ -172,9 +163,7 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </section>
-
-    
+      </section>    
     </>
   );
 }
