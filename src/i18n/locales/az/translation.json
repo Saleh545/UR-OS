@@ -10,101 +10,28 @@
     "cabinet": "Şəxsi kabinet",
     "signup": "Qeydiyyat"
   },
-
-  
-
-  "hero": {
-    "title": "Biznes əməliyyat sistemi",
-    "subtitle": "Restoran idarəçiliyini avtomatlaşdıran vahid ekosistem."
-  },
-
-  "pain": {
-    "title": "Problem nöqtələri və",
-    "highlight": "çətinliklər",
-    "items": {
-      "reservation": {
-        "title": "Rezervasiyalar itir",
-        "desc": "Müştərilərin rezervasiyalarının düzgün qeydə alınmaması və ya itməsi."
+  "features_section": {
+    "items": [
+      {
+        "id": 1,
+        "title": "Müştəri İtkisinə Son",
+        "desc": "Personalınız Direct-ə gec cavab verir? Müştəri gözləmir, rəqibə gedir. Botlarımız anında reaksiya verir və müştərini saxlayır."
       },
-      "delay": {
-        "title": "İdarəetmə gecikir",
-        "desc": "Əl ilə proseslər vaxt itkisinə səbəb olur."
+      {
+        "id": 2,
+        "title": "Ağıllı Menyu Təqdimatı",
+        "desc": "Bot sadəcə salamlaşmır. O, menyunu göndərir, yeməklər haqqında məlumat verir və qonağı seçim etməyə yönləndirir."
       },
-      "table": {
-        "title": "Masa qarışıqlığı",
-        "desc": "Masaların düzgün bölüşdürülməməsi."
+      {
+        "id": 3,
+        "title": "Dəqiq Xatırlatmalar",
+        "desc": "Müştəri rezervi unutmayacaq. Sistem avtomatik olaraq: 'Sizin rezerviniz saat 23:00-dadır' — deyə xəbərdarlıq göndərir."
       },
-      "staff": {
-        "title": "İşçi nəzarətsizliyi",
-        "desc": "İşçilərin fəaliyyətinə tam nəzarət yoxdur."
-      },
-      "report": {
-        "title": "Hesabat yoxdur",
-        "desc": "Analitik və statistika çatışmazlığı."
-      },
-      "client": {
-        "title": "Müştəri narazılığı",
-        "desc": "Gecikmələr müştəri məmnuniyyətini azaldır."
+      {
+        "id": 4,
+        "title": "Avtomatlaşdırılmış Rezerv",
+        "desc": "Rezervin təsdiqlənməsindən ləğv edilməsinə qədər — bütün proses avtomatikdir. Sizin müdaxilənizə ehtiyac yoxdur."
       }
-    }
-  },
-
-  "solutions": {
-    "title": "Problemin həll yolu üçün sizə təklif edilən",
-    "bot": {
-      "title": "Rezervasiya botu",
-      "desc": "Avtomatik masa sifarişi və vaxt itkisinə son."
-    },
-    "table": {
-      "title": "Masa idarəetməsi",
-      "desc": "Masaların ağıllı idarə olunması."
-    },
-    "menu": {
-      "title": "Menyu idarəetməsi",
-      "desc": "Yeməklərin və qiymətlərin rahat idarəsi."
-    },
-    "whatsapp": {
-      "title": "WhatsApp avtomatlaşdırma",
-      "desc": "Müştərilərlə sürətli və avtomatik əlaqə."
-    },
-    "notify": {
-      "title": "Bildiriş sistemi",
-      "desc": "Vacib məlumatların dərhal ötürülməsi."
-    },
-    "crm": {
-      "title": "CRM müştəri bazası",
-      "desc": "Müştərilərin effektiv idarə olunması."
-    },
-    "analytics": {
-      "title": "Statistika & analytics",
-      "desc": "Qərarları məlumatlara əsasən verin."
-    },
-    "admin": {
-      "title": "Admin panel",
-      "desc": "Bütün proseslər bir paneldə."
-    }
-  },
-
-  "why": {
-    "title": "Niyə",
-    "speed": "Biznes üçün sürət",
-    "automation": "Tam avtomatlaşdırma"
-  },
-
-  "security": {
-    "title": "Təhlükəsizlik",
-    "data": {
-      "title": "Data encrypted",
-      "desc": "Bütün məlumatlar şifrələnmiş şəkildə saxlanılır."
-    },
-    "2fa": "İki mərhələli doğrulama ilə əlavə təhlükəsizlik.",
-    "compliance": {
-      "title": "Security compliance",
-      "desc": "Beynəlxalq təhlükəsizlik standartlarına uyğunluq."
-    }
-  },
-
-  "footer": {
-    "desc": "Biznes proseslərini avtomatlaşdıran vahid ekosistem."
+    ]
   }
 }

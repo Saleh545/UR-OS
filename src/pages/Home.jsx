@@ -4,9 +4,9 @@ import Header from '../components/Header';
 import '../styles/pages/home.scss';
 
 // React Icons
-import { 
-  FaCalendar, FaClock, FaUserTie, FaFileAlt, FaRobot, 
-  FaUtensils, FaWhatsapp, FaBell, FaUsers, FaChartLine, FaCogs 
+import {
+  FaCalendar, FaClock, FaUserTie, FaFileAlt, FaRobot,
+  FaUtensils, FaWhatsapp, FaBell, FaUsers, FaChartLine, FaCogs, FaUserTimes, FaBookOpen, FaSyncAlt
 } from 'react-icons/fa';
 import { TbMoodNervous } from 'react-icons/tb';
 import { MdTableRestaurant } from 'react-icons/md';
@@ -25,6 +25,7 @@ import data from "../assets/data.png";
 import fa from "../assets/2fa.png";
 import logo from "../assets/hero-logo.png";
 import tik from "../assets/tik.png";
+import { useTranslation } from 'react-i18next';
 
 const Home = () => {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -153,35 +154,48 @@ const Home = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % slides.length);
-    }, 3000); 
+    }, 3000);
     return () => clearInterval(interval);
   }, [slides.length]);
 
   const partners = Array(10).fill({ name: "ChefPub" });
 
+  const { t } = useTranslation();
+  const [activeId, setActiveId] = useState(1);
+
+  // İkonları ID-yə görə bir massivdə saxlayırıq
+  const icons = {
+    1: <FaUserTimes />,
+    2: <FaBookOpen />,
+    3: <FaBell />,
+    4: <FaSyncAlt />
+  };
+
+  // JSON-dan "items" massivini götürürük
+  const featuresData = t('features_section.items', { returnObjects: true });
   return (
     <>
       <Header />
-      
+
       <section className="hero">
         <div className="glow-circle left"></div>
         <div className="glow-circle right"></div>
 
         <div className="container">
           <div className="hero-status">
-       <div className="badge">
-          <span className="dot"></span> System Status: Online
-       </div>
-    </div>
+            <div className="badge">
+              <span className="dot"></span> System Status: Online
+            </div>
+          </div>
           <div className="hero-flex">
             {/* Mətn tərəfi */}
             <div className="hero-content">
-           
+
               <h1 className="hero-title">
                 Biznes əməliyyat <br /> <span className="highlight">sistemi</span>
               </h1>
               <p className="hero-subtitle">
-                Restoran idarəçiliyini avtomatlaşdıran vahid ekosistem. 
+                Restoran idarəçiliyini avtomatlaşdıran vahid ekosistem.
                 Xaosdan sistemə keçin.
               </p>
               <div className="hero-btns">
@@ -195,8 +209,8 @@ const Home = () => {
               <div className="visual-wrapper">
                 <div className="slideshow-container">
                   {slides.map((slide, index) => (
-                    <div 
-                      key={index} 
+                    <div
+                      key={index}
                       className={`slide-item ${index === activeSlide ? 'active' : ''}`}
                     >
                       {slide}
@@ -211,29 +225,67 @@ const Home = () => {
       </section>
 
       <section className="partners-strip">
-      <div className="container">
-        
-        {/* Başlıq */}
-        <h5 className="strip-title">BİZİ SEÇƏN MƏKANLAR</h5>
+        <div className="container">
 
-        {/* Sürüşən Sahə */}
-        <div className="slider">
-          <div className="slide-track">
-            
-            {/* Sonsuz dövr üçün 2 dəfə render edirik */}
-            {[...partners, ...partners].map((item, index) => (
-              <div className="slide" key={index}>
-                {/* Logo Dizaynı (Şəkil varsa <img> istifadə et) */}
-                <div className="logo-box">
-                  <FaUtensils className="logo-icon" />
-                  <span className="logo-text">{item.name}</span>
+          {/* Başlıq */}
+          <h5 className="strip-title">BİZİ SEÇƏN MƏKANLAR</h5>
+
+          {/* Sürüşən Sahə */}
+          <div className="slider">
+            <div className="slide-track">
+
+              {/* Sonsuz dövr üçün 2 dəfə render edirik */}
+              {[...partners, ...partners].map((item, index) => (
+                <div className="slide" key={index}>
+                  {/* Logo Dizaynı (Şəkil varsa <img> istifadə et) */}
+                  <div className="logo-box">
+                    <FaUtensils className="logo-icon" />
+                    <span className="logo-text">{item.name}</span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
 
+            </div>
           </div>
+
+        </div>
+      </section>
+
+  <section className="features-section">
+      <div className="container">
+        <div className="section-header">
+          <span className="subtitle">WHY UR-OS?</span>
+          <h2>{t('features.title', 'Niyə məhz UR-OS?')}</h2>
+          <div className="line"></div>
         </div>
 
+        <div className="features-grid">
+          {Array.isArray(featuresData) && featuresData.map((item) => (
+            <div 
+              key={item.id} 
+              className={`feature-card ${activeId === item.id ? 'active' : ''}`}
+              onClick={() => setActiveId(item.id)}
+            >
+              {/* ✅ İkon və Başlıq üçün üst qrup */}
+              <div className="card-top">
+                <div className="icon-box">
+                  {icons[item.id]}
+                </div>
+                <h3>{item.title}</h3>
+              </div>
+              
+              {/* ✅ Təsvir hissəsi (Yalnız aktiv olanda açılır) */}
+              <div className="desc-wrapper">
+                 <p>{item.desc}</p>
+              </div>
+
+              {/* Mobildə aç/bağla göstəricisi */}
+              <div className="status-indicator">
+                <span>{activeId === item.id ? '−' : '+'}</span>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
 
@@ -466,7 +518,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      
+
       {/* FOOTER */}
       <footer className="footer">
         <div className="footer__inner">

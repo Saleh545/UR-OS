@@ -14,93 +14,13 @@
     "subtitle": "A unified ecosystem that automates restaurant management."
   },
 
-  "pain": {
-    "title": "Pain points and",
-    "highlight": "challenges",
-    "items": {
-      "reservation": {
-        "title": "Lost reservations",
-        "desc": "Reservations are not properly recorded or get lost."
-      },
-      "delay": {
-        "title": "Management delays",
-        "desc": "Manual processes slow down operations."
-      },
-      "table": {
-        "title": "Table confusion",
-        "desc": "Improper table allocation."
-      },
-      "staff": {
-        "title": "Lack of staff control",
-        "desc": "No full control over employee activities."
-      },
-      "report": {
-        "title": "No reports",
-        "desc": "Lack of analytics and reporting."
-      },
-      "client": {
-        "title": "Customer dissatisfaction",
-        "desc": "Delays reduce customer satisfaction."
-      }
-    }
-  },
-
-  "solutions": {
-    "title": "Solutions we offer",
-    "bot": {
-      "title": "Reservation bot",
-      "desc": "Automated table booking without delays."
-    },
-    "table": {
-      "title": "Table management",
-      "desc": "Smart table allocation."
-    },
-    "menu": {
-      "title": "Menu management",
-      "desc": "Easy control of dishes and prices."
-    },
-    "whatsapp": {
-      "title": "WhatsApp automation",
-      "desc": "Fast and automated customer communication."
-    },
-    "notify": {
-      "title": "Notification system",
-      "desc": "Instant delivery of important updates."
-    },
-    "crm": {
-      "title": "CRM customer database",
-      "desc": "Efficient customer management."
-    },
-    "analytics": {
-      "title": "Statistics & analytics",
-      "desc": "Make data-driven decisions."
-    },
-    "admin": {
-      "title": "Admin panel",
-      "desc": "All operations in one dashboard."
-    }
-  },
-
-  "why": {
-    "title": "Why",
-    "speed": "Speed for business",
-    "automation": "Full automation"
-  },
-
-  "security": {
-    "title": "Security",
-    "data": {
-      "title": "Data encrypted",
-      "desc": "All data is securely encrypted."
-    },
-    "2fa": "Two-factor authentication for extra security.",
-    "compliance": {
-      "title": "Security compliance",
-      "desc": "Compliance with international security standards."
-    }
-  },
-
-  "footer": {
-    "desc": "A unified ecosystem that automates business processes."
-  }
+ 
+  "features_section": {
+    "items": [
+      { "id": 1, "title": "No More Losing Customers", "desc": "Does your staff respond late? Our bots react instantly to keep your guests." },
+      { "id": 2, "title": "Smart Menu Presentation", "desc": "The bot shares the menu, provides dish details, and guides the guest's choice." },
+      { "id": 3, "title": "Precise Reminders", "desc": "Guests won't forget. The system sends automatic alerts about upcoming reservations." },
+      { "id": 4, "title": "Automated Booking", "desc": "From confirmation to cancellation—the entire process is fully automatic." }
+    ]
+}
 }

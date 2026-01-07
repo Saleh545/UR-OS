@@ -383,6 +383,194 @@ $bg-dark: #0f1012;
   }
 }
 
+$primary: #4285F4;
+$bg-card: rgba(255, 255, 255, 0.03);
+$border-color: rgba(255, 255, 255, 0.08);
+$bg-dark: #0f1012;
+$text-light: #fff;
+$text-gray: rgba(255, 255, 255, 0.6);
+
+
+.features-section {
+  background: #0f1012;
+  padding: 60px 20px;
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+
+    .subtitle {
+      color: $primary;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      font-size: 48px;
+      font-weight: 800;
+      color: $text-light;
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: $text-gray;
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+ .line {
+  width: 60px;
+  height: 4px;
+  background: $primary;
+  margin: 0 auto;
+  border-radius: 2px;
+  
+  /* İlk parıltı */
+  box-shadow: 0 0 15px $primary;
+  
+  /* Animasiyanı buraya bağlayırıq */
+  animation: lineGlow 2s infinite ease-in-out;
+}
+
+/* Yanıb-sönmə animasiyasının qaydaları */
+@keyframes lineGlow {
+  0% {
+    opacity: 0.6;
+    box-shadow: 0 0 5px $primary;
+    transform: scaleX(0.95); // Azca qısalma effekti
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 20px $primary, 0 0 35px rgba($primary, 0.5);
+    transform: scaleX(1); // Tam ölçü
+  }
+  100% {
+    opacity: 0.6;
+    box-shadow: 0 0 5px $primary;
+    transform: scaleX(0.95);
+  }
+}
+  }
+
+
+  .features-grid {
+    display: flex;
+    gap: 15px;
+    height: 300px; // Daha yığcam hündürlük
+
+    @media (max-width: 992px) {
+      flex-direction: column;
+      height: auto;
+    }
+
+    .feature-card {
+      flex: 1;
+      background: $bg-card;
+      border: 1px solid $border-color;
+      border-radius: 20px;
+      padding: 24px;
+      cursor: pointer;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start; // Yazıları sola yapışdırırıq
+      transition: all 0.5s cubic-bezier(0.2, 1, 0.2, 1);
+      position: relative;
+
+      // ✅ AKTİV KARTIN GENİŞLƏNMƏSİ
+      &.active {
+        flex: 2.5; 
+        background: rgba($primary, 0.08);
+        border-color: rgba($primary, 0.3);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+
+        .card-top {
+          .icon-box {
+            background: $primary;
+            color: #fff;
+            transform: scale(1.1);
+          }
+          h3 { color: #fff; }
+        }
+
+        .desc-wrapper {
+          grid-template-rows: 1fr;
+          opacity: 1;
+          margin-top: 15px;
+        }
+      }
+
+      // ✅ KARTIN ÜST HİSSƏSİ (İkon və Başlıq hər zaman görünür)
+      .card-top {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        transition: 0.3s ease;
+
+        .icon-box {
+          width: 46px;
+          height: 46px;
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 20px;
+          color: rgba(255, 255, 255, 0.7);
+          transition: all 0.4s ease;
+        }
+
+        h3 {
+          font-size: 18px;
+          font-weight: 700;
+          color: rgba(255, 255, 255, 0.8);
+          margin: 0;
+          line-height: 1.2;
+          /* Kart bağlı olanda uzun başlıqların alt-alta düşməsi üçün */
+          max-width: 140px; 
+        }
+      }
+
+      // ✅ TƏSVİR HİSSƏSİ (Animasiyalı açılış)
+      .desc-wrapper {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.5s ease, opacity 0.4s ease;
+        opacity: 0;
+        
+        p {
+          overflow: hidden;
+          font-size: 14px;
+          line-height: 1.5;
+          color: rgba(255, 255, 255, 0.5);
+          margin: 0;
+        }
+      }
+
+      // Status indikatoru (Mini ox və ya plus)
+      .status-indicator {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        color: rgba(255, 255, 255, 0.2);
+        font-size: 18px;
+      }
+
+      // Mobildə sıxılmaması üçün
+      @media (max-width: 992px) {
+        flex: none;
+        width: 100%;
+        min-height: 80px;
+        &.active { height: auto; }
+      }
+    }
+  }
+}
+
 /* Sonsuz Fırlanma Animasiyası */
 @keyframes scroll {
   0% {
