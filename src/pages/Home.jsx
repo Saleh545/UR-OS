@@ -5,18 +5,23 @@ import '../styles/pages/home.scss';
 import { useTranslation } from 'react-i18next';
 
 // React Icons
-import { FaUtensils,FaTelegramPlane, FaUserTimes, FaBookOpen, FaBell, FaSyncAlt } from 'react-icons/fa';
+import { FaUtensils, FaTelegramPlane, FaUserTimes, FaBookOpen, FaBell, FaSyncAlt } from 'react-icons/fa';
 import { IoLogoInstagram, IoLogoWhatsapp } from 'react-icons/io';
 import { MdDashboard, MdAllInclusive, MdSecurity, MdSmartToy, MdNotificationsActive, MdSmartphone, MdKeyboardArrowDown } from 'react-icons/md';
+import { FiPlus, FiMinus } from 'react-icons/fi'; // ✅ YENİ: FAQ üçün ikonlar
 
 const Home = () => {
   const { t } = useTranslation();
+  
+  // State-lər
   const [activeSlide, setActiveSlide] = useState(0);
-  const [activeId, setActiveId] = useState(null);
+  const [activeId, setActiveId] = useState(null);       // Features və Capabilities üçün
+  const [activeFaqId, setActiveFaqId] = useState(null); // ✅ YENİ: FAQ üçün
 
   // Referanslar
   const gridRef = useRef(null);
   const capabilitiesRef = useRef(null);
+  const faqRef = useRef(null); // ✅ YENİ: FAQ üçün ref
 
   const slides = [
     <div className="mac-window" key="slide1">
@@ -60,14 +65,20 @@ const Home = () => {
       setActiveSlide((prev) => (prev + 1) % slides.length);
     }, 3000);
 
-    // 2. Kənara kliklədikdə bağlanma funksiyası
+    // 2. Kənara kliklədikdə bağlanma funksiyası (HAMISI BİR YERDƏ)
     const handleClickOutside = (event) => {
-      // Hər iki bölməni yoxlayır: klik hər iki bölmənin kənarındadırsa, bağla
+      // --- Features və Capabilities bağlanması ---
       const isOutsideGrid = gridRef.current && !gridRef.current.contains(event.target);
       const isOutsideCapabilities = capabilitiesRef.current && !capabilitiesRef.current.contains(event.target);
 
       if (isOutsideGrid && isOutsideCapabilities) {
         setActiveId(null);
+      }
+
+      // --- FAQ bağlanması ---
+      const isOutsideFaq = faqRef.current && !faqRef.current.contains(event.target);
+      if (isOutsideFaq) {
+        setActiveFaqId(null);
       }
     };
 
@@ -85,8 +96,10 @@ const Home = () => {
     8: <MdAllInclusive />, 9: <MdSecurity />, 10: <MdSmartToy />,
   };
 
+  // Dataları JSON-dan çəkirik
   const featuresData = t('features_section.items', { returnObjects: true });
   const capabilitiesData = t('capabilities.items', { returnObjects: true });
+  const faqData = t('faq.items', { returnObjects: true }); // ✅ YENİ: FAQ datası
   const partners = Array(10).fill({ name: "ChefPub" });
 
   return (
@@ -171,66 +184,102 @@ const Home = () => {
 
       {/* CAPABILITIES SECTION */}
       <section className="capabilities-section">
-  <div className="container">
-    <div className="section-header">
-      <span className="subtitle">{t('capabilities.subtitle')}</span>
-      <h2 className="title">{t('capabilities.title')}</h2>
-      <div className="underline"></div>
-    </div>
+        <div className="container">
+          <div className="section-header">
+            <span className="subtitle">{t('capabilities.subtitle')}</span>
+            <h2 className="title">{t('capabilities.title')}</h2>
+            <div className="underline"></div>
+          </div>
 
-    <div className="capabilities-grid" ref={capabilitiesRef}>
-      {Array.isArray(capabilitiesData) && capabilitiesData.map((item) => (
-        <div 
-          key={item.id} 
-          className={`cap-card ${activeId === item.id ? 'active' : ''}`}
-          onClick={(e) => {
-            e.stopPropagation();
-            setActiveId(activeId === item.id ? null : item.id);
-          }}
-        >
-          <div className="cap-card-content">
-            <div className="icon-box">{icons[item.id]}</div>
-            <div className="arrow"><MdKeyboardArrowDown /></div>
-            <h3>{item.title}</h3>
-            <p>{item.desc}</p>
+          <div className="capabilities-grid" ref={capabilitiesRef}>
+            {Array.isArray(capabilitiesData) && capabilitiesData.map((item) => (
+              <div
+                key={item.id}
+                className={`cap-card ${activeId === item.id ? 'active' : ''}`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveId(activeId === item.id ? null : item.id);
+                }}
+              >
+                <div className="cap-card-content">
+                  <div className="icon-box">{icons[item.id]}</div>
+                  <div className="arrow"><MdKeyboardArrowDown /></div>
+                  <h3>{item.title}</h3>
+                  <p>{item.desc}</p>
 
-            <div className="details-wrapper">
-              <div className="details-content">
-                <div className="divider"></div>
-                
-                {/* ✅ YENİLİK: Əgər ID 2-dirsə (İnteqrasiyalar), loqoları göstər */}
-                {item.id === 2 ? (
-                  <div className="supported-platforms">
-                    <span className="platform-label">SUPPORTED BY META</span>
-                    <div className="platform-list">
-                      <div className="platform-item instagram">
-                        <IoLogoInstagram /> <span>Instagram</span>
-                      </div>
-                      <div className="platform-item whatsapp">
-                        <IoLogoWhatsapp /> <span>WhatsApp</span>
-                      </div>
-                      <div className="platform-item telegram">
-                        <FaTelegramPlane /> <span>Telegram</span>
-                      </div>
+                  <div className="details-wrapper">
+                    <div className="details-content">
+                      <div className="divider"></div>
+
+                      {/* İnteqrasiyalar (ID: 2) üçün xüsusi görünüş */}
+                      {item.id === 2 ? (
+                        <div className="supported-platforms">
+                          <span className="platform-label">SUPPORTED BY META</span>
+                          <div className="platform-list">
+                            <div className="platform-item instagram">
+                              <IoLogoInstagram /> <span>Instagram</span>
+                            </div>
+                            <div className="platform-item whatsapp">
+                              <IoLogoWhatsapp /> <span>WhatsApp</span>
+                            </div>
+                            <div className="platform-item telegram">
+                              <FaTelegramPlane /> <span>Telegram</span>
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <ul>
+                          {item.details?.map((detail, idx) => (
+                            <li key={idx}><span className="check">✓</span> {detail}</li>
+                          ))}
+                        </ul>
+                      )}
+
                     </div>
                   </div>
-                ) : (
-                  /* Digər kartlar üçün standart siyahı */
-                  <ul>
-                    {item.details?.map((detail, idx) => (
-                      <li key={idx}><span className="check">✓</span> {detail}</li>
-                    ))}
-                  </ul>
-                )}
-                
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
+
+      {/* ✅ FAQ SECTION (YENİLƏNMİŞ) */}
+      <section className="faq-section">
+        <div className="container">
+          <div className="section-header">
+            <span className="subtitle">{t('faq.subtitle')}</span>
+            <h2 className="title">{t('faq.title')}</h2>
+            <div className="underline"></div>
+          </div>
+
+          <div className="faq-container" ref={faqRef}>
+            {Array.isArray(faqData) && faqData.map((item) => (
+              <div 
+                key={item.id}
+                className={`faq-item ${activeFaqId === item.id ? 'active' : ''}`}
+                onClick={(e) => {
+                  e.stopPropagation(); 
+                  setActiveFaqId(activeFaqId === item.id ? null : item.id);
+                }}
+              >
+                <div className="faq-header">
+                  <h3>{item.question}</h3>
+                  <div className="toggle-icon">
+                    {activeFaqId === item.id ? <FiMinus /> : <FiPlus />}
+                  </div>
+                </div>
+
+                <div className="faq-body">
+                  <div className="body-content">
+                    <p>{item.answer}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </>
   );
 }

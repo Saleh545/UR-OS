@@ -86,5 +86,33 @@
         "details": ["Mobility", "Instant reports", "24/7 access"]
       }
     ]
+  },
+  
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "FAQ",
+    "items": [
+      {
+        "id": 1,
+        "question": "How long does it take to set up the system?",
+        "answer": "The system is cloud-based, so setup takes just 1 day. Our team inputs the menu and trains your staff."
+      },
+      {
+        "id": 2,
+        "question": "Does the system work if the internet goes down?",
+        "answer": "Yes, thanks to PWA technology, the system can perform key functions offline and synchronizes data as soon as the connection is restored."
+      },
+      {
+        "id": 3,
+        "question": "What is the payment model?",
+        "answer": "We operate on a subscription model (SaaS). You can pay monthly or annually. There are no hidden commissions."
+      },
+      {
+        "id": 4,
+        "question": "Is my data secure?",
+        "answer": "Absolutely. We use bank-level encryption (256-bit SSL), and your data is automatically backed up every day."
+      }
+    ]
   }
+
 }

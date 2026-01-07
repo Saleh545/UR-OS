@@ -86,7 +86,33 @@
         "details": ["Mobillik", "Ani hesabatlar", "24/7 giriş"]
       }
     ]
-  }
+  },
+  "faq": {
+  "title": "Tez-tez Soruşulan Suallar",
+  "subtitle": "FAQ",
+  "items": [
+    {
+      "id": 1,
+      "question": "Sistemi quraşdırmaq nə qədər vaxt aparır?",
+      "answer": "Sistem bulud əsaslıdır, ona görə də quraşdırma cəmi 1 gün çəkir. Komandamız menyunu daxil edir və personala təlim keçir."
+    },
+    {
+      "id": 2,
+      "question": "İnternet kəsilərsə sistem işləyirmi?",
+      "answer": "Bəli, PWA texnologiyası sayəsində sistem oflayn rejimdə də əsas funksiyaları yerinə yetirə bilir və internet bərpa olunan kimi məlumatları sinxronizasiya edir."
+    },
+    {
+      "id": 3,
+      "question": "Ödəniş modeli necədir?",
+      "answer": "Biz abunəlik sistemi (SaaS) ilə işləyirik. Aylıq və ya illik ödəniş edə bilərsiniz. Gizli komissiya yoxdur."
+    },
+    {
+      "id": 4,
+      "question": "Məlumatlarım təhlükəsizdirmi?",
+      "answer": "Tamamilə. Biz bank səviyyəsində şifrələmə (256-bit SSL) istifadə edirik və məlumatlarınız hər gün avtomatik nüsxələnir (backup)."
+    }
+  ]
+}
 
 
 }
