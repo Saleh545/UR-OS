@@ -113,6 +113,27 @@
         "answer": "Absolutely. We use bank-level encryption (256-bit SSL), and your data is automatically backed up every day."
       }
     ]
-  }
+  },
+  "footer": {
+  "desc": "The future of the restaurant business starts here. Perfect your management with UR-OS.",
+  "product": "PRODUCT",
+  "contact": "CONTACT",
+  "links": {
+    "why": "Why Us?",
+    "partners": "Partners",
+    "features": "Capabilities",
+    "system": "System",
+    "faq": "FAQ",
+    "cabinet": "Dashboard"
+  },
+  "contact_info": {
+    "call": "CALL US",
+    "follow": "FOLLOW US",
+    "email": "EMAIL US",
+    "location": "LOCATION",
+    "city": "Baku, Azerbaijan"
+  },
+  "copyright": "© 2026 UR-OS. All rights reserved. Made with passion for restaurateurs."
+}
 
 }
