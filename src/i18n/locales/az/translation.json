@@ -112,6 +112,27 @@
       "answer": "Tamamilə. Biz bank səviyyəsində şifrələmə (256-bit SSL) istifadə edirik və məlumatlarınız hər gün avtomatik nüsxələnir (backup)."
     }
   ]
+},
+"footer": {
+  "desc": "Restoran biznesinin gələcəyi burada başlayır. UR-OS ilə idarəetməni mükəmməlləşdirin.",
+  "product": "MƏHSUL",
+  "contact": "ƏLAQƏ",
+  "links": {
+    "why": "Niyə biz?",
+    "partners": "Partnyorlar",
+    "features": "İmkanlar",
+    "system": "Sistem",
+    "faq": "Suallar",
+    "cabinet": "Şəxsi kabinet"
+  },
+  "contact_info": {
+    "call": "CALL US",
+    "follow": "FOLLOW US",
+    "email": "EMAIL US",
+    "location": "LOCATION",
+    "city": "Baku, Azerbaijan"
+  },
+  "copyright": "© 2026 UR-OS. Bütün hüquqlar qorunur. Made with passion for restaurateurs."
 }
 
 

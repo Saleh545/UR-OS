@@ -9,6 +9,7 @@ import { FaUtensils, FaTelegramPlane, FaUserTimes, FaBookOpen, FaBell, FaSyncAlt
 import { IoLogoInstagram, IoLogoWhatsapp } from 'react-icons/io';
 import { MdDashboard, MdAllInclusive, MdSecurity, MdSmartToy, MdNotificationsActive, MdSmartphone, MdKeyboardArrowDown } from 'react-icons/md';
 import { FiPlus, FiMinus } from 'react-icons/fi'; // ✅ YENİ: FAQ üçün ikonlar
+import Footer from '../components/Footer';
 
 const Home = () => {
   const { t } = useTranslation();
@@ -280,6 +281,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <Footer/>
     </>
   );
 }

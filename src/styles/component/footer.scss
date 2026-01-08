@@ -1,0 +1,185 @@
+// Dəyişənlər
+$bg-dark: #0f1012;
+$primary: #4285F4;
+$text-gray: rgba(255, 255, 255, 0.5);
+$border: rgba(255, 255, 255, 0.08);
+
+.footer-section {
+  background: $bg-dark;
+  padding: 80px 0 30px 0;
+  border-top: 1px solid $border;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  // ==========================
+  // 1. ÜST HİSSƏ (GRID)
+  // ==========================
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr 1.5fr;
+    gap: 40px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid $border;
+
+    // --- SOL: BRAND (LOGO VƏ TƏSVİR) ---
+    .footer-brand {
+      // ✅ Link (a) teqini blok edirik ki, margin işləsin
+      a {
+        display: inline-block;
+        margin-bottom: 25px; // Logo ilə mətn arasındakı məsafə
+      }
+
+      // ✅ LOGO ÖLÇÜSÜ BURADA TƏNZİMLƏNİR
+      img {
+        width: 130px; // İstədiyin ölçünü bura yaz (məs: 150px)
+        height: auto; // Proporsiyanı qoruyur
+        display: block;
+      }
+
+      .desc {
+        color: $text-gray;
+        line-height: 1.6;
+        font-size: 14px;
+        max-width: 300px;
+      }
+    }
+
+    // --- ORTA: LINKS ---
+    .footer-links {
+      .column-title {
+        font-size: 12px;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 25px;
+        font-weight: 700;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        li {
+          margin-bottom: 12px;
+          a {
+            color: $text-gray;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+            &:hover { color: $primary; padding-left: 5px; }
+          }
+        }
+      }
+    }
+
+    // --- SAĞ: CONTACT CARDS ---
+    .footer-contact {
+      .column-title {
+        font-size: 12px;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 25px;
+        font-weight: 700;
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+
+        .contact-card {
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid $border;
+          border-radius: 12px;
+          padding: 15px;
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          text-decoration: none;
+          transition: 0.3s;
+
+          &:hover {
+            border-color: rgba($primary, 0.5);
+            background: rgba($primary, 0.05);
+            transform: translateY(-2px);
+            .icon { color: $primary; }
+          }
+
+          .icon {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.3);
+            transition: 0.3s;
+          }
+
+          .info {
+            span {
+              display: block;
+              font-size: 10px;
+              color: rgba(255, 255, 255, 0.4);
+              margin-bottom: 4px;
+              text-transform: uppercase;
+              font-weight: 600;
+            }
+            h5 {
+              margin: 0;
+              color: #fff;
+              font-size: 13px;
+              font-weight: 500;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // ==========================
+  // 2. ALT HİSSƏ (COPYRIGHT)
+  // ==========================
+  .footer-bottom {
+    padding-top: 30px;
+    text-align: center;
+    p {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.3);
+      margin: 0;
+    }
+  }
+
+  // ==========================
+  // 📱 RESPONSIVE
+  // ==========================
+  @media (max-width: 992px) {
+    .footer-top {
+      grid-template-columns: 1fr 1fr;
+      .footer-contact { grid-column: span 2; }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 60px 0 20px 0;
+
+    .footer-top {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+
+      .footer-brand {
+        text-align: center;
+        // Mobildə logonu mərkəzləmək üçün
+        a { display: inline-block; } 
+        img { margin: 0 auto; }
+        .desc { margin: 0 auto; }
+      }
+
+      .footer-links { text-align: center; }
+
+      .footer-contact {
+        .contact-grid { grid-template-columns: 1fr; }
+      }
+    }
+  }
+}
