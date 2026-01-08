@@ -1,48 +1,49 @@
 {
+  "app_title": "UR-OS | Restaurant Operating System",
+  "hero": {
+    "status": "System Status: Online",
+    "title_part1": "Drive your business from losses",
+    "title_highlight": "to profit",
+    "subtitle": "A unified ecosystem automating restaurant management. Move from chaos to system.",
+    "btn_start": "Start Now",
+    "btn_demo": "Watch Demo"
+  },
   "header": {
     "partners": "Partners",
     "why": "Why Us?",
-    "features": "Features",
+    "features": "Capabilities",
     "system": "System",
     "faq": "FAQ",
     "contact": "Contact",
     "cabinet": "Dashboard",
     "signup": "Sign Up"
   },
-  "hero": {
-    "status": "System Status: Online",
-    "title_part1": "Drive your business from losses",
-    "title_highlight": "to profit.",
-    "subtitle": "A unified ecosystem that automates restaurant management. Move from chaos to system.",
-    "btn_start": "Get Started",
-    "btn_demo": "Watch Demo"
-  },
   "features_section": {
     "items": [
       {
         "id": 1,
-        "title": "Stop Losing Customers",
-        "desc": "Is your staff slow to respond on Direct? Customers don't wait; they go to competitors. Our bots react instantly to retain your guests."
+        "title": "Stop Customer Churn",
+        "desc": "Staff slow to reply to Direct? Customers don't wait; they go to competitors. Our bots react instantly and retain customers."
       },
       {
         "id": 2,
         "title": "Smart Menu Presentation",
-        "desc": "The bot doesn't just say hello. It sends the menu, provides dish information, and guides the guest through their selection."
+        "desc": "The bot doesn't just say hello. It sends the menu, provides details about dishes, and guides the guest to make a choice."
       },
       {
         "id": 3,
         "title": "Precise Reminders",
-        "desc": "Guests won't forget their reservation. The system automatically sends alerts: 'Your reservation is at 23:00'."
+        "desc": "Customers won't forget their reservation. The system automatically sends a warning: 'Your reservation is at 23:00'."
       },
       {
         "id": 4,
-        "title": "Automated Reservation",
-        "desc": "From confirmation to cancellation—the entire process is automated. No manual intervention required from your side."
+        "title": "Automated Booking",
+        "desc": "From reservation confirmation to cancellation — the entire process is automated. No intervention required."
       }
     ]
   },
   "features": {
-    "title_start": "Why exactly",
+    "title_start": "Why choose",
     "title_end": "UR-OS?"
   },
   "capabilities": {
@@ -52,88 +53,110 @@
       {
         "id": 1,
         "title": "Zones & Tables",
-        "desc": "Interactive floor plan builder. Manage seating, booking and statuses in real-time.",
-        "details": ["Floor builder", "LIVE statuses", "1-click booking"]
+        "desc": "Interactive floor plan builder. Manage table statuses in real-time.",
+        "details": [
+          "Floor builder",
+          "LIVE statuses",
+          "1-click booking"
+        ]
       },
       {
         "id": 2,
         "title": "Integrations",
-        "desc": "Direct connection with Instagram, WhatsApp and Telegram. Booking where it's convenient.",
-        "details": ["Instagram Direct", "WhatsApp Business", "Telegram Bot"]
+        "desc": "Direct connection with Instagram, WhatsApp, and Telegram. Customers book where it's convenient.",
+        "details": [
+          "Instagram Direct",
+          "WhatsApp Business",
+          "Telegram Bot"
+        ]
       },
       {
         "id": 3,
         "title": "Data Protection",
-        "desc": "Your database is completely confidential and secure. We guarantee data safety.",
-        "details": ["Encryption", "Privacy", "Secure Storage"]
+        "desc": "Your database is completely confidential and secure. We guarantee safety.",
+        "details": [
+          "Encryption",
+          "Privacy",
+          "Secure Storage"
+        ]
       },
       {
         "id": 4,
         "title": "AI-Assistants",
         "desc": "Digital employees accepting orders 24/7, reducing staff workload.",
-        "details": ["24/7 orders", "Auto-replies", "Smart queue"]
+        "details": [
+          "24/7 orders",
+          "Auto-replies",
+          "Smart queue"
+        ]
       },
       {
         "id": 5,
         "title": "Bell System",
-        "desc": "Instant notifications in the header and PWA push messages. Never miss an event.",
-        "details": ["Real-time Push", "Sound signal", "Event history"]
+        "desc": "Instant notifications in the header and PWA push messages. You won't miss a single event.",
+        "details": [
+          "Real-time Push",
+          "Sound signal",
+          "Event history"
+        ]
       },
       {
         "id": 6,
         "title": "Mobile Control",
         "desc": "Complete management from your smartphone. Your entire restaurant is in your pocket.",
-        "details": ["Mobility", "Instant reports", "24/7 access"]
+        "details": [
+          "Mobility",
+          "Instant reports",
+          "24/7 access"
+        ]
       }
     ]
   },
-  
   "faq": {
     "title": "Frequently Asked Questions",
     "subtitle": "FAQ",
     "items": [
       {
         "id": 1,
-        "question": "How long does it take to set up the system?",
-        "answer": "The system is cloud-based, so setup takes just 1 day. Our team inputs the menu and trains your staff."
+        "question": "Will the system work if the internet goes down?",
+        "answer": "Yes. Thanks to PWA technology, the system works offline and synchronizes data with the server as soon as the connection is restored."
       },
       {
         "id": 2,
-        "question": "Does the system work if the internet goes down?",
-        "answer": "Yes, thanks to PWA technology, the system can perform key functions offline and synchronizes data as soon as the connection is restored."
+        "question": "Is it hard to train staff?",
+        "answer": "No. The interface is as simple as Instagram. Waiters master it completely within 5 minutes."
       },
       {
         "id": 3,
-        "question": "What is the payment model?",
-        "answer": "We operate on a subscription model (SaaS). You can pay monthly or annually. There are no hidden commissions."
+        "question": "Is customer data secure?",
+        "answer": "Absolutely. We use bank-level encryption. Your data belongs only to you."
       },
       {
         "id": 4,
-        "question": "Is my data secure?",
-        "answer": "Absolutely. We use bank-level encryption (256-bit SSL), and your data is automatically backed up every day."
+        "question": "Which devices does it work on?",
+        "answer": "Any device: iPhone, Android, Tablet, or Laptop. No need to buy special hardware."
       }
     ]
   },
   "footer": {
-  "desc": "The future of the restaurant business starts here. Perfect your management with UR-OS.",
-  "product": "PRODUCT",
-  "contact": "CONTACT",
-  "links": {
-    "why": "Why Us?",
-    "partners": "Partners",
-    "features": "Capabilities",
-    "system": "System",
-    "faq": "FAQ",
-    "cabinet": "Dashboard"
-  },
-  "contact_info": {
-    "call": "CALL US",
-    "follow": "FOLLOW US",
-    "email": "EMAIL US",
-    "location": "LOCATION",
-    "city": "Baku, Azerbaijan"
-  },
-  "copyright": "© 2026 UR-OS. All rights reserved. Made with passion for restaurateurs."
-}
-
+    "desc": "The future of the restaurant business starts here. Perfect your management with UR-OS.",
+    "product": "PRODUCT",
+    "contact": "CONTACT",
+    "links": {
+      "why": "Why Us?",
+      "partners": "Partners",
+      "features": "Capabilities",
+      "system": "System",
+      "faq": "FAQ",
+      "cabinet": "Dashboard"
+    },
+    "contact_info": {
+      "call": "CALL US",
+      "follow": "FOLLOW US",
+      "email": "EMAIL US",
+      "location": "LOCATION",
+      "city": "Baku, Azerbaijan"
+    },
+    "copyright": "© 2026 UR-OS. All rights reserved. Made with passion for restaurateurs."
+  }
 }

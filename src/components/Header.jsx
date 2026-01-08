@@ -1,43 +1,76 @@
 import React, { useState, useEffect } from 'react';
 import '../main.scss';
 import '../styles/component/header.scss';
-import { Link } from 'react-router-dom';
-import heroLogo from '/src/assets/hero-logo.png';
+import { Link, useNavigate, useLocation } from 'react-router-dom'; // useNavigate və useLocation əlavə edildi
+import heroLogo from '../assets/hero-logo.png';
 import { useTranslation } from 'react-i18next';
 import { TfiWorld } from 'react-icons/tfi';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const { t, i18n } = useTranslation();
+
+  // Yönləndirmə üçün hook-lar
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const languages = ["az", "en", "ru"];
 
-  // ✅ 1. SCROLL QADAĞASI: Menyu açılanda body-ni sabitləyir
+  // ✅ Scroll Funksiyası (Əsas hissə budur)
+  const scrollToSection = (id) => {
+    setMenuOpen(false); // Mobil menyunu bağla
+
+    if (location.pathname === '/') {
+      // Əgər artıq Ana səhifədəyiksə, birbaşa sürüşdür
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // Başqa səhifədəyiksə (məs: /sign), ana səhifəyə ID göndər
+      navigate('/', { state: { targetId: id } });
+    }
+  };
+
+  // ✅ 1. SCROLL QADAĞASI
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
     }
-    // Komponentdən çıxanda (unmount) təmizləmə
     return () => {
       document.body.style.overflow = 'auto';
     };
   }, [menuOpen]);
 
-  // LocalStorage-dən dili yükləmək
+  // ✅ 2. DİLİ YÜKLƏMƏK
   useEffect(() => {
     const savedLang = localStorage.getItem('language');
     if (savedLang && languages.includes(savedLang)) {
       i18n.changeLanguage(savedLang);
     }
-  }, [i18n]);
+  }, []);
 
-  // Title dəyişməsi
+  // ✅ 3. TİTLE DƏYİŞMƏSİ
   useEffect(() => {
-    document.title = t('hero.title', 'UR-OS | Biznes Əməliyyat Sistemi');
+    document.title = t('app_title');
   }, [i18n.language, t]);
+
+  // Scroll Header Effekti
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const changeLang = () => {
     setIsTransitioning(true);
@@ -55,27 +88,23 @@ const Header = () => {
     }, 500);
   };
 
-  const [isScrolled, setIsScrolled] = useState(false);
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  // Menyu linklərini rahat idarə etmək üçün massiv
+  const navLinks = [
+    { id: 'partners', key: 'header.partners', label: 'Partnyorlar' },
+    { id: 'why', key: 'header.why', label: 'Niyə biz?' },
+    { id: 'features', key: 'header.features', label: 'İmkanlar' },
+    { id: 'system', key: 'header.system', label: 'Sistem' },
+    { id: 'faq', key: 'header.faq', label: 'Suallar' },
+    { id: 'contact', key: 'header.contact', label: 'Əlaqə' },
+  ];
 
   return (
     <>
       <div className={`page-transition ${isTransitioning ? 'active' : ''}`}></div>
 
-      {/* ✅ 2. KƏNARA KLİKLƏMƏ ÜÇÜN OVERLAY */}
       {menuOpen && (
-        <div 
-          className="mobile-overlay" 
+        <div
+          className="mobile-overlay"
           onClick={() => setMenuOpen(false)}
           style={{
             position: 'fixed',
@@ -84,7 +113,7 @@ const Header = () => {
             width: '100%',
             height: '100vh',
             background: 'rgba(0,0,0,0.5)',
-            zIndex: 9998, // Mobil menyunun z-index-indən (9999) bir az az
+            zIndex: 9998,
             backdropFilter: 'blur(2px)'
           }}
         ></div>
@@ -94,19 +123,28 @@ const Header = () => {
         <div className="container">
           <div className="header-flex">
             <div className="header-left">
-              <Link to="/">
+              {/* Logoya basanda ən yuxarı qalxsın */}
+              <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                 <img src={heroLogo} alt="UR-OS Logo" />
               </Link>
             </div>
 
             <div className="header-center">
               <ul>
-                <li><Link to="/partners">{t("header.partners", "Partnyorlar")}</Link></li>
-                <li><Link to="/why">{t("header.why", "Niyə biz?")}</Link></li>
-                <li><Link to="/features">{t("header.features", "İmkanlar")}</Link></li>
-                <li><Link to="/system">{t("header.system", "Sistem")}</Link></li>
-                <li><Link to="/faq">{t("header.faq", "Suallar")}</Link></li>
-                <li><Link to="/contact">{t("header.contact", "Əlaqə")}</Link></li>
+                {navLinks.map((link) => (
+                  <li key={link.id}>
+                    {/* Link yerinə 'a' teqi işlədirik ki, router işə düşməsin */}
+                    <a 
+                      href={`#${link.id}`} 
+                      onClick={(e) => { 
+                        e.preventDefault(); 
+                        scrollToSection(link.id); 
+                      }}
+                    >
+                      {t(link.key, link.label)}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -134,12 +172,19 @@ const Header = () => {
         </div>
 
         <ul>
-          <li><Link onClick={() => setMenuOpen(false)} to="/partners">{t("header.partners", "Partnyorlar")}</Link></li>
-          <li><Link onClick={() => setMenuOpen(false)} to="/why">{t("header.why", "Niyə biz?")}</Link></li>
-          <li><Link onClick={() => setMenuOpen(false)} to="/features">{t("header.features", "İmkanlar")}</Link></li>
-          <li><Link onClick={() => setMenuOpen(false)} to="/system">{t("header.system", "Sistem")}</Link></li>
-          <li><Link onClick={() => setMenuOpen(false)} to="/faq">{t("header.faq", "Suallar")}</Link></li>
-          <li><Link onClick={() => setMenuOpen(false)} to="/contact">{t("header.contact", "Əlaqə")}</Link></li>
+          {navLinks.map((link) => (
+            <li key={link.id}>
+              <a 
+                href={`#${link.id}`} 
+                onClick={(e) => { 
+                  e.preventDefault(); 
+                  scrollToSection(link.id); 
+                }}
+              >
+                {t(link.key, link.label)}
+              </a>
+            </li>
+          ))}
         </ul>
 
         <div className="mobile-actions">
@@ -156,4 +201,4 @@ const Header = () => {
   );
 };
 
-export default Header;  
+export default Header;

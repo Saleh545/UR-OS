@@ -1,4 +1,6 @@
 {
+  "app_title": "UR-OS | Restoran İdarəetmə Sistemi",
+  
   "hero": {
     "status": "Sistem Statusu: Online",
     "title_part1": "Biznesinizi itkilərdən",
@@ -53,87 +55,109 @@
         "id": 1,
         "title": "Zonalar və Masalar",
         "desc": "Zalların interaktiv konstruktoru. Real vaxtda masaların statuslarını idarə edin.",
-        "details": ["Zalların konstruktoru", "LIVE statuslar", "1 kliklə rezerv"]
+        "details": [
+          "Zalların konstruktoru",
+          "LIVE statuslar",
+          "1 kliklə rezerv"
+        ]
       },
       {
         "id": 2,
         "title": "İnteqrasiyalar",
         "desc": "Instagram, WhatsApp və Telegram ilə birbaşa əlaqə. Müştərilər rahat yerdə rezerv edirlər.",
-        "details": ["Instagram Direct", "WhatsApp Business", "Telegram Bot"]
+        "details": [
+          "Instagram Direct",
+          "WhatsApp Business",
+          "Telegram Bot"
+        ]
       },
       {
         "id": 3,
         "title": "Məlumatların Qorunması",
         "desc": "Məlumat bazanız tamamilə məxfidir və qorunur. Təhlükəsizliyə zəmanət veririk.",
-        "details": ["Şifrələmə", "Məxfilik", "Secure Storage"]
+        "details": [
+          "Şifrələmə",
+          "Məxfilik",
+          "Secure Storage"
+        ]
       },
       {
         "id": 4,
         "title": "AI-Assistentlər",
         "desc": "Sifarişləri 24/7 qəbul edən rəqəmsal əməkdaşlar, personalın yükünü azaldır.",
-        "details": ["24/7 sifarişlər", "Avto-cavablar", "Ağıllı növbə"]
+        "details": [
+          "24/7 sifarişlər",
+          "Avto-cavablar",
+          "Ağıllı növbə"
+        ]
       },
       {
         "id": 5,
         "title": "Bell Sistemi",
         "desc": "Sistemin başlığında ani bildirişlər və PWA push-mesajlar. Heç bir hadisəni qaçırmayacaqsınız.",
-        "details": ["Real-time Push", "Səsli siqnal", "Hadisə tarixçəsi"]
+        "details": [
+          "Real-time Push",
+          "Səsli siqnal",
+          "Hadisə tarixçəsi"
+        ]
       },
       {
         "id": 6,
         "title": "Mobile Control",
         "desc": "Smartfonunuzdan tam idarəetmə imkanı. Bütün restoran cibinizdədir.",
-        "details": ["Mobillik", "Ani hesabatlar", "24/7 giriş"]
+        "details": [
+          "Mobillik",
+          "Ani hesabatlar",
+          "24/7 giriş"
+        ]
       }
     ]
   },
   "faq": {
-  "title": "Tez-tez Soruşulan Suallar",
-  "subtitle": "FAQ",
-  "items": [
-    {
-      "id": 1,
-      "question": "Sistemi quraşdırmaq nə qədər vaxt aparır?",
-      "answer": "Sistem bulud əsaslıdır, ona görə də quraşdırma cəmi 1 gün çəkir. Komandamız menyunu daxil edir və personala təlim keçir."
-    },
-    {
-      "id": 2,
-      "question": "İnternet kəsilərsə sistem işləyirmi?",
-      "answer": "Bəli, PWA texnologiyası sayəsində sistem oflayn rejimdə də əsas funksiyaları yerinə yetirə bilir və internet bərpa olunan kimi məlumatları sinxronizasiya edir."
-    },
-    {
-      "id": 3,
-      "question": "Ödəniş modeli necədir?",
-      "answer": "Biz abunəlik sistemi (SaaS) ilə işləyirik. Aylıq və ya illik ödəniş edə bilərsiniz. Gizli komissiya yoxdur."
-    },
-    {
-      "id": 4,
-      "question": "Məlumatlarım təhlükəsizdirmi?",
-      "answer": "Tamamilə. Biz bank səviyyəsində şifrələmə (256-bit SSL) istifadə edirik və məlumatlarınız hər gün avtomatik nüsxələnir (backup)."
-    }
-  ]
-},
-"footer": {
-  "desc": "Restoran biznesinin gələcəyi burada başlayır. UR-OS ilə idarəetməni mükəmməlləşdirin.",
-  "product": "MƏHSUL",
-  "contact": "ƏLAQƏ",
-  "links": {
-    "why": "Niyə biz?",
-    "partners": "Partnyorlar",
-    "features": "İmkanlar",
-    "system": "Sistem",
-    "faq": "Suallar",
-    "cabinet": "Şəxsi kabinet"
+    "title": "Tez-tez verilən suallar",
+    "subtitle": "FAQ",
+    "items": [
+      {
+        "id": 1,
+        "question": "İnternet kəsilərsə sistem işləyəcək?",
+        "answer": "Bəli. PWA texnologiyası sayəsində sistem oflayn rejimdə işləyir və internet bərpa olunan kimi məlumatları serverlə sinxronlaşdırır."
+      },
+      {
+        "id": 2,
+        "question": "Personalı öyrətmək çətindir?",
+        "answer": "Xeyr. İnterfeys Instagram qədər sadədir. Ofisiantlar 5 dəqiqə ərzində tam mənimsəyirlər."
+      },
+      {
+        "id": 3,
+        "question": "Müştəri məlumatları təhlükəsizdir?",
+        "answer": "Tamamilə. Biz bank səviyyəsində şifrələmə istifadə edirik. Məlumatlarınız yalnız sizə məxsusdur."
+      },
+      {
+        "id": 4,
+        "question": "Hansı cihazlarda işləyir?",
+        "answer": "İstənilən cihazda: iPhone, Android, Tablet və ya Laptop. Xüsusi avadanlıq almağa ehtiyac yoxdur."
+      }
+    ]
   },
-  "contact_info": {
-    "call": "CALL US",
-    "follow": "FOLLOW US",
-    "email": "EMAIL US",
-    "location": "LOCATION",
-    "city": "Baku, Azerbaijan"
-  },
-  "copyright": "© 2026 UR-OS. Bütün hüquqlar qorunur. Restoran sahibləri üçün sevgi ilə hazırlanıb."
-}
-
-
+  "footer": {
+    "desc": "Restoran biznesinin gələcəyi burada başlayır. UR-OS ilə idarəetməni mükəmməlləşdirin.",
+    "product": "MƏHSUL",
+    "contact": "ƏLAQƏ",
+    "links": {
+      "why": "Niyə biz?",
+      "partners": "Partnyorlar",
+      "features": "İmkanlar",
+      "system": "Sistem",
+      "faq": "Suallar",
+      "cabinet": "Şəxsi kabinet"
+    },
+    "contact_info": {
+      "call": "CALL US",
+      "follow": "FOLLOW US",
+      "email": "EMAIL US",
+      "location": "LOCATION",
+      "city": "Baku, Azerbaijan"
+    },
+    "copyright": "© 2026 UR-OS. Bütün hüquqlar qorunur. Restoran sahibləri üçün sevgi ilə hazırlanıb."
+  }
 }

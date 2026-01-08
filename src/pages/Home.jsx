@@ -8,23 +8,29 @@ import { useTranslation } from 'react-i18next';
 import { FaUtensils, FaTelegramPlane, FaUserTimes, FaBookOpen, FaBell, FaSyncAlt } from 'react-icons/fa';
 import { IoLogoInstagram, IoLogoWhatsapp } from 'react-icons/io';
 import { MdDashboard, MdAllInclusive, MdSecurity, MdSmartToy, MdNotificationsActive, MdSmartphone, MdKeyboardArrowDown } from 'react-icons/md';
-import { FiPlus, FiMinus } from 'react-icons/fi'; // ✅ YENİ: FAQ üçün ikonlar
+import { FiPlus, FiMinus } from 'react-icons/fi';
 import Footer from '../components/Footer';
 
 const Home = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   
+  // Title dəyişməsi
+  useEffect(() => {
+    document.title = t('app_title');
+  }, [t, i18n.language]);
+
   // State-lər
   const [activeSlide, setActiveSlide] = useState(0);
-  const [activeId, setActiveId] = useState(null);       // Features və Capabilities üçün
-  const [activeFaqId, setActiveFaqId] = useState(null); // ✅ YENİ: FAQ üçün
+  const [activeId, setActiveId] = useState(null);
+  const [activeFaqId, setActiveFaqId] = useState(null);
 
   // Referanslar
   const gridRef = useRef(null);
   const capabilitiesRef = useRef(null);
-  const faqRef = useRef(null); // ✅ YENİ: FAQ üçün ref
+  const faqRef = useRef(null);
 
   const slides = [
+    // ... (Slaydlar kodun olduğu kimi qalır)
     <div className="mac-window" key="slide1">
       <div className="mac-header"><div className="dots"><span></span><span></span><span></span></div><div className="address-bar">ur-os.admin / CRM & Sources</div></div>
       <div className="mac-body crm-body">
@@ -59,16 +65,13 @@ const Home = () => {
     </div>
   ];
 
-  // ✅ BİRLƏŞDİRİLMİŞ EFFEKT (Slayder + Kənara Klik)
+  // Slayder və Kənara Klik Effekti
   useEffect(() => {
-    // 1. Slayder üçün interval
     const interval = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % slides.length);
     }, 3000);
 
-    // 2. Kənara kliklədikdə bağlanma funksiyası (HAMISI BİR YERDƏ)
     const handleClickOutside = (event) => {
-      // --- Features və Capabilities bağlanması ---
       const isOutsideGrid = gridRef.current && !gridRef.current.contains(event.target);
       const isOutsideCapabilities = capabilitiesRef.current && !capabilitiesRef.current.contains(event.target);
 
@@ -76,7 +79,6 @@ const Home = () => {
         setActiveId(null);
       }
 
-      // --- FAQ bağlanması ---
       const isOutsideFaq = faqRef.current && !faqRef.current.contains(event.target);
       if (isOutsideFaq) {
         setActiveFaqId(null);
@@ -97,23 +99,22 @@ const Home = () => {
     8: <MdAllInclusive />, 9: <MdSecurity />, 10: <MdSmartToy />,
   };
 
-  // Dataları JSON-dan çəkirik
   const featuresData = t('features_section.items', { returnObjects: true });
   const capabilitiesData = t('capabilities.items', { returnObjects: true });
-  const faqData = t('faq.items', { returnObjects: true }); // ✅ YENİ: FAQ datası
+  const faqData = t('faq.items', { returnObjects: true });
   const partners = Array(10).fill({ name: "ChefPub" });
 
   return (
     <>
       <Header />
 
-      {/* HERO SECTION */}
-      <section className="hero">
+      {/* ✅ HERO SECTION (ID: system) */}
+      <section className="hero" id="system">
         <div className="glow-circle left"></div>
         <div className="glow-circle right"></div>
         <div className="container">
           <div className="hero-status">
-            <div className="badge"><span className="dot"></span> System Status: Online</div>
+            <div className="badge"><span className="dot"></span> {t('hero.status')}</div>
           </div>
           <div className="hero-flex">
             <div className="hero-content">
@@ -137,10 +138,10 @@ const Home = () => {
         </div>
       </section>
 
-      {/* PARTNERS SECTION */}
-      <section className="partners-strip">
+      {/* ✅ PARTNERS SECTION (ID: partners) */}
+      <section className="partners-strip" id="partners">
         <div className="container">
-          <h5 className="strip-title">BİZİ SEÇƏN MƏKANLAR</h5>
+          <h5 className="strip-title">{t('header.partners')}</h5>
           <div className="slider">
             <div className="slide-track">
               {[...partners, ...partners].map((item, index) => (
@@ -153,8 +154,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* WHY UR-OS SECTION */}
-      <section className="features-section">
+      {/* ✅ WHY UR-OS SECTION (ID: why) */}
+      <section className="features-section" id="why">
         <div className="container">
           <div className="section-header">
             <span className="subtitle">WHY UR-OS?</span>
@@ -183,8 +184,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* CAPABILITIES SECTION */}
-      <section className="capabilities-section">
+      {/* ✅ CAPABILITIES SECTION (ID: features) */}
+      <section className="capabilities-section" id="features">
         <div className="container">
           <div className="section-header">
             <span className="subtitle">{t('capabilities.subtitle')}</span>
@@ -212,20 +213,13 @@ const Home = () => {
                     <div className="details-content">
                       <div className="divider"></div>
 
-                      {/* İnteqrasiyalar (ID: 2) üçün xüsusi görünüş */}
                       {item.id === 2 ? (
                         <div className="supported-platforms">
                           <span className="platform-label">SUPPORTED BY META</span>
                           <div className="platform-list">
-                            <div className="platform-item instagram">
-                              <IoLogoInstagram /> <span>Instagram</span>
-                            </div>
-                            <div className="platform-item whatsapp">
-                              <IoLogoWhatsapp /> <span>WhatsApp</span>
-                            </div>
-                            <div className="platform-item telegram">
-                              <FaTelegramPlane /> <span>Telegram</span>
-                            </div>
+                            <div className="platform-item instagram"><IoLogoInstagram /> <span>Instagram</span></div>
+                            <div className="platform-item whatsapp"><IoLogoWhatsapp /> <span>WhatsApp</span></div>
+                            <div className="platform-item telegram"><FaTelegramPlane /> <span>Telegram</span></div>
                           </div>
                         </div>
                       ) : (
@@ -235,7 +229,6 @@ const Home = () => {
                           ))}
                         </ul>
                       )}
-
                     </div>
                   </div>
                 </div>
@@ -245,8 +238,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ✅ FAQ SECTION (YENİLƏNMİŞ) */}
-      <section className="faq-section">
+      {/* ✅ FAQ SECTION (ID: faq) */}
+      <section className="faq-section" id="faq">
         <div className="container">
           <div className="section-header">
             <span className="subtitle">{t('faq.subtitle')}</span>
@@ -281,7 +274,11 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <Footer/>
+      
+      {/* ✅ CONTACT ID FOOTER ÜÇÜN */}
+      <div id="contact">
+        <Footer/>
+      </div>
     </>
   );
 }

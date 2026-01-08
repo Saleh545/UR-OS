@@ -38,29 +38,29 @@ const Footer = () => {
             <h4 className="column-title">{t('footer.contact')}</h4>
             <div className="contact-grid">
 
-              <a href="tel:+994703600100" className="contact-card">
+              <Link to="tel:+994703600100" className="contact-card">
                 <div className="icon"><FiPhone /></div>
                 <div className="info">
                   <span>{t('footer.contact_info.call')}</span>
                   <h5>+994 70 360 01 00</h5>
                 </div>
-              </a>
+              </Link>
 
-              <a href="https://instagram.com/ur.os.az" target="_blank" rel="noreferrer" className="contact-card">
+              <Link to="https://instagram.com/ur.os.az" target="_blank" rel="noreferrer" className="contact-card">
                 <div className="icon"><FiInstagram /></div>
                 <div className="info">
                   <span>{t('footer.contact_info.follow')}</span>
                   <h5>@ur.os.az</h5>
                 </div>
-              </a>
+              </Link>
 
-              <a href="mailto:uros@outlook.com" className="contact-card">
+              <Link to="mailto:uros@outlook.com" className="contact-card">
                 <div className="icon"><FiMail /></div>
                 <div className="info">
                   <span>{t('footer.contact_info.email')}</span>
                   <h5>uros@outlook.com</h5>
                 </div>
-              </a>
+              </Link>
 
               <div className="contact-card">
                 <div className="icon"><FiMapPin /></div>
