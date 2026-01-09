@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../main.scss';
 import '../styles/component/header.scss';
-import { Link, useNavigate, useLocation } from 'react-router-dom'; // useNavigate və useLocation əlavə edildi
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import heroLogo from '../assets/hero-logo.png';
 import { useTranslation } from 'react-i18next';
 import { TfiWorld } from 'react-icons/tfi';
@@ -12,29 +12,31 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { t, i18n } = useTranslation();
 
-  // Yönləndirmə üçün hook-lar
   const navigate = useNavigate();
   const location = useLocation();
 
   const languages = ["az", "en", "ru"];
 
-  // ✅ Scroll Funksiyası (Əsas hissə budur)
   const scrollToSection = (id) => {
-    setMenuOpen(false); // Mobil menyunu bağla
+    setMenuOpen(false);
 
     if (location.pathname === '/') {
-      // Əgər artıq Ana səhifədəyiksə, birbaşa sürüşdür
       const element = document.getElementById(id);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        const headerOffset = 80; // Header hündürlüyü qədər boşluq (istəyə görə dəyişə bilərsən)
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
       }
     } else {
-      // Başqa səhifədəyiksə (məs: /sign), ana səhifəyə ID göndər
       navigate('/', { state: { targetId: id } });
     }
   };
 
-  // ✅ 1. SCROLL QADAĞASI
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = 'hidden';
@@ -46,7 +48,6 @@ const Header = () => {
     };
   }, [menuOpen]);
 
-  // ✅ 2. DİLİ YÜKLƏMƏK
   useEffect(() => {
     const savedLang = localStorage.getItem('language');
     if (savedLang && languages.includes(savedLang)) {
@@ -54,12 +55,10 @@ const Header = () => {
     }
   }, []);
 
-  // ✅ 3. TİTLE DƏYİŞMƏSİ
   useEffect(() => {
     document.title = t('app_title');
   }, [i18n.language, t]);
 
-  // Scroll Header Effekti
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -88,7 +87,6 @@ const Header = () => {
     }, 500);
   };
 
-  // Menyu linklərini rahat idarə etmək üçün massiv
   const navLinks = [
     { id: 'partners', key: 'header.partners', label: 'Partnyorlar' },
     { id: 'why', key: 'header.why', label: 'Niyə biz?' },
@@ -123,7 +121,6 @@ const Header = () => {
         <div className="container">
           <div className="header-flex">
             <div className="header-left">
-              {/* Logoya basanda ən yuxarı qalxsın */}
               <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                 <img src={heroLogo} alt="UR-OS Logo" />
               </Link>
@@ -133,16 +130,16 @@ const Header = () => {
               <ul>
                 {navLinks.map((link) => (
                   <li key={link.id}>
-                    {/* Link yerinə 'a' teqi işlədirik ki, router işə düşməsin */}
-                    <a 
-                      href={`#${link.id}`} 
-                      onClick={(e) => { 
-                        e.preventDefault(); 
-                        scrollToSection(link.id); 
+                    {/* DƏYİŞİKLİK BURADADIR: <a> əvəzinə <Link> */}
+                    <Link
+                      to="/" // Həmişə ana səhifəyə işarə edir
+                      onClick={(e) => {
+                        e.preventDefault(); // Link-in standart işini dayandırırıq
+                        scrollToSection(link.id); // Öz funksiyamızı işlədirik
                       }}
                     >
                       {t(link.key, link.label)}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -174,15 +171,16 @@ const Header = () => {
         <ul>
           {navLinks.map((link) => (
             <li key={link.id}>
-              <a 
-                href={`#${link.id}`} 
-                onClick={(e) => { 
-                  e.preventDefault(); 
-                  scrollToSection(link.id); 
+              {/* DƏYİŞİKLİK BURADADIR: Mobil menyuda da <a> əvəzinə <Link> */}
+              <Link
+                to="/"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(link.id);
                 }}
               >
                 {t(link.key, link.label)}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
