@@ -151,7 +151,7 @@ const Header = () => {
                 {(i18n.language || "az").toUpperCase()}
               </button>
 
-              <Link to="/sign" className="login-btn">
+              <Link to="/login" className="login-btn">
                 {t("header.cabinet", "Şəxsi kabinet")} <span>→</span>
               </Link>
             </div>
@@ -190,7 +190,7 @@ const Header = () => {
             <TfiWorld />
             {(i18n.language || "az").toUpperCase()}
           </button>
-          <Link to="/sign" className="login-btn" onClick={() => setMenuOpen(false)}>
+          <Link to="/login" className="login-btn" onClick={() => setMenuOpen(false)}>
             {t("header.cabinet", "Şəxsi kabinet")} →
           </Link>
         </div>

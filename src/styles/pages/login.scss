@@ -1,0 +1,421 @@
+// --- Dəyişənlər (Variables) ---
+$bg-dark: #0f172a; // Əsas fon
+$bg-card: #1e293b; // Kartlar və inputlar üçün
+$primary-blue: #3b82f6; // UR-OS mavisi
+$text-white: #ffffff;
+$text-gray: #94a3b8;
+$success-green: #10b981;
+$bg-success-dark: rgba(16, 185, 129, 0.1);
+$file-orange: #f59e0b;
+$border-color: #334155;
+
+// --- Mixins ---
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// --- Ümumi Reset ---
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+// --- Animasiyalar ---
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background-color: $bg-dark;
+  color: $text-white;
+
+  // --- SOL TƏRƏF (Dizayn & Animasiya) ---
+  .login-left {
+    width: 50%;
+    padding: 3rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    background: radial-gradient(circle at top left, #1e293b 0%, $bg-dark 60%);
+    overflow: hidden;
+
+    .brand-logo {
+      position: absolute;
+      top: 3rem;
+      left: 4rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      
+      .blue { color: $primary-blue; }
+    }
+
+    .hero-content {
+      max-width: 500px;
+      z-index: 2;
+
+      .hero-title {
+        font-size: 3.5rem;
+        line-height: 1.1;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        
+        .blue-text { color: $primary-blue; }
+      }
+
+      .hero-subtitle {
+        color: $text-gray;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 3rem;
+      }
+    }
+
+    // Çat Stili
+    .chat-simulation {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      font-size: 0.95rem;
+      min-height: 280px; // Layout hoppanmasın deyə minimum hündürlük
+
+      .chat-message {
+        display: flex;
+        align-items: flex-end;
+        gap: 10px;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+
+        &.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .avatar {
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          background: $primary-blue;
+          @include flex-center;
+          font-size: 1.2rem;
+          color: white;
+          flex-shrink: 0; // Avatar sıxılmasın
+        }
+
+        .bubble {
+          padding: 12px 18px;
+          border-radius: 18px;
+          max-width: 80%;
+          line-height: 1.4;
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+          min-width: 20px; // Boş olanda yox olmasın
+          min-height: 44px; // Hündürlük qorunsun
+          display: flex;
+          align-items: center;
+        }
+
+        &.bot {
+          .bubble {
+            background: $bg-card;
+            border-top-left-radius: 4px;
+            color: $text-white;
+            border: 1px solid $border-color;
+          }
+        }
+
+        &.user {
+          justify-content: flex-end;
+          .bubble {
+            background: $primary-blue;
+            border-bottom-right-radius: 4px;
+            color: white;
+          }
+        }
+      }
+
+      // Fayl və Alert bölməsi
+      .chat-extras {
+        margin-left: 46px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.5s ease;
+
+        &.show {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        // ... (File Card və Success Alert stilləri əvvəlki koddakı kimi qalır) ...
+        .file-card {
+          background: $bg-card;
+          border: 1px solid $border-color;
+          border-radius: 12px;
+          padding: 10px 14px;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          width: fit-content;
+          transition: transform 0.2s;
+          cursor: pointer;
+
+          &:hover {
+            transform: translateY(-2px);
+            border-color: $file-orange;
+          }
+
+          .icon-box {
+            width: 40px;
+            height: 40px;
+            background: $file-orange;
+            border-radius: 8px;
+            @include flex-center;
+            font-size: 1.2rem;
+            color: white;
+          }
+
+          .file-info {
+            display: flex;
+            flex-direction: column;
+            .file-name { font-weight: 600; font-size: 0.9rem; }
+            .file-meta { font-size: 0.75rem; color: $text-gray; }
+          }
+          
+          .arrow-icon { color: $text-gray; margin-left: 10px;}
+        }
+
+        .success-alert {
+          background: rgba($success-green, 0.1);
+          border: 1px solid rgba($success-green, 0.3);
+          border-radius: 12px;
+          padding: 12px 16px;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          width: fit-content;
+
+          .check-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba($success-green, 0.2);
+            color: $success-green;
+            border: 2px solid $success-green;
+            @include flex-center;
+            font-size: 0.9rem;
+          }
+
+          .alert-text {
+            display: flex;
+            flex-direction: column;
+            .alert-title {
+              color: $success-green;
+              font-weight: 800;
+              font-size: 0.85rem;
+              letter-spacing: 0.5px;
+              text-transform: uppercase;
+            }
+            .alert-sub {
+              font-size: 0.85rem;
+              color: $text-white;
+              margin-top: 2px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // --- SAĞ TƏRƏF (Forma) ---
+  .login-right {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $bg-dark;
+    padding: 2rem;
+
+    .form-wrapper {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .mobile-header {
+      display: none; // Desktopda gizlət
+      margin-bottom: 2rem;
+      .back-link { color: $text-gray; cursor: pointer; font-size: 0.9rem;}
+    }
+
+    .form-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      .blue { color: $primary-blue; }
+    }
+
+    .form-subtitle {
+      color: $text-gray;
+      margin-bottom: 2.5rem;
+      font-size: 0.95rem;
+    }
+
+    .login-form {
+      .form-group {
+        margin-bottom: 1.5rem;
+
+        label {
+          display: block;
+          margin-bottom: 0.5rem;
+          font-size: 0.9rem;
+          color: $text-gray;
+        }
+
+        .form-input {
+          width: 100%;
+          padding: 12px 16px;
+          background: $bg-card;
+          border: 1px solid $border-color;
+          border-radius: 8px;
+          color: white;
+          font-size: 1rem;
+          outline: none;
+          transition: border-color 0.2s;
+
+          &:focus {
+            border-color: $primary-blue;
+          }
+
+          &::placeholder {
+            color: rgba($text-gray, 0.5);
+          }
+        }
+
+        .password-input-wrapper {
+          position: relative;
+          
+          .eye-btn {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: $text-gray;
+            cursor: pointer;
+            font-size: 1.2rem;
+            
+            &:hover { color: white; }
+          }
+        }
+      }
+
+      .form-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        font-size: 0.9rem;
+
+        .checkbox-container {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          cursor: pointer;
+          color: $text-gray;
+          
+          input { accent-color: $primary-blue; }
+        }
+
+        .forgot-link {
+          color: $primary-blue;
+          text-decoration: none;
+          &:hover { text-decoration: underline; }
+        }
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 14px;
+        background: $primary-blue;
+        border: none;
+        border-radius: 8px;
+        color: white;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        @include flex-center;
+        gap: 8px;
+        transition: background 0.2s;
+
+        &:hover {
+          background: darken($primary-blue, 5%);
+        }
+        
+        .btn-icon { font-size: 1.2rem; }
+      }
+
+      .footer-text {
+        text-align: center;
+        margin-top: 1.5rem;
+        color: $text-gray;
+        font-size: 0.9rem;
+        
+        a {
+          color: $primary-blue;
+          text-decoration: none;
+          font-weight: 500;
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}
+
+// --- RESPONSIVE DIZAYN (Mobile & Tablet) ---
+@media (max-width: 900px) {
+  .login-container {
+    flex-direction: column;
+
+    .login-left {
+      display: none; // Mobildə sol tərəfi (çatı) gizlədirik ki, forma önə çıxsın
+      // Və ya istəsəniz order: 2 verib aşağı ata bilərsiz
+    }
+
+    .login-right {
+      width: 100%;
+      height: 100vh;
+      align-items: flex-start;
+      padding-top: 4rem;
+
+      .mobile-header {
+        display: block; // Mobildə "Geri" düyməsini göstər
+      }
+    }
+  }
+}
+
+// Tablet ölçüsündə (biraz böyük) şriftləri kiçiltmək
+@media (min-width: 901px) and (max-width: 1200px) {
+  .login-left {
+    padding: 2rem;
+    .hero-content .hero-title { font-size: 2.5rem; }
+  }
+}

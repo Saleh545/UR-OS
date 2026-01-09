@@ -17,7 +17,7 @@ const Footer = () => {
 
           {/* 1. SOL: Logo və Təsvir */}
           <div className="footer-brand">
-            <Link><img src={logo} alt="" /></Link>            <p className="desc">{t('footer.desc')}</p>
+            <Link to="/"><img src={logo} alt="" /></Link>            <p className="desc">{t('footer.desc')}</p>
           </div>
 
           {/* 2. ORTA: Məhsul Linkləri */}
