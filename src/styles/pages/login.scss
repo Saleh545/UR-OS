@@ -92,21 +92,24 @@ $border-color: #334155;
       flex-direction: column;
       gap: 1rem;
       font-size: 0.95rem;
-      min-height: 280px; // Layout hoppanmasın deyə minimum hündürlük
+      min-height: 280px;
 
+      // Mesajlar (Bot/User)
       .chat-message {
         display: flex;
         align-items: flex-end;
         gap: 10px;
         opacity: 0;
         transform: translateY(10px);
-        transition: opacity 0.3s ease, transform 0.3s ease;
+        // Resetlənəndə (show class silinəndə) yavaş-yavaş yox olsun
+        transition: opacity 0.5s ease, transform 0.5s ease; 
 
         &.visible {
           opacity: 1;
           transform: translateY(0);
         }
 
+        // ... (Avatar və Bubble stilləri eynidir) ...
         .avatar {
           width: 36px;
           height: 36px;
@@ -115,7 +118,7 @@ $border-color: #334155;
           @include flex-center;
           font-size: 1.2rem;
           color: white;
-          flex-shrink: 0; // Avatar sıxılmasın
+          flex-shrink: 0;
         }
 
         .bubble {
@@ -124,19 +127,17 @@ $border-color: #334155;
           max-width: 80%;
           line-height: 1.4;
           box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-          min-width: 20px; // Boş olanda yox olmasın
-          min-height: 44px; // Hündürlük qorunsun
+          min-width: 20px;
+          min-height: 44px;
           display: flex;
           align-items: center;
         }
-
-        &.bot {
-          .bubble {
+        
+        &.bot .bubble {
             background: $bg-card;
             border-top-left-radius: 4px;
             color: $text-white;
             border: 1px solid $border-color;
-          }
         }
 
         &.user {
@@ -149,22 +150,19 @@ $border-color: #334155;
         }
       }
 
-      // Fayl və Alert bölməsi
-      .chat-extras {
-        margin-left: 46px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+      // --- YENİ HİSSƏ: Tək-tək gələn elementlər ---
+      .chat-extra-item {
+        margin-left: 46px; // Avatar hizası
         opacity: 0;
         transform: translateY(10px);
         transition: all 0.5s ease;
-
+        
         &.show {
           opacity: 1;
           transform: translateY(0);
         }
 
-        // ... (File Card və Success Alert stilləri əvvəlki koddakı kimi qalır) ...
+        // File Card Stili
         .file-card {
           background: $bg-card;
           border: 1px solid $border-color;
@@ -174,14 +172,8 @@ $border-color: #334155;
           align-items: center;
           gap: 12px;
           width: fit-content;
-          transition: transform 0.2s;
           cursor: pointer;
-
-          &:hover {
-            transform: translateY(-2px);
-            border-color: $file-orange;
-          }
-
+          
           .icon-box {
             width: 40px;
             height: 40px;
@@ -202,6 +194,7 @@ $border-color: #334155;
           .arrow-icon { color: $text-gray; margin-left: 10px;}
         }
 
+        // Success Alert Stili
         .success-alert {
           background: rgba($success-green, 0.1);
           border: 1px solid rgba($success-green, 0.3);
