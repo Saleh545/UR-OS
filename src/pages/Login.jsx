@@ -94,7 +94,7 @@ const Login = () => {
         if (step === 6) timer = setTimeout(() => setStep(0), 4000); // Bitdi -> Reset
 
         return () => clearTimeout(timer);
-    }, [step, isTransitioning]); // isTransitioning bura əlavə edildi
+    }, [step, isTransitioning]);
 
     return (
         <div className="login-container">
@@ -109,16 +109,13 @@ const Login = () => {
                 
                 <div className="hero-text-fixed">
                     <h1 className="hero-title">
-                        {t('hero.title_part1')} <br />
-                        <span className="blue-text">{t('hero.title_highlight')}</span>
+                        {t('loginhero.title_part1')} <br />
+                        <span className="blue-text">{t('loginhero.title_highlight')}</span>
                     </h1>
-                    <p className="hero-subtitle">{t('hero.subtitle')}</p>
+                    <p className="loginhero-subtitle">{t('loginhero.subtitle')}</p>
                 </div>
 
-                {/* VACİB: key={i18n.language} 
-                    Bu kod React-a deyir ki, dil dəyişəndə bu bloku TAMAMİLƏ YENİLƏ.
-                    Beləliklə köhnə dildəki yazılar qalmır və animasiya təzədən başlayır.
-                */}
+                {/* VACİB: key={i18n.language} - Dil dəyişəndə animasiyanı yeniləyir */}
                 <div className="chat-simulation" key={i18n.language}>
                     
                     {/* Mesaj 1: Bot */}
@@ -221,13 +218,14 @@ const Login = () => {
                             <label className="checkbox-container">
                                 <input type="checkbox" /> <span className="checkmark"></span> {t('login.remember_me')}
                             </label>
-                            <a href="#" className="forgot-link">{t('login.forgot_password')}</a>
+                            {/* DƏYİŞİKLİK: a href əvəzinə Link (əgər route varsa) və ya sadəcə # */}
+                            <Link to="/forgot-password" className="forgot-link">{t('login.forgot_password')}</Link>
                         </div>
                         <button type="submit" className="submit-btn">
                             {t('login.login_btn')} <RiArrowRightLine className="btn-icon" />
                         </button>
                         <p className="footer-text">
-                            {t('login.footer_text')} <a href="#">{t('login.contact_us')}</a>
+                            {t('login.footer_text')} <Link to="/contact">{t('login.contact_us')}</Link>
                         </p>
                     </form>
                 </div>
