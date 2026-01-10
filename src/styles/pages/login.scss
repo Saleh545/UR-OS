@@ -84,14 +84,15 @@ $success-green: #10b981;
         .hero-text-fixed {
             position: absolute;
             top: 12%;
-            left: 3rem; // Paddingə uyğun
+            left: 6rem; // Paddingə uyğun
             right: 3rem;
             z-index: 10;
-            max-width: 550px; // Maksimum en azaldıldı
+            // max-width: 550px; // Maksimum en azaldıldı
 
             display: flex;
             flex-direction: column;
             align-items: center;
+            text-align: left !important;
 
             .hero-title {
                 // Başlıq kiçildildi: 3.5rem -> 2.8rem
@@ -100,6 +101,8 @@ $success-green: #10b981;
                 font-weight: 800;
                 margin-bottom: 1rem; // Boşluq azaldıldı
                 letter-spacing: -1px;
+                width: 100%;
+                text-align: center;
 
                 .blue-text {
                     color: $primary-blue;
@@ -108,10 +111,10 @@ $success-green: #10b981;
 
             .hero-subtitle {
                 color: $text-gray;
-                // Alt başlıq kiçildildi: 1.1rem -> 1rem
+                width: 100%;
                 font-size: 1rem;
                 line-height: 1.5;
-                max-width: 450px;
+                text-align: center;
             }
         }
 

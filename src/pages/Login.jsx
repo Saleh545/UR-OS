@@ -7,20 +7,24 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import { useTranslation } from 'react-i18next';
 
-// --- TYPEWRITER (Eyni qalır) ---
+// --- TYPEWRITER (SABİT) ---
 const Typewriter = ({ text, delay = 40, startTyping, onComplete }) => {
     const [currentText, setCurrentText] = useState('');
     const indexRef = useRef(0);
     const timerRef = useRef(null);
 
     useEffect(() => {
+        // Əgər yazmağa icazə yoxdursa, mətni təmizlə
         if (!startTyping) {
             setCurrentText('');
             indexRef.current = 0;
             if (timerRef.current) clearInterval(timerRef.current);
             return;
         }
+
+        // Əgər mətn artıq yazılıbsa, dayan
         if (indexRef.current >= text.length) return;
+
         timerRef.current = setInterval(() => {
             const idx = indexRef.current;
             if (idx < text.length) {
@@ -31,6 +35,7 @@ const Typewriter = ({ text, delay = 40, startTyping, onComplete }) => {
                 if (onComplete) onComplete();
             }
         }, delay);
+
         return () => clearInterval(timerRef.current);
     }, [text, delay, startTyping]);
 
@@ -40,34 +45,68 @@ const Typewriter = ({ text, delay = 40, startTyping, onComplete }) => {
 // --- LOGIN COMPONENT ---
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
-    const [step, setStep] = useState(0);
+    const [step, setStep] = useState(0); // Animasiya addımları
+    const [isTransitioning, setIsTransitioning] = useState(false); // Keçid effekti
+
     const { t, i18n } = useTranslation();
     const languages = ["az", "en", "ru"];
 
+    // Yaddaşdan dili oxumaq
+    useEffect(() => {
+        const savedLang = localStorage.getItem('language');
+        if (savedLang && languages.includes(savedLang)) {
+            i18n.changeLanguage(savedLang);
+        }
+    }, []);
+
+    // --- DİL DƏYİŞMƏ VƏ ANİMASİYA RESETLƏMƏ ---
     const changeLang = () => {
-        const currentLang = i18n.language || 'az';
-        const currentIndex = languages.indexOf(currentLang);
-        const nextLang = languages[(currentIndex + 1) % languages.length];
-        i18n.changeLanguage(nextLang);
-        localStorage.setItem('language', nextLang);
+        setIsTransitioning(true); // 1. Ekranı qaralt (Transition başla)
+
+        setTimeout(() => {
+            // 2. Dili dəyiş
+            const currentLang = i18n.language || 'az';
+            const currentIndex = languages.indexOf(currentLang);
+            const nextLang = languages[(currentIndex + 1) % languages.length];
+
+            i18n.changeLanguage(nextLang);
+            localStorage.setItem('language', nextLang);
+
+            // 3. VACİB: Animasiyanı sıfırla (Reset)
+            setStep(0); 
+
+            // 4. Ekranı aç
+            setTimeout(() => {
+                setIsTransitioning(false);
+            }, 200);
+        }, 500);
     };
 
+    // Animasiya Ardıcıllığı (Loop)
     useEffect(() => {
         let timer;
-        if (step === 0) timer = setTimeout(() => setStep(1), 800);
-        if (step === 4) timer = setTimeout(() => setStep(5), 1200);
-        if (step === 5) timer = setTimeout(() => setStep(6), 1000);
-        if (step === 6) timer = setTimeout(() => setStep(0), 4000);
+        // Əgər keçid effekti aktivdirsə, animasiyanı dayandır
+        if (isTransitioning) return;
+
+        if (step === 0) timer = setTimeout(() => setStep(1), 800);  // Başla
+        if (step === 4) timer = setTimeout(() => setStep(5), 1200); // Fayl -> Alert
+        if (step === 5) timer = setTimeout(() => setStep(6), 1000); // Alert -> Bitdi
+        if (step === 6) timer = setTimeout(() => setStep(0), 4000); // Bitdi -> Reset
+
         return () => clearTimeout(timer);
-    }, [step]);
+    }, [step, isTransitioning]); // isTransitioning bura əlavə edildi
 
     return (
         <div className="login-container">
-            {/* --- SOL TƏRƏF (Eyni qalır) --- */}
+            {/* Keçid Effekti */}
+            <div className={`page-transition ${isTransitioning ? 'active' : ''}`}></div>
+
+            {/* --- SOL TƏRƏF --- */}
             <div className="login-left">
                 <div className="brand-logo">
                     <Link to="/"><img src={logo} alt="UR-OS Logo" /></Link>
                 </div>
+                
                 <div className="hero-text-fixed">
                     <h1 className="hero-title">
                         {t('hero.title_part1')} <br />
@@ -75,29 +114,68 @@ const Login = () => {
                     </h1>
                     <p className="hero-subtitle">{t('hero.subtitle')}</p>
                 </div>
-                <div className="chat-simulation">
+
+                {/* VACİB: key={i18n.language} 
+                    Bu kod React-a deyir ki, dil dəyişəndə bu bloku TAMAMİLƏ YENİLƏ.
+                    Beləliklə köhnə dildəki yazılar qalmır və animasiya təzədən başlayır.
+                */}
+                <div className="chat-simulation" key={i18n.language}>
+                    
+                    {/* Mesaj 1: Bot */}
                     <div className={`chat-message bot ${step >= 1 ? 'visible' : ''}`}>
                         <div className="avatar"><RiRobot2Line /></div>
-                        <div className="bubble"><Typewriter text={t('chat.bot_greeting')} startTyping={step >= 1} onComplete={() => setTimeout(() => setStep(2), 1000)} /></div>
+                        <div className="bubble">
+                            <Typewriter 
+                                text={t('chat.bot_greeting')} 
+                                startTyping={step >= 1} 
+                                onComplete={() => !isTransitioning && setTimeout(() => setStep(2), 1000)} 
+                            />
+                        </div>
                     </div>
+
+                    {/* Mesaj 2: User */}
                     <div className={`chat-message user ${step >= 2 ? 'visible' : ''}`}>
-                        <div className="bubble"><Typewriter text={t('chat.user_reply')} startTyping={step >= 2} onComplete={() => setTimeout(() => setStep(3), 1000)} /></div>
+                        <div className="bubble">
+                            <Typewriter 
+                                text={t('chat.user_reply')} 
+                                startTyping={step >= 2} 
+                                onComplete={() => !isTransitioning && setTimeout(() => setStep(3), 1000)} 
+                            />
+                        </div>
                     </div>
+
+                    {/* Mesaj 3: Bot */}
                     <div className={`chat-message bot ${step >= 3 ? 'visible' : ''}`}>
                         <div className="avatar"><RiRobot2Line /></div>
-                        <div className="bubble"><Typewriter text={t('chat.bot_menu')} startTyping={step >= 3} onComplete={() => setTimeout(() => setStep(4), 800)} /></div>
+                        <div className="bubble">
+                            <Typewriter 
+                                text={t('chat.bot_menu')} 
+                                startTyping={step >= 3} 
+                                onComplete={() => !isTransitioning && setTimeout(() => setStep(4), 800)} 
+                            />
+                        </div>
                     </div>
+
+                    {/* Mesaj 4: Fayl */}
                     <div className={`chat-extra-item file ${step >= 4 ? 'show' : ''}`}>
                         <div className="file-card">
                             <div className="icon-box orange"><RiFileTextLine /></div>
-                            <div className="file-info"><span className="file-name">{t('chat.file_name')}</span><span className="file-meta">{t('chat.file_meta')}</span></div>
+                            <div className="file-info">
+                                <span className="file-name">{t('chat.file_name')}</span>
+                                <span className="file-meta">{t('chat.file_meta')}</span>
+                            </div>
                             <RiArrowRightLine className="arrow-icon" />
                         </div>
                     </div>
+
+                    {/* Mesaj 5: Alert */}
                     <div className={`chat-extra-item alert ${step >= 5 ? 'show' : ''}`}>
                         <div className="success-alert">
                             <div className="check-icon"><RiCheckLine /></div>
-                            <div className="alert-text"><span className="alert-title">{t('chat.alert_title')}</span><span className="alert-sub">{t('chat.alert_sub')}</span></div>
+                            <div className="alert-text">
+                                <span className="alert-title">{t('chat.alert_title')}</span>
+                                <span className="alert-sub">{t('chat.alert_sub')}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -106,7 +184,6 @@ const Login = () => {
             {/* --- SAĞ TƏRƏF --- */}
             <div className="login-right">
                 
-                {/* Dil Düyməsi */}
                 <div className="lang-switcher-wrapper">
                     <button className="lang-btn" onClick={changeLang}>
                         <TfiWorld />
@@ -115,8 +192,6 @@ const Login = () => {
                 </div>
 
                 <div className="form-wrapper">
-                    
-                    {/* YENİ: MOBİL LOQO (Yalnız mobildə görünəcək) */}
                     <div className="mobile-logo">
                         <Link to="/"><img src={logo} alt="UR-OS Logo" /></Link>
                     </div>
