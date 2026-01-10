@@ -114,7 +114,7 @@ const Home = () => {
         <div className="glow-circle right"></div>
         <div className="container">
           <div className="hero-status">
-            <div className="badge"><span className="dot"></span> {t('hero.status')}</div>
+            <div className="badge"><span className="dot"></span> System Status: Online</div>
           </div>
           <div className="hero-flex">
             <div className="hero-content">

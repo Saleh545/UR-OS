@@ -80,8 +80,8 @@ const Login = () => {
                 </div>
                 <div className="hero-text-fixed">
                     <h1 className="hero-title">
-                        {t('hero.title_part1')} <br />
-                        <span className="blue-text">{t('hero.title_highlight')}</span>
+                        {t('loginhero.title_part1')} <br />
+                        <span className="blue-text">{t('loginhero.title_highlight')}</span>
                     </h1>
                     <p className="hero-subtitle">
                         {t('hero.subtitle')}
