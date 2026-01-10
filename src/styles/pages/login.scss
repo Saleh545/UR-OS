@@ -285,7 +285,7 @@ $success-green: #10b981;
     }
 
     // --- SAĞ TƏRƏF (FORMA) ---
-    .login-right {
+   .login-right {
         width: 50%;
         height: 100%;
         display: flex;
@@ -293,167 +293,9 @@ $success-green: #10b981;
         justify-content: center;
         background: #0b1120;
         border-left: 1px solid rgba(51, 65, 85, 0.5);
+        position: relative; 
 
-        .form-wrapper {
-            width: 100%;
-            max-width: 500px; // Forma bir az daraldı
-            padding: 2rem; // Ümumi padding
-
-            .form-title {
-                // Başlıq kiçildildi: 2.2rem -> 1.8rem
-                font-size: 1.8rem;
-                font-weight: 700;
-                margin-bottom: 0.5rem;
-
-                .blue {
-                    color: $primary-blue;
-                }
-
-                .wave-emoji {
-                    display: inline-block;
-                    transform-origin: 70% 70%;
-                    animation: wave 2.5s infinite;
-                    margin-left: 10px;
-                }
-            }
-
-            .form-subtitle {
-                color: $text-gray;
-                // Alt boşluq azaldıldı: 3rem -> 2rem
-                margin-bottom: 2rem;
-                // Şrift kiçildildi: 1rem -> 0.95rem
-                font-size: 0.95rem;
-            }
-
-            .login-form {
-                .form-group {
-                    margin-bottom: 1.2rem; // Qruplar arası məsafə azaldıldı
-
-                    label {
-                        display: block;
-                        margin-bottom: 0.5rem;
-                        color: $text-gray;
-                        // Label kiçildildi: 0.9rem -> 0.85rem
-                        font-size: 0.85rem;
-                    }
-
-                    .form-input {
-                        width: 100%;
-                        // Inputlar daha yığcam oldu: 14px 16px -> 12px 14px
-                        padding: 12px 14px;
-                        background: #151e2e;
-                        border: 1px solid #2d3748;
-                        border-radius: 10px;
-                        color: white;
-                        // Input daxili yazı: 1rem -> 0.95rem
-                        font-size: 0.95rem;
-                        outline: none;
-                        transition: all 0.2s;
-
-                        &:focus {
-                            border-color: $primary-blue;
-                            background: #1a2333;
-                            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
-                        }
-
-                        &::placeholder {
-                            color: rgba(148, 163, 184, 0.4);
-                        }
-                    }
-
-                    .password-input-wrapper {
-                        position: relative;
-
-                        .eye-btn {
-                            position: absolute;
-                            right: 14px;
-                            top: 50%;
-                            transform: translateY(-50%);
-                            background: none;
-                            border: none;
-                            color: $text-gray;
-                            cursor: pointer;
-                            font-size: 1.1rem; // İkon bir az kiçildildi
-
-                            &:hover {
-                                color: white;
-                            }
-                        }
-                    }
-                }
-
-                .form-actions {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    margin-bottom: 1.5rem; // Boşluq azaldıldı
-                    color: $text-gray;
-                    // Link şriftləri kiçildildi: 0.9rem -> 0.85rem
-                    font-size: 0.85rem;
-
-                    .forgot-link {
-                        color: $primary-blue;
-                        text-decoration: none;
-
-                        &:hover {
-                            text-decoration: underline;
-                        }
-                    }
-
-                    .checkbox-container {
-                        display: flex;
-                        align-items: center;
-                        gap: 8px;
-                        cursor: pointer;
-
-                        input {
-                            accent-color: $primary-blue;
-                            width: 16px;
-                            height: 16px;
-                        }
-                    }
-                }
-
-                .submit-btn {
-                    width: 100%;
-                    // Düymə daha yığcam: 16px -> 14px
-                    padding: 14px;
-                    background: $primary-blue;
-                    border: none;
-                    border-radius: 10px;
-                    color: white;
-                    font-weight: 600;
-                    font-size: 1rem;
-                    cursor: pointer;
-                    @include flex-center;
-                    gap: 10px;
-                    transition: background 0.2s;
-
-                    &:hover {
-                        background: darken($primary-blue, 5%);
-                    }
-
-                    .btn-icon {
-                        font-size: 1.1rem;
-                    }
-                }
-
-                .footer-text {
-                    text-align: center;
-                    margin-top: 1.5rem;
-                    color: $text-gray;
-                    // Footer yazısı kiçildildi: 0.9rem -> 0.85rem
-                    font-size: 0.85rem;
-
-                    a {
-                        color: $primary-blue;
-                        text-decoration: none;
-                        font-weight: 600;
-                        margin-left: 5px;
-                    }
-                }
-            }
-        }
+        // Dil düyməsi
         .lang-switcher-wrapper {
             position: absolute;
             top: 2rem;
@@ -475,14 +317,93 @@ $success-green: #10b981;
 
                 &:hover {
                     background: rgba(255, 255, 255, 0.15);
-                    border-color: rgba(255, 255, 255, 0.3);
+                }
+                svg { font-size: 16px; }
+            }
+        }
+
+        .form-wrapper {
+            width: 100%;
+            max-width: 500px;
+            padding: 2rem;
+
+            // --- YENİ: MOBİL LOQO STİLİ ---
+            .mobile-logo {
+                display: none; // Desktopda gizli
+                margin-bottom: 2rem;
+                text-align: center;
+
+                img {
+                    height: 75px;
+                    width: 75px;
+                    object-fit: contain;
                 }
 
-                svg {
-                    font-size: 16px;
+                // Yalnız mobildə göstər
+                @media (max-width: 900px) {
+                    display: block;
                 }
-            }}
+            }
+
+            .mobile-header { display: none; }
+
+            .form-title {
+                font-size: 1.8rem;
+                font-weight: 700;
+                margin-bottom: 0.5rem;
+                .blue { color: $primary-blue; }
+                .wave-emoji {
+                    display: inline-block; transform-origin: 70% 70%; animation: wave 2.5s infinite; margin-left: 10px;
+                }
+            }
+
+            .form-subtitle { color: $text-gray; margin-bottom: 2rem; font-size: 0.95rem; }
+
+            .login-form {
+                // ... (Form inputları və düymələr eyni qalır) ...
+                .form-group {
+                    margin-bottom: 1.2rem;
+                    label { display: block; margin-bottom: 0.5rem; color: $text-gray; font-size: 0.85rem; }
+                    .form-input {
+                        width: 100%; padding: 12px 14px; background: #151e2e; border: 1px solid #2d3748;
+                        border-radius: 10px; color: white; font-size: 0.95rem; outline: none; transition: all 0.2s;
+                        &:focus { border-color: $primary-blue; background: #1a2333; box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1); }
+                        &::placeholder { color: rgba(148, 163, 184, 0.4); }
+                    }
+                    .password-input-wrapper {
+                        position: relative;
+                        .eye-btn { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); background: none; border: none; color: $text-gray; cursor: pointer; font-size: 1.1rem; &:hover { color: white; } }
+                    }
+                }
+                .form-actions {
+                    display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; color: $text-gray; font-size: 0.85rem;
+                    .forgot-link { color: $primary-blue; text-decoration: none; &:hover { text-decoration: underline; } }
+                    .checkbox-container { display: flex; align-items: center; gap: 8px; cursor: pointer; input { accent-color: $primary-blue; width: 16px; height: 16px; } }
+                }
+                .submit-btn {
+                    width: 100%; padding: 14px; background: $primary-blue; border: none; border-radius: 10px; color: white; font-weight: 600; font-size: 1rem; cursor: pointer; @include flex-center; gap: 10px; transition: background 0.2s;
+                    &:hover { background: darken($primary-blue, 5%); }
+                    .btn-icon { font-size: 1.1rem; }
+                }
+                .footer-text {
+                    text-align: center; margin-top: 1.5rem; color: $text-gray; font-size: 0.85rem;
+                    a { color: $primary-blue; text-decoration: none; font-weight: 600; margin-left: 5px; }
+                }
+            }
+        }
     }
+
+// RESPONSIVE
+@media (max-width: 900px) {
+    .login-container {
+        flex-direction: column;
+        .login-left { display: none; } // Sol tərəf gizlənir
+        .login-right { 
+            width: 100%; border: none; 
+            .lang-switcher-wrapper { top: 1.5rem; right: 1.5rem; }
+        }
+    }
+}
 }
 
 // RESPONSIVE (Eyni qaldı)

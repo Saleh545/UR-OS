@@ -5,7 +5,7 @@ import { RiRobot2Line, RiCheckLine, RiFileTextLine, RiArrowRightLine } from 'rea
 import { TfiWorld } from 'react-icons/tfi';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
-import { useTranslation } from 'react-i18next'; // Tərcümə kitabxanası
+import { useTranslation } from 'react-i18next';
 
 // --- TYPEWRITER (Eyni qalır) ---
 const Typewriter = ({ text, delay = 40, startTyping, onComplete }) => {
@@ -41,27 +41,17 @@ const Typewriter = ({ text, delay = 40, startTyping, onComplete }) => {
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [step, setStep] = useState(0);
-    
-    // TƏRCÜMƏ MƏNTİQİ
     const { t, i18n } = useTranslation();
     const languages = ["az", "en", "ru"];
 
-    // Səhifə açılan kimi title-ı dəyiş
-    useEffect(() => {
-        document.title = t('app_title');
-    }, [i18n.language, t]);
-
-    // Dil Dəyişmə Funksiyası
     const changeLang = () => {
         const currentLang = i18n.language || 'az';
         const currentIndex = languages.indexOf(currentLang);
         const nextLang = languages[(currentIndex + 1) % languages.length];
-
         i18n.changeLanguage(nextLang);
         localStorage.setItem('language', nextLang);
     };
 
-    // Animasiya Timer-ləri
     useEffect(() => {
         let timer;
         if (step === 0) timer = setTimeout(() => setStep(1), 800);
@@ -73,57 +63,41 @@ const Login = () => {
 
     return (
         <div className="login-container">
-            {/* --- SOL TƏRƏF --- */}
+            {/* --- SOL TƏRƏF (Eyni qalır) --- */}
             <div className="login-left">
                 <div className="brand-logo">
                     <Link to="/"><img src={logo} alt="UR-OS Logo" /></Link>
                 </div>
                 <div className="hero-text-fixed">
                     <h1 className="hero-title">
-                        {t('loginhero.title_part1')} <br />
-                        <span className="blue-text">{t('loginhero.title_highlight')}</span>
+                        {t('hero.title_part1')} <br />
+                        <span className="blue-text">{t('hero.title_highlight')}</span>
                     </h1>
-                    <p className="hero-subtitle">
-                        {t('hero.subtitle')}
-                    </p>
+                    <p className="hero-subtitle">{t('hero.subtitle')}</p>
                 </div>
-                
-                {/* Çat Mətnləri də Tərcümə olunur */}
                 <div className="chat-simulation">
                     <div className={`chat-message bot ${step >= 1 ? 'visible' : ''}`}>
                         <div className="avatar"><RiRobot2Line /></div>
-                        <div className="bubble">
-                            <Typewriter text={t('chat.bot_greeting')} startTyping={step >= 1} onComplete={() => setTimeout(() => setStep(2), 1000)} />
-                        </div>
+                        <div className="bubble"><Typewriter text={t('chat.bot_greeting')} startTyping={step >= 1} onComplete={() => setTimeout(() => setStep(2), 1000)} /></div>
                     </div>
                     <div className={`chat-message user ${step >= 2 ? 'visible' : ''}`}>
-                        <div className="bubble">
-                            <Typewriter text={t('chat.user_reply')} startTyping={step >= 2} onComplete={() => setTimeout(() => setStep(3), 1000)} />
-                        </div>
+                        <div className="bubble"><Typewriter text={t('chat.user_reply')} startTyping={step >= 2} onComplete={() => setTimeout(() => setStep(3), 1000)} /></div>
                     </div>
                     <div className={`chat-message bot ${step >= 3 ? 'visible' : ''}`}>
                         <div className="avatar"><RiRobot2Line /></div>
-                        <div className="bubble">
-                            <Typewriter text={t('chat.bot_menu')} startTyping={step >= 3} onComplete={() => setTimeout(() => setStep(4), 800)} />
-                        </div>
+                        <div className="bubble"><Typewriter text={t('chat.bot_menu')} startTyping={step >= 3} onComplete={() => setTimeout(() => setStep(4), 800)} /></div>
                     </div>
                     <div className={`chat-extra-item file ${step >= 4 ? 'show' : ''}`}>
                         <div className="file-card">
                             <div className="icon-box orange"><RiFileTextLine /></div>
-                            <div className="file-info">
-                                <span className="file-name">{t('chat.file_name')}</span>
-                                <span className="file-meta">{t('chat.file_meta')}</span>
-                            </div>
+                            <div className="file-info"><span className="file-name">{t('chat.file_name')}</span><span className="file-meta">{t('chat.file_meta')}</span></div>
                             <RiArrowRightLine className="arrow-icon" />
                         </div>
                     </div>
                     <div className={`chat-extra-item alert ${step >= 5 ? 'show' : ''}`}>
                         <div className="success-alert">
                             <div className="check-icon"><RiCheckLine /></div>
-                            <div className="alert-text">
-                                <span className="alert-title">{t('chat.alert_title')}</span>
-                                <span className="alert-sub">{t('chat.alert_sub')}</span>
-                            </div>
+                            <div className="alert-text"><span className="alert-title">{t('chat.alert_title')}</span><span className="alert-sub">{t('chat.alert_sub')}</span></div>
                         </div>
                     </div>
                 </div>
@@ -132,7 +106,7 @@ const Login = () => {
             {/* --- SAĞ TƏRƏF --- */}
             <div className="login-right">
                 
-                {/* DİL DÜYMƏSİ */}
+                {/* Dil Düyməsi */}
                 <div className="lang-switcher-wrapper">
                     <button className="lang-btn" onClick={changeLang}>
                         <TfiWorld />
@@ -141,6 +115,12 @@ const Login = () => {
                 </div>
 
                 <div className="form-wrapper">
+                    
+                    {/* YENİ: MOBİL LOQO (Yalnız mobildə görünəcək) */}
+                    <div className="mobile-logo">
+                        <Link to="/"><img src={logo} alt="UR-OS Logo" /></Link>
+                    </div>
+
                     <h2 className="form-title">
                         {t('login.welcome')} <span className="blue">UR-OS</span> 
                         <span className="wave-emoji">👋</span>
