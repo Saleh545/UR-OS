@@ -157,6 +157,39 @@
       "location": "LOCATION",
       "city": "Baku, Azerbaijan"
     },
-    "copyright": "© 2026 UR-OS. All rights reserved. Made with ❤️ for restaurateurs."
+    "copyright": "© 2026 UR-OS. All rights reserved. Made with passion for restaurateurs."
+  },
+  
+  "app_title": "UR-OS | Restaurant Operating System",
+  
+  "login": {
+    "welcome": "Welcome to",
+    "subtitle": "Log in to your account to manage the system",
+    "email_label": "Email",
+    "password_label": "Password",
+    "placeholder_email": "admin@ur-os.az",
+    "placeholder_password": "············",
+    "remember_me": "Remember me",
+    "forgot_password": "Forgot password?",
+    "login_btn": "Log in",
+    "footer_text": "Not using UR-OS yet?",
+    "contact_us": "Contact us"
+  },
+
+  "chat": {
+    "bot_greeting": "Hello! Would you like to reserve a table? 👋",
+    "user_reply": "Yes, for 2 people. Tonight at 8:00 PM.",
+    "bot_menu": "Great! Check out our new menu 👇",
+    "file_name": "Chef's Special Menu",
+    "file_meta": "PDF • 2.4 MB",
+    "alert_title": "RESERVATION CONFIRMED",
+    "alert_sub": "Today, 8:00 PM • Table #4"
+  },
+
+  "hero": {
+    "title_part1": "Your Restaurant's",
+    "title_highlight": "Digital Brain",
+    "subtitle": "AI-bots, smart reservations, and interactive menus. Provide the highest level of service to your customers."
   }
+
 }

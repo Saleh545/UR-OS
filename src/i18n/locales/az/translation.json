@@ -159,5 +159,39 @@
       "city": "Baku, Azerbaijan"
     },
     "copyright": "© 2026 UR-OS. Bütün hüquqlar qorunur. Restoran sahibləri üçün ❤️ ilə hazırlanıb."
+  },
+
+  
+  "app_title": "UR-OS | Restoran İdarəetmə Sistemi",
+  
+  "login": {
+    "welcome": "Xoş gəlmisiniz",
+    "subtitle": "Sistemi idarə etmək üçün hesabınıza daxil olun",
+    "email_label": "Email",
+    "password_label": "Şifrə",
+    "placeholder_email": "admin@ur-os.az",
+    "placeholder_password": "············",
+    "remember_me": "Məni xatırlas",
+    "forgot_password": "Şifrəni unutmusuz?",
+    "login_btn": "Daxil ol",
+    "footer_text": "Hələ də UR-OS istifadə etmirsiniz?",
+    "contact_us": "Bizə yazın"
+  },
+
+  "chat": {
+    "bot_greeting": "Salam! Masa rezerv etmək istəyirsiniz? 👋",
+    "user_reply": "Bəli, 2 nəfər üçün. Bu axşam 20:00.",
+    "bot_menu": "Əla! Bizim yeni menyumuza baxın 👇",
+    "file_name": "Şefin Özəl Menyusu",
+    "file_meta": "PDF • 2.4 MB",
+    "alert_title": "REZERV TƏSDİQLƏNDİ",
+    "alert_sub": "Bu gün, 20:00 • Masa #4"
+  },
+
+  "hero": {
+    "title_part1": "Restoranınızın",
+    "title_highlight": "Rəqəmsal Beyni",
+    "subtitle": "AI-botlar, ağıllı rezervasiya və interaktiv menyu. Müştərilərinizə ən yüksək xidməti göstərin."
   }
+
 }

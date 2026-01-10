@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { FiPhone, FiInstagram, FiMail, FiMapPin } from 'react-icons/fi';
 import '../styles/component/footer.scss';
-import logo from "../assets/hero-logo.png"
+import logo from "../assets/logo.png"
 
 const Footer = () => {
   const { t } = useTranslation();

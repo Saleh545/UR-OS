@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../main.scss';
 import '../styles/component/header.scss';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import heroLogo from '../assets/hero-logo.png';
+import logo from '../assets/logo.png';
 import { useTranslation } from 'react-i18next';
 import { TfiWorld } from 'react-icons/tfi';
 
@@ -122,7 +122,7 @@ const Header = () => {
           <div className="header-flex">
             <div className="header-left">
               <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-                <img src={heroLogo} alt="UR-OS Logo" />
+                <img src={logo} alt="UR-OS Logo" />
               </Link>
             </div>
 
