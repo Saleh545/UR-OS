@@ -38,6 +38,7 @@ $success-green: #10b981;
         padding: 0 3rem;
         position: relative;
         background: radial-gradient(circle at top left, #1a2333 0%, $bg-dark 70%);
+        background: "#13161c";
         display: flex;
         // flex-direction: column;
         justify-content: center;
@@ -294,7 +295,7 @@ $success-green: #10b981;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #0b1120;
+        background: #0f111a;
         border-left: 1px solid rgba(51, 65, 85, 0.5);
         position: relative;
 
@@ -479,10 +480,12 @@ $success-green: #10b981;
                     cursor: pointer;
                     @include flex-center;
                     gap: 10px;
-                    transition: background 0.2s;
+                    transition: .3s;
 
                     &:hover {
-                        background: darken($primary-blue, 5%);
+                        // background: darken($primary-blue, 5%);
+                        transform: translateY(-2px);
+                        background: rgb(51, 103, 214);
                     }
 
                     .btn-icon {

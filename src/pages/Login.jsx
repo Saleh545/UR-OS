@@ -197,7 +197,8 @@ const Login = () => {
                     </div>
 
                     <h2 className="form-title">
-                        {t('login.welcome')} <span className="blue">UR-OS</span> 
+                        {t('login.welcome')} <span className="blue"> <br />
+                        UR-OS</span> 
                         <span className="wave-emoji">👋</span>
                     </h2>
                     <p className="form-subtitle">{t('login.subtitle')}</p>
