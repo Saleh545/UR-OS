@@ -218,7 +218,6 @@ const Login = () => {
                             <label className="checkbox-container">
                                 <input type="checkbox" /> <span className="checkmark"></span> {t('login.remember_me')}
                             </label>
-                            {/* DƏYİŞİKLİK: a href əvəzinə Link (əgər route varsa) və ya sadəcə # */}
                             <Link to="/forgot-password" className="forgot-link">{t('login.forgot_password')}</Link>
                         </div>
                         <button type="submit" className="submit-btn">

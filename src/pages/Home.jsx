@@ -122,7 +122,7 @@ const Home = () => {
               <p className="hero-subtitle">{t('hero.subtitle')}</p>
               <div className="hero-btns">
                 <Link to="/sign" className="btn-main">{t('hero.btn_start')}</Link>
-                <button className="btn-demo">{t('hero.btn_demo')}</button>
+                {/* <button className="btn-demo">{t('hero.btn_demo')}</button> */}
               </div>
             </div>
             <div className="hero-img">
