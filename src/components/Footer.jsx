@@ -29,7 +29,7 @@ const Footer = () => {
               <li><Link to="/">{t('footer.links.features')}</Link></li>
               <li><Link to="/">{t('footer.links.system')}</Link></li>
               <li><Link to="/">{t('footer.links.faq')}</Link></li>
-              <li><Link to="/sign">{t('footer.links.cabinet')}</Link></li>
+              <li><Link to="/login">{t('footer.links.cabinet')}</Link></li>
             </ul>
           </div>
 
